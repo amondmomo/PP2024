@@ -2,6 +2,11 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/클래스 공부 (2).html",
+      "/posts/numpy_+_행렬.html",
+      "/posts/matplotlib 공부(1).html",
+      "/posts/클래스 공부 (1).html",
+      "/posts/클래스 공부 (3) .html",
       "/posts/post-with-code/index.html",
       "/posts/welcome/index.html"
     ]
