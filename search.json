@@ -28,6 +28,48 @@
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
+    "objectID": "posts/2023_12wk_2_클래스.html",
+    "href": "posts/2023_12wk_2_클래스.html",
+    "title": "클래스 공부 (4) / 메소드 init",
+    "section": "",
+    "text": "import matplotlib.pyplot as plt\nfrom IPython.core.display import HTML"
+  },
+  {
+    "objectID": "posts/2023_12wk_2_클래스.html#self는-항상-써야함",
+    "href": "posts/2023_12wk_2_클래스.html#self는-항상-써야함",
+    "title": "클래스 공부 (4) / 메소드 init",
+    "section": "self는 항상 써야함",
+    "text": "self는 항상 써야함\n\nclass Klass:\n  def hello(self): # hello 메소드 안에 self를 꼭 입력\n    print(\"hello\")\n\n\nins = Klass()\n\n\nins.hello()\n\nhello"
+  },
+  {
+    "objectID": "posts/2023_12wk_2_클래스.html#init-사용",
+    "href": "posts/2023_12wk_2_클래스.html#init-사용",
+    "title": "클래스 공부 (4) / 메소드 init",
+    "section": "init 사용",
+    "text": "init 사용\n\n# class 예제 1\n\n\nclass Klass():\n  def __init__(self):\n    self.a = True\n  def show(self):\n    print(self.a)\n\n\nins = Klass()\n\n\nins.show()\n\nTrue\n\n\n\n# class 예제 2-1\n\n\nclass Klass():\n  def __init__(self):\n    self.a = True\n  def toggle(self):\n    if self.a == True:\n      self.a = False\n    elif self.a == False:\n      self.a = True\n  def show(self):\n    print(self.a)\n\n\nins = Klass()\n\n\nins.toggle()\nins.show()\n\nFalse\n\n\n\n# class 예제 2-2\n\n\nclass Klass():\n  def __init__(self):\n    self.a = True\n  def toggle(self):\n    self.a = not self.a\n  def show(self):\n    print(self.a)\n\n\nins = Klass()\n\n\nins.toggle()\nins.show()\n\nTrue\n\n\n\n# class 예제 3\n\n\nclass Klass():\n  def __init__(self):\n    self.a = 0\n  def up(self):\n    self.a = self.a +1\n  def show(self):\n    print(self.a)\n\n\nins = Klass()\n\n\nins.a\n\n0\n\n\n\nins.up()\n\n\nins.a\n\n1\n\n\n\n## 예제4\n\n\nclass Klass:\n  def __init__(self,value):\n    self.a = value\n  def show(self):\n    print(self.a)\n\n\nins = Klass(24)\n\n\nins.show()\n\n24\n\n\n\n#예제5\n\n\nclass Klass:\n  def __init__(self):\n    self.a = 0\n  def up(self):\n    self.a = self.a +1\n  def jump(self,jump_size):\n    self.a = self.a + jump_size\n  def show(self):\n    print('a의 값은 {}입니다.'.format(self.a))\n\n\nins = Klass()\n\n\nins.a\n\n0\n\n\n\nins.jump(234)\nins.show()\n\na의 값은 234입니다.\n\n\n\n# 예제6\n\n\nclass Klass:\n  def __init__(self):\n    self.a = 0\n  def up(self):\n    self.a = self.a +1\n  def jump(self,jump_size):\n    self.a = self.a + jump_size\n  def reset(self):\n    self.a = 0 ### self.__init__() 코드와 동일\n  def show(self):\n    print('a의 값은 {}입니다.'.format(self.a))\n\n\nins = Klass()\n\n\nins.jump(234)\nins.show()\n\na의 값은 234입니다.\n\n\n\nins.reset()\nins.show()\n\na의 값은 0입니다.\n\n\n\n# 예제7 / 이미지 삽입\n\n\nclass Klass:\n  def __init__(self):\n    self.url = 'https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2023/07/21/4a6e5d86-eafd-4c4c-a252-faf00c45cfcc.jpg'\n  def show(self):\n    html_str = '&lt;img src={url} width=250&gt;'.format(url=self.url)\n    display(HTML(html_str))\n\n\nins = Klass()\n\n\nins.show()\n\n\n\n\n\n# 예제8\n\n\nclass Klass:\n  def __init__(self):\n    self.n = 0\n    self.url = 'https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2023/07/21/4a6e5d86-eafd-4c4c-a252-faf00c45cfcc.jpg'\n  def show(self):\n    self.n = self.n + 1\n    html_str = '&lt;img src={url} width=250&gt;'.format(url=self.url)\n    print('당신은 뉴진스를 {}번 봤습니다.'.format(self.n))\n    display(HTML(html_str))\n\n\nins = Klass()\n\n\nins.show()\n\n당신은 뉴진스를 2번 봤습니다."
+  },
+  {
+    "objectID": "posts/2023_12wk_2_클래스.html#wk-2-과제",
+    "href": "posts/2023_12wk_2_클래스.html#wk-2-과제",
+    "title": "클래스 공부 (4) / 메소드 init",
+    "section": "12wk-2 과제",
+    "text": "12wk-2 과제\n\nimport\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport yfinance as yf\n\n/usr/local/lib/python3.10/dist-packages/yfinance/base.py:48: FutureWarning: The default dtype for empty Series will be 'object' instead of 'float64' in a future version. Specify a dtype explicitly to silence this warning.\n  _empty_series = pd.Series()\n\n\n\n과제1\n\n\nclass Stock:\n  def __init__(self):\n    self.y = None\n    self.sy = None\n  def crawling(self,start_date,end_date,code):\n    self.y = yf.download(code, start=start_date, end=end_date)['Adj Close'].to_numpy()\n  def smoothing(self,n):\n    T = len(self.y)\n    self.n = n\n    M = (np.eye(T) + np.array([abs(i-j)&lt;2 for i in range(T) for j in range(T)]).reshape(T,T))/4\n    M[0,0] = 3/4\n    M[-1,-1] = 3/4\n    self.sy = np.linalg.matrix_power(M,self.n)@self.y\n  def plot(self):\n    plt.plot(y,label='y')\n    plt.plot(self.sy,label='y_hat')\n    plt.legend()\n\n\nins = Stock()\n\n\n# kakao 인스턴스\ncode = '035720.KS'\nstart_date = '2023-01-01'\nend_date = '2023-05-26'\n\n\nins.crawling(start_date,end_date,code)\n\n[*********************100%%**********************]  1 of 1 completed\n\n\n\nins.smoothing(100)\n\n\nins.plot()\n\n\n\n\n\n\n\n\n\n과제2\n\n\nclass LinearRegression:\n  def __init__(self,x,y):\n    self.x = x\n    self.y = y\n  def fit(self):\n    self.X = np.stack([np.ones(len(self.x)),x],axis=1)\n    self.y_hat = self.X@(np.linalg.inv((self.X).T@self.X))@((self.X).T@self.y)\n  def plot(self):\n    plt.plot(self.x,self.y,'o',label='(x,y)')\n    plt.plot(self.x,self.y_hat,'--r',label='(x,y_hat)')\n    plt.legend()\n\n\nx = np.array(\n    [0.007, 0.008, 0.008, 0.011, 0.037, 0.047, 0.059, 0.07 , 0.072,\n     0.075, 0.078, 0.08 , 0.082, 0.11 , 0.114, 0.117, 0.133, 0.15 ,\n     0.161, 0.163, 0.172, 0.208, 0.209, 0.221, 0.229, 0.231, 0.234,\n     0.235, 0.249, 0.251, 0.256, 0.269, 0.269, 0.273, 0.275, 0.298,\n     0.305, 0.309, 0.34 , 0.362, 0.371, 0.374, 0.382, 0.387, 0.388,\n     0.394, 0.395, 0.397, 0.401, 0.404, 0.419, 0.433, 0.436, 0.466,\n     0.481, 0.492, 0.495, 0.508, 0.511, 0.512, 0.554, 0.57 , 0.574,\n     0.575, 0.584, 0.6  , 0.601, 0.615, 0.618, 0.623, 0.629, 0.633,\n     0.646, 0.65 , 0.654, 0.662, 0.673, 0.686, 0.702, 0.744, 0.754,\n     0.766, 0.772, 0.781, 0.798, 0.8  , 0.807, 0.836, 0.837, 0.871,\n     0.873, 0.877, 0.879, 0.889, 0.891, 0.902, 0.904, 0.923, 0.952,\n     0.981]\n)\ny = np.array(\n    [4.004, 4.189, 5.483, 4.902, 5.174, 4.468, 4.95 , 4.463, 5.476,\n     4.446, 4.764, 5.244, 4.357, 4.796, 5.464, 4.196, 5.244, 4.868,\n     5.358, 4.493, 4.831, 4.716, 4.929, 4.588, 4.718, 4.389, 4.985,\n     4.266, 4.291, 3.697, 4.248, 4.88 , 5.126, 4.563, 4.131, 4.728,\n     4.168, 4.584, 3.953, 4.747, 3.592, 5.023, 4.601, 3.904, 4.092,\n     4.37 , 3.922, 4.145, 4.576, 4.25 , 4.051, 3.616, 4.634, 3.496,\n     4.631, 4.025, 4.197, 4.226, 4.808, 3.676, 3.834, 3.197, 4.36 ,\n     3.547, 3.956, 3.522, 4.26 , 3.443, 3.97 , 4.068, 4.186, 3.262,\n     3.452, 3.946, 3.875, 3.444, 3.501, 3.959, 3.843, 2.679, 3.266,\n     3.506, 2.916, 3.714, 4.007, 2.795, 3.329, 2.756, 3.72 , 2.381,\n     2.798, 3.035, 3.492, 3.22 , 3.073, 3.85 , 3.233, 3.396, 3.264,\n     2.986]\n)\n\n\nLR = LinearRegression(x,y)\n\n\nLR.fit()\n\n\nLR.plot()"
+  },
+  {
+    "objectID": "posts/클래스 공부 (2).html",
+    "href": "posts/클래스 공부 (2).html",
+    "title": "클래스 공부 (2)",
+    "section": "",
+    "text": "# import\nfrom IPython.core.display import HTML\n\n\n클래스공부 1단계: 메소드 (복습)\n\nclass JungKKuckMa:\n    def show(self):\n        _str = self.html_str.format(\n            ttl = self.title,\n            url = self.imgurl,\n            Q = self.ques,\n            A = self.ans,\n            hl = self.highlight\n        )\n        display(HTML(_str)) \n\n\npp2023 = JungKKuckMa()\n\n\npp2023.title = '홍은채'\npp2023.imgurl = 'https://i.ytimg.com/vi/R0fnLHXpInI/maxresdefault.jpg'\npp2023.ques = \"Q: 이 사진은 누구일까요\"\npp2023.ans = \"A: 홍은채 입니다~\"\npp2023.highlight = '사진'\npp2023.html_str =\\\n'''\n&lt;style&gt;\n    .title {{\n        font-family: \"Times New Roman\", serif;\n        font-size: 30px;\n        font-weight: 900;\n    }}\n    .text {{\n        font-family: \"Arial\", sans-serif;\n        font-size: 20px;\n        font-style: italic;\n    }}\n    .highlight {{\n        font-family: \"Montserrat\", monospace;\n        font-size: 35px;\n        font-weight: 900;\n        text-decoration: underline;\n        font-style: normal;\n        color: darkblue;\n        background-color: #FFFF00;\n    }}\n&lt;/style&gt;\n&lt;p class=\"title\"&gt;{ttl}&lt;/p&gt;\n&lt;img src={url} width=\"600\"&gt;\n&lt;p&gt; \\n &lt;/p&gt;\n&lt;p class=\"text\"&gt;{Q}&lt;/p&gt;\n&lt;p class=\"text\"&gt;{A}&lt;/p&gt;\n&lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt;{hl}&lt;/span&gt;&lt;/p&gt;\n'''\n\n\npp2023.show()\n\n\n\n홍은채\n\n \n \nQ: 이 사진은 누구일까요\nA: 홍은채 입니다~\n중요한 것은 꺾이지 않는 사진"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
     "objectID": "posts/numpy_+_행렬.html",
     "href": "posts/numpy_+_행렬.html",
     "title": "numpy + 행렬",
@@ -47,20 +89,6 @@
     "title": "numpy + 행렬",
     "section": "행렬 인덱싱",
     "text": "행렬 인덱싱\n\nA = [[1,2,3,4],[-1,-2,-3,-4],[5,6,7,8],[-5,-6,-7,-8]]\nA2 = np.array(A)\nA2\n\narray([[ 1,  2,  3,  4],\n       [-1, -2, -3, -4],\n       [ 5,  6,  7,  8],\n       [-5, -6, -7, -8]])\n\n\n\nA2[[0,2],:] #1행,3행 추출\n\narray([[1, 2, 3, 4],\n       [5, 6, 7, 8]])\n\n\n\nA2[:,[0]]\n\narray([[ 1],\n       [-1],\n       [ 5],\n       [-5]])\n\n\n\nA2[:,0]\n\narray([ 1, -1,  5, -5])"
-  },
-  {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code."
-  },
-  {
-    "objectID": "posts/클래스 공부 (2).html",
-    "href": "posts/클래스 공부 (2).html",
-    "title": "클래스 공부 (2)",
-    "section": "",
-    "text": "# import\nfrom IPython.core.display import HTML\n\n\n클래스공부 1단계: 메소드 (복습)\n\nclass JungKKuckMa:\n    def show(self):\n        _str = self.html_str.format(\n            ttl = self.title,\n            url = self.imgurl,\n            Q = self.ques,\n            A = self.ans,\n            hl = self.highlight\n        )\n        display(HTML(_str)) \n\n\npp2023 = JungKKuckMa()\n\n\npp2023.title = '홍은채 이뻥.'\npp2023.imgurl = 'https://i.ytimg.com/vi/R0fnLHXpInI/maxresdefault.jpg'\npp2023.ques = \"Q: 르세라핌, 누가 제일 이쁠까\"\npp2023.ans = \"A: 본체만체~\"\npp2023.highlight = '은채 ㅎㅎ'\npp2023.html_str =\\\n'''\n&lt;style&gt;\n    .title {{\n        font-family: \"Times New Roman\", serif;\n        font-size: 30px;\n        font-weight: 900;\n    }}\n    .text {{\n        font-family: \"Arial\", sans-serif;\n        font-size: 20px;\n        font-style: italic;\n    }}\n    .highlight {{\n        font-family: \"Montserrat\", monospace;\n        font-size: 35px;\n        font-weight: 900;\n        text-decoration: underline;\n        font-style: normal;\n        color: darkblue;\n        background-color: #FFFF00;\n    }}\n&lt;/style&gt;\n&lt;p class=\"title\"&gt;{ttl}&lt;/p&gt;\n&lt;img src={url} width=\"600\"&gt;\n&lt;p&gt; \\n &lt;/p&gt;\n&lt;p class=\"text\"&gt;{Q}&lt;/p&gt;\n&lt;p class=\"text\"&gt;{A}&lt;/p&gt;\n&lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt;{hl}&lt;/span&gt;&lt;/p&gt;\n'''\n\n\npp2023.show()\n\n\n\n홍은채 이뻥.\n\n \n \nQ: 르세라핌, 누가 제일 이쁠까\nA: 본체만체~\n중요한 것은 꺾이지 않는 은채 ㅎㅎ"
   },
   {
     "objectID": "posts/matplotlib 공부(1).html",
@@ -88,6 +116,6 @@
     "href": "index.html",
     "title": "PP2024",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (2)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nnumpy + 행렬\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nmatplotlib 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (3)\n\n\n이정민 \n\n\n\n\nFeb 21, 2024\n\n\nPost With Code\n\n\nHarlow Malloc\n\n\n\n\nFeb 18, 2024\n\n\nWelcome To My Blog\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 2, 2025\n\n\n클래스 공부 (4) / 메소드 init\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (2)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nnumpy + 행렬\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nmatplotlib 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (3)\n\n\n이정민 \n\n\n\n\nFeb 21, 2024\n\n\nPost With Code\n\n\nHarlow Malloc\n\n\n\n\nFeb 18, 2024\n\n\nWelcome To My Blog\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
   }
 ]
