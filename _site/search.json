@@ -7,11 +7,46 @@
     "text": "About this blog"
   },
   {
+    "objectID": "posts/클래스 공부 (3) .html",
+    "href": "posts/클래스 공부 (3) .html",
+    "title": "클래스 공부 (3)",
+    "section": "",
+    "text": "import numpy as np\nimport matplotlib.pyplot as plt"
+  },
+  {
+    "objectID": "posts/클래스 공부 (3) .html#클래스-생성",
+    "href": "posts/클래스 공부 (3) .html#클래스-생성",
+    "title": "클래스 공부 (3)",
+    "section": "클래스 생성",
+    "text": "클래스 생성\n\nclass CoinFlipper:\n    def __init__(self):\n        self.coins = list()\n        self.win_cond = {'하니':[],'규빈':[]}\n        self.winner = str()\n    def __iter__(self):\n        return self\n    def __next__(self):\n        self.coins.append(np.random.choice(['앞면','뒷면']))\n        if self.coins[-2:] == self.win_cond['하니']:\n            self.winner = '하니'\n            raise StopIteration\n        elif self.coins[-2:] == self.win_cond['규빈']:\n            self.winner = '규빈'\n            raise StopIteration\n        else:\n            pass\n    def __call__(self,win_cond):\n        self.win_cond = win_cond\n        for _ in self:\n            pass\n    def __repr__(self):\n        repr_str = '하니의 승리조건: {}\\n규빈의 승리조건: {}\\n동전을 던진결과들: {}\\n최종승리자: {}'.format(\n            self.win_cond['하니'],\n            self.win_cond['규빈'],\n            self.coins,\n            self.winner\n        )\n        return repr_str\n\n\ncoin_fliper = CoinFlipper()\n\n\ncoin_fliper\n\n하니의 승리조건: []\n규빈의 승리조건: []\n동전을 던진결과들: []\n최종승리자: \n\n\n\nwin_cond = {\n    '하니':['앞면','뒷면'],\n    '규빈':['뒷면','앞면']\n}\n\n\ncoin_fliper(win_cond)\n\n\ncoin_fliper\n\n하니의 승리조건: ['앞면', '뒷면']\n규빈의 승리조건: ['뒷면', '앞면']\n동전을 던진결과들: ['뒷면', '뒷면', '앞면']\n최종승리자: 규빈\n\n\n\ncoinfliper_lst = [CoinFlipper() for _ in range(10000)]\nwinners = []\nfor coinfliper in coinfliper_lst:\n    coinfliper(win_cond)\n    winners.append(coinfliper.winner)\n\n\n{'하니':winners.count('하니'), '규빈':winners.count('규빈')}\n\n{'하니': 4995, '규빈': 5005}\n\n\n\ncoinfliper_lst[5000]\n\n하니의 승리조건: ['앞면', '뒷면']\n규빈의 승리조건: ['뒷면', '앞면']\n동전을 던진결과들: ['뒷면', '앞면']\n최종승리자: 규빈\n\n\n\n# (3)\n\n\nwin_cond = {\n    '하니':['앞면','뒷면'],\n    '규빈':['뒷면','뒷면']\n}\n\n\ncoinfliper_lst = [CoinFlipper() for _ in range(100)]\nwinners = []\nfor coinfliper in coinfliper_lst:\n    coinfliper(win_cond)\n    winners.append(coinfliper.winner)\n\n\n{'하니':winners.count('하니'), '규빈':winners.count('규빈')}\n\n{'하니': 80, '규빈': 20}\n\n\n\n#---------\n\n\nimport datetime\n\n\nclass Time:\n    def time(self):\n        return datetime.datetime.now().strftime('%y-%m-%d %X')\n\n\nclass Init(Time):\n    def __init__(self):\n        self.init_time = self.time()\n    def __repr__(self):\n        return '인스턴스생성시점: {}'.format(self.init_time)\n\n\na = Init()\nb = Init()\n\n\na,b\n\n(인스턴스생성시점: 24-02-21 08:47:07, 인스턴스생성시점: 24-02-21 08:47:07)\n\n\n\nclass Check:\n  def check(self):\n    return [l for l in dir(self) if l[0]!='_']\n\n\nclass Tuple(Check,tuple):\n  def freq(self):\n    return {s:self.count(s) for s in sef(self)}\n  def __repr__(self):\n    return super().__repr__() + '\\n' +'methods={}'.format(self.check())\n\n\ntpl = Tuple('asdfassdfsasdf')\ntpl\n\n('a', 's', 'd', 'f', 'a', 's', 's', 'd', 'f', 's', 'a', 's', 'd', 'f')\nmethods=['check', 'count', 'freq', 'index']\n\n\n\nclass Init(object):\n  def __init__(self,value):\n    self.value = value\n\nclass Times2(Init):\n  def __init__(self,value):\n    super().__init__(value)\n    self.value = self.value * 2\n\nclass Plus5(Init):\n  def __init__(self,value):\n    super().__init__(value)\n    self.value = self.value + 5\n\n\nclass Times2Plus5(Plus5,Times2):\n  def __init__(self,value):\n    super().__init__(value)\n\n\ndef f(x):\n    return np.sin(x)\n\n\ndef f(x):\n    return np.sin(x)\ndef derivate(f):\n    # step1: 함수오브젝트 f는 입력으로 받은상태\n    # step2: 함수오브젝트 f를 이용하여 df라는 함수를 정의\n    def df(x):\n        h=0.000000000001\n        return (f(x+h)-f(x))/h\n    # step3: 정의된 df를 리턴\n    return df\n\nx = np.linspace(-6,6,100)\nplt.plot(x,f(x),label=r'$f(x)=\\sin(x)$')\nplt.plot(x,(derivate(f))(x),label=r'$f\\'(x)=\\cos(x)$')\nplt.legend()\n\n\n\n\n\n\n\n\n\nclass Student:\n  def __init__(self,name='',age=20,semester=0):\n    self.name = name\n    self.age = age\n    self.semester = semester\n  def __str__(self):\n    print_str = '''이름: {}\\n나이: {}\\n학기: {}'''.format(self.name,self.age,self.semester)\n    return print_str\n\n\nboram = Student(name='기모찌',age=12,semester=1)\nprint(boram)\n\n이름: 기모찌\n나이: 12\n학기: 1"
+  },
+  {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Welcome To My Blog",
     "section": "",
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/numpy_+_행렬.html",
+    "href": "posts/numpy_+_행렬.html",
+    "title": "numpy + 행렬",
+    "section": "",
+    "text": "import numpy as np"
+  },
+  {
+    "objectID": "posts/numpy_+_행렬.html#행렬-만들기",
+    "href": "posts/numpy_+_행렬.html#행렬-만들기",
+    "title": "numpy + 행렬",
+    "section": "1) 행렬 만들기",
+    "text": "1) 행렬 만들기\n\n행렬 만들 때 기본적으로 np.array 를 사용 해서 만들고, 리스트 or 튜플 형태를 받아서 사용함.\n\n\n_list = [1,2,3]\nnp.array(_list)\n\narray([1, 2, 3])\n\n\n\n_list1 = [1,2,3]\n_list2 = [4,5,6]\nnp.array([_list1,_list2]) # 리스트를 따로 받을 때는 대괄호 한번씩 더해줘야함\n\narray([[1, 2, 3],\n       [4, 5, 6]])\n\n\n\n넘파이 행렬 함수 (1)\n\nreshape\n\n\na=np.array([11,22,33,44,55,66])\na.reshape(2,3)\n\narray([[11, 22, 33],\n       [44, 55, 66]])\n\n\n\narange\n\n\na = np.arange(5)\nb = np.arange(1,5)\na,b\n\n(array([0, 1, 2, 3, 4]), array([1, 2, 3, 4]))\n\n\n\nlinspace\n\n\nnp.linspace(0,1,12) #0부터1까지 12개로 나눠서 배열선언\n\narray([0.        , 0.09090909, 0.18181818, 0.27272727, 0.36363636,\n       0.45454545, 0.54545455, 0.63636364, 0.72727273, 0.81818182,\n       0.90909091, 1.        ])\n\n\n\n역행렬 + 전치행렬 + 행렬곱\n\n\nA=np.arange(4).reshape(2,2)\nA.T #T는 전치행렬을 구해줌\n\narray([[0, 1],\n       [2, 3]])\n\n\n\nA=np.arange(4).reshape(2,2)\nnp.linalg.inv(A) #np.linalg.inv는 역행렬을 구해줌\n\narray([[-1.5,  0.5],\n       [ 1. ,  0. ]])\n\n\n\nA=np.arange(4).reshape(2,2)\nnp.linalg.inv(A)\nA@np.linalg.inv(A) #@는 행렬곱을 구해줌\n\narray([[1., 0.],\n       [0., 1.]])\n\n\n\n\n넘파이 행렬함수 (2)\n\nzeros\n\n\nnp.zeros(3)\n\narray([0., 0., 0.])\n\n\n\nones\n\n\na = np.ones(3)\nb = np.ones((3,3))\na,b\n\n(array([1., 1., 1.]),\n array([[1., 1., 1.],\n        [1., 1., 1.],\n        [1., 1., 1.]]))\n\n\n\neye\n\n\nnp.eye(3)\n\narray([[1., 0., 0.],\n       [0., 1., 0.],\n       [0., 0., 1.]])\n\n\n\ndiag\n\n\nnp.diag([2,3,4,-2])\n\narray([[ 2,  0,  0,  0],\n       [ 0,  3,  0,  0],\n       [ 0,  0,  4,  0],\n       [ 0,  0,  0, -2]])"
+  },
+  {
+    "objectID": "posts/numpy_+_행렬.html#행렬-인덱싱",
+    "href": "posts/numpy_+_행렬.html#행렬-인덱싱",
+    "title": "numpy + 행렬",
+    "section": "행렬 인덱싱",
+    "text": "행렬 인덱싱\n\nA = [[1,2,3,4],[-1,-2,-3,-4],[5,6,7,8],[-5,-6,-7,-8]]\nA2 = np.array(A)\nA2\n\narray([[ 1,  2,  3,  4],\n       [-1, -2, -3, -4],\n       [ 5,  6,  7,  8],\n       [-5, -6, -7, -8]])\n\n\n\nA2[[0,2],:] #1행,3행 추출\n\narray([[1, 2, 3, 4],\n       [5, 6, 7, 8]])\n\n\n\nA2[:,[0]]\n\narray([[ 1],\n       [-1],\n       [ 5],\n       [-5]])\n\n\n\nA2[:,0]\n\narray([ 1, -1,  5, -5])"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -21,10 +56,38 @@
     "text": "This is a post with executable code."
   },
   {
+    "objectID": "posts/클래스 공부 (2).html",
+    "href": "posts/클래스 공부 (2).html",
+    "title": "클래스 공부 (2)",
+    "section": "",
+    "text": "# import\nfrom IPython.core.display import HTML\n\n\n클래스공부 1단계: 메소드 (복습)\n\nclass JungKKuckMa:\n    def show(self):\n        _str = self.html_str.format(\n            ttl = self.title,\n            url = self.imgurl,\n            Q = self.ques,\n            A = self.ans,\n            hl = self.highlight\n        )\n        display(HTML(_str)) \n\n\npp2023 = JungKKuckMa()\n\n\npp2023.title = '홍은채 이뻥.'\npp2023.imgurl = 'https://i.ytimg.com/vi/R0fnLHXpInI/maxresdefault.jpg'\npp2023.ques = \"Q: 르세라핌, 누가 제일 이쁠까\"\npp2023.ans = \"A: 본체만체~\"\npp2023.highlight = '은채 ㅎㅎ'\npp2023.html_str =\\\n'''\n&lt;style&gt;\n    .title {{\n        font-family: \"Times New Roman\", serif;\n        font-size: 30px;\n        font-weight: 900;\n    }}\n    .text {{\n        font-family: \"Arial\", sans-serif;\n        font-size: 20px;\n        font-style: italic;\n    }}\n    .highlight {{\n        font-family: \"Montserrat\", monospace;\n        font-size: 35px;\n        font-weight: 900;\n        text-decoration: underline;\n        font-style: normal;\n        color: darkblue;\n        background-color: #FFFF00;\n    }}\n&lt;/style&gt;\n&lt;p class=\"title\"&gt;{ttl}&lt;/p&gt;\n&lt;img src={url} width=\"600\"&gt;\n&lt;p&gt; \\n &lt;/p&gt;\n&lt;p class=\"text\"&gt;{Q}&lt;/p&gt;\n&lt;p class=\"text\"&gt;{A}&lt;/p&gt;\n&lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt;{hl}&lt;/span&gt;&lt;/p&gt;\n'''\n\n\npp2023.show()\n\n\n\n홍은채 이뻥.\n\n \n \nQ: 르세라핌, 누가 제일 이쁠까\nA: 본체만체~\n중요한 것은 꺾이지 않는 은채 ㅎㅎ"
+  },
+  {
+    "objectID": "posts/matplotlib 공부(1).html",
+    "href": "posts/matplotlib 공부(1).html",
+    "title": "matplotlib 공부 (1)",
+    "section": "",
+    "text": "import matplotlib.pyplot as plt\n\n\ny1= [1.0, 2.0, 3.0, 4.0]\ny2= [1.1, 2.2, 2.8, 0.0]\nplt.plot(y1,'--o',label='y1')\nplt.plot(y2,'--o',label='y2')\nplt.legend()"
+  },
+  {
+    "objectID": "posts/클래스 공부 (1).html",
+    "href": "posts/클래스 공부 (1).html",
+    "title": "클래스 공부 (1)",
+    "section": "",
+    "text": "#1 클래스 선언\n\n클래스의 이름은 대문자로 설정\n\n\n# 예시\nclass Klass:\n    pass"
+  },
+  {
+    "objectID": "posts/클래스 공부 (1).html#클래스-공부-1",
+    "href": "posts/클래스 공부 (1).html#클래스-공부-1",
+    "title": "클래스 공부 (1)",
+    "section": "",
+    "text": "#1 클래스 선언\n\n클래스의 이름은 대문자로 설정\n\n\n# 예시\nclass Klass:\n    pass"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "PP2024",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nFeb 21, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (2)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nnumpy + 행렬\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nmatplotlib 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (3)\n\n\n이정민 \n\n\n\n\nFeb 21, 2024\n\n\nPost With Code\n\n\nHarlow Malloc\n\n\n\n\nFeb 18, 2024\n\n\nWelcome To My Blog\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
   }
 ]
