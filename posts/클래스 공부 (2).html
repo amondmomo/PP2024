@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="클래스공부-1단계-메소드-복습" class="level1">
 <h1>클래스공부 1단계: 메소드 (복습)</h1>
-<div id="ebf5f15f-ed95-4eae-bc96-116532a21179" class="cell" data-execution_count="7">
+<div id="ebf5f15f-ed95-4eae-bc96-116532a21179" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> JungKKuckMa:</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> show(<span class="va">self</span>):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        _str <span class="op">=</span> <span class="va">self</span>.html_str.<span class="bu">format</span>(</span>
@@ -207,78 +207,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        )</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        display(HTML(_str)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="424c0e19-78d0-4054-9a62-93ee3717fef8" class="cell" data-execution_count="3">
+<div id="424c0e19-78d0-4054-9a62-93ee3717fef8" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pp2023 <span class="op">=</span> JungKKuckMa()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="746f5bb3-bf0a-4bd7-813f-86c70ec7e682" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pp2023.title <span class="op">=</span> <span class="st">'홍은채'</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>pp2023.imgurl <span class="op">=</span> <span class="st">'https://i.ytimg.com/vi/R0fnLHXpInI/maxresdefault.jpg'</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>pp2023.ques <span class="op">=</span> <span class="st">"Q: 이 사진은 누구일까요"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>pp2023.ans <span class="op">=</span> <span class="st">"A: 홍은채 입니다~"</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>pp2023.highlight <span class="op">=</span> <span class="st">'사진'</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>pp2023.html_str <span class="op">=\</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">'''</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;style&gt;</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">    .title </span><span class="sc">{{</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">        font-family: "Times New Roman", serif;</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">        font-size: 30px;</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">        font-weight: 900;</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="st">    </span><span class="sc">}}</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">    .text </span><span class="sc">{{</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="st">        font-family: "Arial", sans-serif;</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="st">        font-size: 20px;</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="st">        font-style: italic;</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="st">    </span><span class="sc">}}</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="st">    .highlight </span><span class="sc">{{</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="st">        font-family: "Montserrat", monospace;</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="st">        font-size: 35px;</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="st">        font-weight: 900;</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="st">        text-decoration: underline;</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="st">        font-style: normal;</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="st">        color: darkblue;</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="st">        background-color: #FFFF00;</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="st">    </span><span class="sc">}}</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/style&gt;</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;p class="title"&gt;</span><span class="sc">{ttl}</span><span class="st">&lt;/p&gt;</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;img src=</span><span class="sc">{url}</span><span class="st"> width="600"&gt;</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;p&gt; </span><span class="ch">\n</span><span class="st"> &lt;/p&gt;</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;p class="text"&gt;</span><span class="sc">{Q}</span><span class="st">&lt;/p&gt;</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;p class="text"&gt;</span><span class="sc">{A}</span><span class="st">&lt;/p&gt;</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;p class="title"&gt;중요한 것은 꺾이지 않는 &lt;span class="highlight"&gt;</span><span class="sc">{hl}</span><span class="st">&lt;/span&gt;&lt;/p&gt;</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="st">'''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="746f5bb3-bf0a-4bd7-813f-86c70ec7e682" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> JungKKuckMa:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.title <span class="op">=</span> <span class="st">'버거킹 신메뉴 등장'</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.imgurl <span class="op">=</span> <span class="st">'https://image-cdn.hypb.st/https%3A</span><span class="sc">%2F%2F</span><span class="st">kr.hypebeast.com</span><span class="sc">%2F</span><span class="st">files</span><span class="sc">%2F</span><span class="st">2023</span><span class="sc">%2F</span><span class="st">10</span><span class="sc">%2F</span><span class="st">hamburgerking-2023.jpg?cbr=1&amp;q=90'</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ques <span class="op">=</span> <span class="st">"Q: 햄버거 남겨도 괜찮을까??"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ans <span class="op">=</span> <span class="st">"A: 너는 다 먹을수 있어"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.highlight <span class="op">=</span> <span class="st">'마음'</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.html_str <span class="op">=\</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">'''</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;style&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">            .title </span><span class="sc">{{</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">                font-family: "Times New Roman", serif;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="st">                font-size: 30px;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">                font-weight: 900;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="st">            </span><span class="sc">}}</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="st">            .text </span><span class="sc">{{</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="st">                font-family: "Arial", sans-serif;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="st">                font-size: 20px;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="st">                font-style: italic;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="st">            </span><span class="sc">}}</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="st">            .highlight </span><span class="sc">{{</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="st">                font-family: "Montserrat", monospace;</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="st">                font-size: 35px;</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="st">                font-weight: 900;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="st">                text-decoration: underline;</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="st">                font-style: normal;</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="st">                color: darkblue;</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="st">                background-color: #FFFF00;</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="st">            </span><span class="sc">}}</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;/style&gt;</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;p class="title"&gt;</span><span class="sc">{ttl}</span><span class="st">&lt;/p&gt;</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;img src=</span><span class="sc">{url}</span><span class="st"> width="600"&gt;</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;p&gt; </span><span class="ch">\n</span><span class="st"> &lt;/p&gt;</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;p class="text"&gt;</span><span class="sc">{Q}</span><span class="st">&lt;/p&gt;</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;p class="text"&gt;</span><span class="sc">{A}</span><span class="st">&lt;/p&gt;</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;p class="title"&gt;중요한 것은 꺾이지 않는 &lt;span class="highlight"&gt;</span><span class="sc">{hl}</span><span class="st">&lt;/span&gt;&lt;/p&gt;</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="st">        '''</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> show(<span class="va">self</span>):</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        _str <span class="op">=</span> <span class="va">self</span>.html_str.<span class="bu">format</span>(</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>            ttl <span class="op">=</span> <span class="va">self</span>.title,</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>            url <span class="op">=</span> <span class="va">self</span>.imgurl,</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>            Q <span class="op">=</span> <span class="va">self</span>.ques,</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>            A <span class="op">=</span> <span class="va">self</span>.ans,</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>            hl <span class="op">=</span> <span class="va">self</span>.highlight</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        display(HTML(_str))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="dd7e093b-b037-4220-970f-0250664ca4ef" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pp2023.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="dd7e093b-b037-4220-970f-0250664ca4ef" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pp2023 <span class="op">=</span> JungKKuckMa()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="4c2471ed-d4b2-4f7e-a67f-84bbc19f6b2d" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pp2023.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
-<style>
-    .title {
-        font-family: "Times New Roman", serif;
-        font-size: 30px;
-        font-weight: 900;
-    }
-    .text {
-        font-family: "Arial", sans-serif;
-        font-size: 20px;
-        font-style: italic;
-    }
-    .highlight {
-        font-family: "Montserrat", monospace;
-        font-size: 35px;
-        font-weight: 900;
-        text-decoration: underline;
-        font-style: normal;
-        color: darkblue;
-        background-color: #FFFF00;
-    }
-</style>
-<p class="title">홍은채</p>
-<img src="https://i.ytimg.com/vi/R0fnLHXpInI/maxresdefault.jpg" width="600">
-<p> 
+        <style>
+            .title {
+                font-family: "Times New Roman", serif;
+                font-size: 30px;
+                font-weight: 900;
+            }
+            .text {
+                font-family: "Arial", sans-serif;
+                font-size: 20px;
+                font-style: italic;
+            }
+            .highlight {
+                font-family: "Montserrat", monospace;
+                font-size: 35px;
+                font-weight: 900;
+                text-decoration: underline;
+                font-style: normal;
+                color: darkblue;
+                background-color: #FFFF00;
+            }
+        </style>
+        <p class="title">버거킹 신메뉴 등장</p>
+        <img src="https://image-cdn.hypb.st/https%3A%2F%2Fkr.hypebeast.com%2Ffiles%2F2023%2F10%2Fhamburgerking-2023.jpg?cbr=1&amp;q=90" width="600">
+        <p> 
  </p>
-<p class="text">Q: 이 사진은 누구일까요</p>
-<p class="text">A: 홍은채 입니다~</p>
-<p class="title">중요한 것은 꺾이지 않는 <span class="highlight">사진</span></p>
+        <p class="text">Q: 햄버거 남겨도 괜찮을까??</p>
+        <p class="text">A: 너는 다 먹을수 있어</p>
+        <p class="title">중요한 것은 꺾이지 않는 <span class="highlight">마음</span></p>
+        
 </div>
 </div>
 
