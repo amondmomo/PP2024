@@ -49,88 +49,11 @@
     "text": "슈도 알고리즘\n\nset([''.join(i) for i in itertools.permutations(['x','x','y','y','z'])])\n\n{'xxyyz',\n 'xxyzy',\n 'xxzyy',\n 'xyxyz',\n 'xyxzy',\n 'xyyxz',\n 'xyyzx',\n 'xyzxy',\n 'xyzyx',\n 'xzxyy',\n 'xzyxy',\n 'xzyyx',\n 'yxxyz',\n 'yxxzy',\n 'yxyxz',\n 'yxyzx',\n 'yxzxy',\n 'yxzyx',\n 'yyxxz',\n 'yyxzx',\n 'yyzxx',\n 'yzxxy',\n 'yzxyx',\n 'yzyxx',\n 'zxxyy',\n 'zxyxy',\n 'zxyyx',\n 'zyxxy',\n 'zyxyx',\n 'zyyxx'}\n\n\n\nlen(set([''.join(i) for i in itertools.permutations(['x','x','y','y','z'])]))\n\n30\n\n\n\n\n\nimage.png\n\n\n\nlst = [1,2,3,4,5,6]\nsum([a&lt;=c&lt;=d and b&lt;=c&lt;=d for a,b,c,d in itertools.product(lst,lst,lst,lst)])\n\n196\n\n\n\n\n\nimage.png\n\n\n\n# 컴프리헨션과 조건문\nx = list(range(1,16))\nf = lambda x: np.sin(np.pi/4*x)\nsum([xi for xi in x if f(2+xi)*f(2-xi)&lt;1/4])\n\n32"
   },
   {
-    "objectID": "posts/징검다리 문제.html",
-    "href": "posts/징검다리 문제.html",
-    "title": "징검다리 문제",
+    "objectID": "posts/matplotlib 공부(1).html",
+    "href": "posts/matplotlib 공부(1).html",
+    "title": "matplotlib 공부 (1)",
     "section": "",
-    "text": "import numpy as np\nimport pandas as pd\n\n징검다리 (10점)\n10명의 참가자가 (유리,강화유리)의 쌍으로 이루어진 징검다리를 건너는 게임을 시작한다. (유리,강화유리)의 쌍은 총 20개 있다. 따라서 유리는 총 40장이 있다. 참가자는 강화유리로 된 징검다리를 밟으면 살아남지만 유리로 된 징검다리를 밟으면 죽는다. 10명의 참가자의 특징은 아래와 같다.\n1번~8번 참가자, 10번 참가자: 50퍼센트의 확률로 강화유리를 고를 수 있다.\n9번 참가자: 95퍼센트의 확률로 강화유리를 고를 수 있다.\n다리를 건너는 순서는 아래와 같이 번호의 오름차순으로 건너는 방법과 번호의 내림차순으로 건너는 2가지 방법이 있다고 하자.\nType A: 10번 참가자부터 다리를 건너고 그 뒤로 9번, 8번, … 1번 순으로 다리를 건넌다.\nType B: 1번 참가자부터 다리를 건너고 그 뒤로 2번, 3번, … 10번 순으로 다리를 건넌다.\n8번 참가자는 Type A 와 Type B 중 어떠한 경우에 살아남을 확률이 높은가?\n\nclass Dari50:\n  def __init__(self):\n    self.actions = list()\n    self.prob = [0.5,0.5]\n  def play(self):\n    self.actions.append(np.random.choice(['live','die'],p=self.prob))\n\n\nclass Dari95:\n  def __init__(self):\n    self.actions = list()\n    self.prob = [0.95,0.05]\n  def play(self):\n    self.actions.append(np.random.choice(['live','die'],p=self.prob))\n\n\n\n\n#타입A\nresult_list_b = []\nfor _ in range(1000): #다리 건너기 1000번 반복\n  a = Dari50()\n  b = Dari95()\n# 데이터 프레임 생성\n  for i in range(20):\n    if a.actions.count('die') &lt; 1:\n        a.play()\n  for i in range(20 - len(a.actions)):\n    if b.actions.count('die') &lt; 1:\n        b.play()\n  result_list_b.append(a.actions + b.actions)\n\nsum(pd.DataFrame(result_list_b).loc[:,19] == 'live') /len(pd.DataFrame(result_list_b).loc[:,19])\n\n0.384\n\n\n\npd.DataFrame(result_list_a)\n\n\n  \n    \n\n\n\n\n\n\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n\n\n\n\n0\nlive\nlive\ndie\ndie\ndie\ndie\nlive\nlive\ndie\ndie\nlive\nlive\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n1\nlive\ndie\ndie\nlive\nlive\ndie\nlive\nlive\nlive\nlive\ndie\ndie\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\n\n\n2\ndie\ndie\nlive\nlive\nlive\ndie\ndie\ndie\nlive\nlive\ndie\ndie\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\n\n\n3\ndie\ndie\nlive\ndie\ndie\ndie\nlive\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n4\ndie\nlive\ndie\ndie\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\ndie\nlive\nlive\ndie\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n995\nlive\nlive\nlive\ndie\nlive\ndie\ndie\nlive\ndie\nlive\nlive\ndie\ndie\nlive\nlive\ndie\nlive\ndie\nlive\nlive\n\n\n996\nlive\ndie\nlive\nlive\ndie\ndie\nlive\nlive\ndie\ndie\nlive\ndie\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\n\n\n997\ndie\nlive\ndie\nlive\ndie\nlive\nlive\ndie\nlive\ndie\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n998\nlive\nlive\nlive\ndie\ndie\ndie\ndie\nlive\ndie\ndie\nlive\ndie\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\n\n\n999\ndie\nlive\ndie\nlive\ndie\nlive\ndie\ndie\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n\n\n1000 rows × 20 columns\n\n    \n\n  \n    \n\n  \n    \n  \n    \n\n  \n\n    \n  \n\n\n\n  \n\n\n    \n        \n    \n\n  \n\n\n\n  \n\n\n    \n  \n\n\n\n\n\n\n#타입 B 완성 ~~\nresult_list_a = []\nfor _ in range(1000):\n  a = Dari50()\n  b = Dari95()\n\n  for i in range(20):\n    if a.actions.count('die') &lt; 8:\n        a.play()\n  for u in range(20 - len(a.actions)):\n    if b.actions.count('die') &lt; 1:\n        b.play()\n  result_list_a.append(a.actions + b.actions)\n\nsum(pd.DataFrame(result_list_a).loc[:,19] == 'live') /len(pd.DataFrame(result_list_a).loc[:,19])\n\n0.705\n\n\n\npd.DataFrame(result_list_b)\n\n\n  \n    \n\n\n\n\n\n\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n\n\n\n\n0\ndie\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n1\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n2\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n3\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n4\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n995\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n996\nlive\nlive\ndie\nlive\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n997\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\n\n\n998\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\nNone\nNone\n\n\n999\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n\n\n1000 rows × 20 columns"
-  },
-  {
-    "objectID": "posts/징검다리 문제.html#type-a",
-    "href": "posts/징검다리 문제.html#type-a",
-    "title": "징검다리 문제",
-    "section": "",
-    "text": "#타입A\nresult_list_b = []\nfor _ in range(1000): #다리 건너기 1000번 반복\n  a = Dari50()\n  b = Dari95()\n# 데이터 프레임 생성\n  for i in range(20):\n    if a.actions.count('die') &lt; 1:\n        a.play()\n  for i in range(20 - len(a.actions)):\n    if b.actions.count('die') &lt; 1:\n        b.play()\n  result_list_b.append(a.actions + b.actions)\n\nsum(pd.DataFrame(result_list_b).loc[:,19] == 'live') /len(pd.DataFrame(result_list_b).loc[:,19])\n\n0.384\n\n\n\npd.DataFrame(result_list_a)\n\n\n  \n    \n\n\n\n\n\n\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n\n\n\n\n0\nlive\nlive\ndie\ndie\ndie\ndie\nlive\nlive\ndie\ndie\nlive\nlive\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n1\nlive\ndie\ndie\nlive\nlive\ndie\nlive\nlive\nlive\nlive\ndie\ndie\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\n\n\n2\ndie\ndie\nlive\nlive\nlive\ndie\ndie\ndie\nlive\nlive\ndie\ndie\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\n\n\n3\ndie\ndie\nlive\ndie\ndie\ndie\nlive\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n4\ndie\nlive\ndie\ndie\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\ndie\nlive\nlive\ndie\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n995\nlive\nlive\nlive\ndie\nlive\ndie\ndie\nlive\ndie\nlive\nlive\ndie\ndie\nlive\nlive\ndie\nlive\ndie\nlive\nlive\n\n\n996\nlive\ndie\nlive\nlive\ndie\ndie\nlive\nlive\ndie\ndie\nlive\ndie\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\n\n\n997\ndie\nlive\ndie\nlive\ndie\nlive\nlive\ndie\nlive\ndie\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n998\nlive\nlive\nlive\ndie\ndie\ndie\ndie\nlive\ndie\ndie\nlive\ndie\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\n\n\n999\ndie\nlive\ndie\nlive\ndie\nlive\ndie\ndie\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n\n\n1000 rows × 20 columns"
-  },
-  {
-    "objectID": "posts/징검다리 문제.html#type-b",
-    "href": "posts/징검다리 문제.html#type-b",
-    "title": "징검다리 문제",
-    "section": "",
-    "text": "#타입 B 완성 ~~\nresult_list_a = []\nfor _ in range(1000):\n  a = Dari50()\n  b = Dari95()\n\n  for i in range(20):\n    if a.actions.count('die') &lt; 8:\n        a.play()\n  for u in range(20 - len(a.actions)):\n    if b.actions.count('die') &lt; 1:\n        b.play()\n  result_list_a.append(a.actions + b.actions)\n\nsum(pd.DataFrame(result_list_a).loc[:,19] == 'live') /len(pd.DataFrame(result_list_a).loc[:,19])\n\n0.705\n\n\n\npd.DataFrame(result_list_b)\n\n\n  \n    \n\n\n\n\n\n\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n\n\n\n\n0\ndie\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n1\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n2\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n3\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n4\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n995\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n996\nlive\nlive\ndie\nlive\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n997\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\n\n\n998\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\nNone\nNone\n\n\n999\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n\n\n1000 rows × 20 columns"
-  },
-  {
-    "objectID": "posts/numpy_+_행렬.html",
-    "href": "posts/numpy_+_행렬.html",
-    "title": "numpy + 행렬",
-    "section": "",
-    "text": "import numpy as np"
-  },
-  {
-    "objectID": "posts/numpy_+_행렬.html#행렬-만들기",
-    "href": "posts/numpy_+_행렬.html#행렬-만들기",
-    "title": "numpy + 행렬",
-    "section": "1) 행렬 만들기",
-    "text": "1) 행렬 만들기\n\n행렬 만들 때 기본적으로 np.array 를 사용 해서 만들고, 리스트 or 튜플 형태를 받아서 사용함.\n\n\n_list = [1,2,3]\nnp.array(_list)\n\narray([1, 2, 3])\n\n\n\n_list1 = [1,2,3]\n_list2 = [4,5,6]\nnp.array([_list1,_list2]) # 리스트를 따로 받을 때는 대괄호 한번씩 더해줘야함\n\narray([[1, 2, 3],\n       [4, 5, 6]])\n\n\n\n넘파이 행렬 함수 (1)\n\nreshape\n\n\na=np.array([11,22,33,44,55,66])\na.reshape(2,3)\n\narray([[11, 22, 33],\n       [44, 55, 66]])\n\n\n\narange\n\n\na = np.arange(5)\nb = np.arange(1,5)\na,b\n\n(array([0, 1, 2, 3, 4]), array([1, 2, 3, 4]))\n\n\n\nlinspace\n\n\nnp.linspace(0,1,12) #0부터1까지 12개로 나눠서 배열선언\n\narray([0.        , 0.09090909, 0.18181818, 0.27272727, 0.36363636,\n       0.45454545, 0.54545455, 0.63636364, 0.72727273, 0.81818182,\n       0.90909091, 1.        ])\n\n\n\n역행렬 + 전치행렬 + 행렬곱\n\n\nA=np.arange(4).reshape(2,2)\nA.T #T는 전치행렬을 구해줌\n\narray([[0, 1],\n       [2, 3]])\n\n\n\nA=np.arange(4).reshape(2,2)\nnp.linalg.inv(A) #np.linalg.inv는 역행렬을 구해줌\n\narray([[-1.5,  0.5],\n       [ 1. ,  0. ]])\n\n\n\nA=np.arange(4).reshape(2,2)\nnp.linalg.inv(A)\nA@np.linalg.inv(A) #@는 행렬곱을 구해줌\n\narray([[1., 0.],\n       [0., 1.]])\n\n\n\n\n넘파이 행렬함수 (2)\n\nzeros\n\n\nnp.zeros(3)\n\narray([0., 0., 0.])\n\n\n\nones\n\n\na = np.ones(3)\nb = np.ones((3,3))\na,b\n\n(array([1., 1., 1.]),\n array([[1., 1., 1.],\n        [1., 1., 1.],\n        [1., 1., 1.]]))\n\n\n\neye\n\n\nnp.eye(3)\n\narray([[1., 0., 0.],\n       [0., 1., 0.],\n       [0., 0., 1.]])\n\n\n\ndiag\n\n\nnp.diag([2,3,4,-2])\n\narray([[ 2,  0,  0,  0],\n       [ 0,  3,  0,  0],\n       [ 0,  0,  4,  0],\n       [ 0,  0,  0, -2]])"
-  },
-  {
-    "objectID": "posts/numpy_+_행렬.html#행렬-인덱싱",
-    "href": "posts/numpy_+_행렬.html#행렬-인덱싱",
-    "title": "numpy + 행렬",
-    "section": "행렬 인덱싱",
-    "text": "행렬 인덱싱\n\nA = [[1,2,3,4],[-1,-2,-3,-4],[5,6,7,8],[-5,-6,-7,-8]]\nA2 = np.array(A)\nA2\n\narray([[ 1,  2,  3,  4],\n       [-1, -2, -3, -4],\n       [ 5,  6,  7,  8],\n       [-5, -6, -7, -8]])\n\n\n\nA2[[0,2],:] #1행,3행 추출\n\narray([[1, 2, 3, 4],\n       [5, 6, 7, 8]])\n\n\n\nA2[:,[0]]\n\narray([[ 1],\n       [-1],\n       [ 5],\n       [-5]])\n\n\n\nA2[:,0]\n\narray([ 1, -1,  5, -5])"
-  },
-  {
-    "objectID": "posts/2wk_2.html",
-    "href": "posts/2wk_2.html",
-    "title": "2wk 적분 자세히",
-    "section": "",
-    "text": "import numpy as np\nimport matplotlib.pyplot as plt\n\n\n16번(그래프의 교점)\n\nx = np.linspace(1,3,100)\nf = 3**(x-8)\ng = (1/27)**x\nplt.plot(x,f)\nplt.plot(x,g)\n\n\n\n\n\n\n\n\n\n\n11번(등차수열)\n\nn = np.linspace(1,15,15)\nd =4\nan = (n-7)*d\nnp.abs(an[5]),np.abs(an[7]),\n\n(4.0, 4.0, [60.0])\n\n\n\nnp.sum(an) #답 구하기!\n\n60.0\n\n\n#8번 삼차함수 간단한 적분 (y값 mean * 밑변) + np.random.rand\n\n#풀이 1\nf = lambda x: (3*x**4 -3*x)/(x-1)\nx = np.linspace(-2,2,1000)\nplt.plot(x,f(x),'--') #그래프 그리기\nnp.mean(f(x))*4 # 정답\n##############\n# 풀이 2 (rand)\n# x_rand = np.random.rand(1000000)*4 - 2  ## -2~2 까지 임의의수가 골고루 퍼져있음.\n# np.mean(f(x_rand)) *4\n# random.rand --&gt; 기본 0~1 / 범위만큼 곱하고 + 연산자로 범위 조절\n##############\n# 풀이3 (사다리꼴법 사용)\n# f = lambda x: (3*x**4 -3*x)/(x-1)\n# x = np.linspace(-2,2,10000)\n# delta = x[1] - x[0] #x의 단위 생성\n# f_arr = f(x) # y값들의 array생성\n# F_arr = np.cumsum(f_arr) * delta\n# F_arr[-1]\n# # x[np.argmin(F_arr)] ## 넓이가 0이 되는 x값\n\n16.053206593500782\n\n\n\n\n\n\n\n\n\n\n\n26번 입체도형(삼각함수) 적분\n\nx =np.linspace(3/4*np.pi,5/4*np.pi,1000)\nf = lambda x : np.sqrt((1-2*x)*np.cos(x))\nnp.mean(f(x)**2)*(2/4*np.pi) #y값에 정사각형이므로 제곱을 해줌\n\n7.469947367280549\n\n\n\n\n19번 삼각함수와 bool연산\n\nx = np.linspace(1,15,15)\nf = lambda x:np.sin(np.pi/4*x)\nsum(x[f(2+x)*f(2-x) &lt;1/4])\n# x[f(2+x)*f(2-x) &lt;1/4] ## 조건을 만족시키는 x값\n\n32.0\n\n\n\n\n12번 t값에 따른 (3차) 함수 넓이 변화 / 함수정의 사용(make_gfunction)\n\nx = np.linspace(0,10,1001)\nt = 3.2 # t=3.2로 임의로 정의\nf = lambda x : 1/9*x*(x-6)*(x-9)\n# g(x) 정의\ndef make_gfunction(t):\n  def g(x):\n    if x&lt;t:\n      return f(x)\n    else:\n      return -(x-t)+f(t)\n  return g\n#### t값에 따른 그래프 그리기\ng=make_gfunction(t)\nfx = list(map(f,x))\ngx = list(map(g,x))\nplt.plot(x,fx,label=\"f(x)\")\nplt.plot(x,gx,label=\"g(x)\")\n### g(x)와 x축 넓이 구하는 함수생성\ndef cal_area(t):\n  # t=3.2\n  g = make_gfunction(t)\n  fx = list(map(f,x))\n  gx = list(map(g,x))\n  Gx = np.cumsum(gx)*0.01\n  S = np.max(Gx)\n  return S\n\n\n\n\n\n\n\n\n\nt = np.linspace(0,6,101)[1:-1]\nSt = list(map(cal_area,t))\nnp.max(St)\n\n32.24994166666667\n\n\n\n\nrange 활용(with 등차수열)\n\nlist(range(10))\n\n[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\nlist(range(3,10,2))\n\n[3, 5, 7, 9]\n\n\n\nf = lambda x: x**2\nlist(map(f,[1,2,3,4]))\n\n[1, 4, 9, 16]\n\n\n\nnp.linspace(1,31,11) ## 1부터 31까지 3단위로 쪼개기\n# = np.array(range(1,31,3))\n# = np.arange(1,32,3)\n# = n = np.arange(1,12) / 3*n-2\n# = a = lambda n: 3*n-2 / a(1) ~ a(11)\n# = n = np.arange(1,12) / a= lambda n: 3*n-2 / a(n)\n# = n = np.arange(1,12) / a = lambda n: 3*n-2 / list(map(a,n))\n# = n = np.arange(32) / n[1::3]\n\narray([ 1.,  4.,  7., 10., 13., 16., 19., 22., 25., 28., 31.])\n\n\n\nlist 와 np.array의 관계(map)\n\nmap 함수는 list에 적용되지만 np.array(넘파이 어레이)에는 적용 되지않음.\n\n\n\n\n접선 리턴\n\ndef make_func(x0):\n    f = lambda x: x**2\n    def func(x):\n        h = 0.0001\n        a = (f(x0+h)-f(x0))/h\n        return a*(x-x0) + f(x0)\n    return func\n\n\nx = np.linspace(-5,5,101)\ntan_line = make_func(1.2)\nplt.plot(x,x**2,'--')\nplt.plot(x,tan_line(x),'--')"
-  },
-  {
-    "objectID": "posts/클래스_Student_RPS_설계.html",
-    "href": "posts/클래스_Student_RPS_설계.html",
-    "title": "클래스_Student/RPS_설계",
-    "section": "",
-    "text": "from IPython.core.display import HTML\nimport numpy as np\nimport pandas as pd\n* 중요 *\n사실 파이썬의 list도 클래스 종류임\n리스트 입력 값은 __init__ 메소드의 입력값\na = '123'\nlist(a)\n\n['1', '2', '3']\na = list()\na.__init__('123')\na\n\n['1', '2', '3']\na = list()\na\na= np.arange(4).reshape(2,2)\na\n\narray([[0, 1],\n       [2, 3]])\na.__str__()\n\n'[[0 1]\\n [2 3]]'\na.__repr__()\n\n'array([[0, 1],\\n       [2, 3]])'\nprint(a.__str__())\n\n[[0 1]\n [2 3]]"
-  },
-  {
-    "objectID": "posts/클래스_Student_RPS_설계.html#str__-과-__repr__의-차이",
-    "href": "posts/클래스_Student_RPS_설계.html#str__-과-__repr__의-차이",
-    "title": "클래스_Student/RPS_설계",
-    "section": "__str__ 과 __repr__의 차이",
-    "text": "__str__ 과 __repr__의 차이\nprint(ins) == print(ins.__str__)\n\na= np.arange(4).reshape(2,2)\n(print(a),print(a.__str__()))\n\n[[0 1]\n [2 3]]\n[[0 1]\n [2 3]]\n\n\n(None, None)\n\n\nins = print(ins.__repr__)\n\na= np.arange(4).reshape(2,2)\na,print(a.__repr__())\n\narray([[0, 1],\n       [2, 3]])\n\n\n(array([[0, 1],\n        [2, 3]]),\n None)"
-  },
-  {
-    "objectID": "posts/클래스_Student_RPS_설계.html#wk-2-과제",
-    "href": "posts/클래스_Student_RPS_설계.html#wk-2-과제",
-    "title": "클래스_Student/RPS_설계",
-    "section": "13wk-2 과제",
-    "text": "13wk-2 과제\n1. Student 클래스 설계\n\nclass Student:\n  def __init__(self,name,age,semester):\n    self.name = name\n    self.age = age\n    self.semester = semester\n  def __str__(self):\n    print_str = '''이름: {}\\n나이: {}\\n학기: {}'''.format(self.name,self.age,self.semester)\n    return print_str\n\n\n# 사용 예시\nboram = Student(name='김보람', age=20, semester=1)\nprint(boram)\n\n이름: 김보람\n나이: 20\n학기: 1\n\n\n\n# 사용 예시\nPaul = Student(name='김 폴', age=22, semester=2)\nprint(Paul)\n\n이름: 김 폴\n나이: 22\n학기: 2\n\n\n2. RPS 클래스 설계 (1)\n\nclass RPS:\n  def __init__(self,candidate):\n    self.candidate = candidate\n    self.actions = []\n  def pick(self):\n    self.actions.append(np.random.choice(self.candidate))\n  def _repr_html_(self):\n    html_str = '''\n      낼 수 있는 패: {}&lt;br&gt;\n      기록: {}\n      '''\n    return html_str.format(self.candidate,self.actions)\n\n\na = RPS(['가위','바위','보'])\na.pick()\na\n\n\n      낼 수 있는 패: ['가위', '바위', '보']\n      기록: ['바위']\n      \n\n\n\na = RPS(['가위','바위','보'])\n\n\na.candidate, a.actions\n\n(['가위', '바위', '보'], [])\n\n\n\na\n\n\n      낼 수 있는 패: ['가위', '바위', '보']\n      기록: []\n      \n\n\n\nfor i in range(5):\n    a.pick()\n\n\n      낼 수 있는 패: ['가위', '바위', '보']\n      기록: ['바위', '보', '보', '가위', '가위', '바위', '보', '보', '바위', '보', '바위', '보', '바위', '바위', '바위', '가위']\n      \n\n\n3. RPS 설계 (2)\n\na = RPS(['가위','보'])\nb = RPS(['가위'])\nrslt = []\nfor i in range(100):\n  a.pick()\n  b.pick()\n  if a.actions[-1] =='가위' and b.actions[-1] =='가위':\n    rslt.append('-')\n  elif a.actions[-1] =='보' and b.actions[-1] =='가위':\n    rslt.append('b')\n  else:\n    rslt.append('a')\n\n\n{'a의승리':rslt.count('a'),'무승부':rslt.count('-'),'b의승리':rslt.count('b')}\n\n{'a의승리': 0, '무승부': 53, 'b의승리': 47}\n\n\n4.RPS설계 (3)\n\na = RPS(['가위','보'])\nb = RPS(['가위','바위'])\nrslt = []\nfor i in range(100):\n  a.pick()\n  b.pick()\n  if a.actions[-1] =='가위' and b.actions[-1] =='가위':\n    rslt.append('-')\n  elif a.actions[-1] =='보' and b.actions[-1] =='가위':\n    rslt.append('b')\n  elif a.actions[-1] =='가위' and b.actions[-1] =='바위':\n    rslt.append('b')\n  else:\n    rslt.append('a')\n\n\n{'a의승리':rslt.count('a'),'무승부':rslt.count('-'),'b의승리':rslt.count('b')}\n\n{'a의승리': 21, '무승부': 29, 'b의승리': 50}"
-  },
-  {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code."
-  },
-  {
-    "objectID": "posts/클래스 공부 (2).html",
-    "href": "posts/클래스 공부 (2).html",
-    "title": "클래스 공부 (2)",
-    "section": "",
-    "text": "# import\nfrom IPython.core.display import HTML\n\n\n클래스공부 1단계: 메소드 (복습)\n\nclass JungKKuckMa:\n    def show(self):\n        _str = self.html_str.format(\n            ttl = self.title,\n            url = self.imgurl,\n            Q = self.ques,\n            A = self.ans,\n            hl = self.highlight\n        )\n        display(HTML(_str)) \n\n\npp2023 = JungKKuckMa()\n\n\nclass JungKKuckMa:\n    def __init__(self):\n        self.title = '버거킹 신메뉴 등장'\n        self.imgurl = 'https://image-cdn.hypb.st/https%3A%2F%2Fkr.hypebeast.com%2Ffiles%2F2023%2F10%2Fhamburgerking-2023.jpg?cbr=1&q=90'\n        self.ques = \"Q: 햄버거 남겨도 괜찮을까??\"\n        self.ans = \"A: 너는 다 먹을수 있어\"\n        self.highlight = '마음'\n        self.html_str =\\\n        '''\n        &lt;style&gt;\n            .title {{\n                font-family: \"Times New Roman\", serif;\n                font-size: 30px;\n                font-weight: 900;\n            }}\n            .text {{\n                font-family: \"Arial\", sans-serif;\n                font-size: 20px;\n                font-style: italic;\n            }}\n            .highlight {{\n                font-family: \"Montserrat\", monospace;\n                font-size: 35px;\n                font-weight: 900;\n                text-decoration: underline;\n                font-style: normal;\n                color: darkblue;\n                background-color: #FFFF00;\n            }}\n        &lt;/style&gt;\n        &lt;p class=\"title\"&gt;{ttl}&lt;/p&gt;\n        &lt;img src={url} width=\"600\"&gt;\n        &lt;p&gt; \\n &lt;/p&gt;\n        &lt;p class=\"text\"&gt;{Q}&lt;/p&gt;\n        &lt;p class=\"text\"&gt;{A}&lt;/p&gt;\n        &lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt;{hl}&lt;/span&gt;&lt;/p&gt;\n        '''\n    def show(self):\n        _str = self.html_str.format(\n            ttl = self.title,\n            url = self.imgurl,\n            Q = self.ques,\n            A = self.ans,\n            hl = self.highlight\n        )\n        display(HTML(_str))\n\n\npp2023 = JungKKuckMa()\n\n\npp2023.show()\n\n\n        \n        버거킹 신메뉴 등장\n        \n         \n \n        Q: 햄버거 남겨도 괜찮을까??\n        A: 너는 다 먹을수 있어\n        중요한 것은 꺾이지 않는 마음"
+    "text": "import matplotlib.pyplot as plt\n\n\ny1= [1.0, 2.0, 3.0, 4.0]\ny2= [1.1, 2.2, 2.8, 0.0]\nplt.plot(y1,'--o',label='y1')\nplt.plot(y2,'--o',label='y2')\nplt.legend()"
   },
   {
     "objectID": "posts/2023_12wk_2_클래스.html",
@@ -161,11 +84,361 @@
     "text": "12wk-2 과제\n\nimport\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport yfinance as yf\n\n/usr/local/lib/python3.10/dist-packages/yfinance/base.py:48: FutureWarning: The default dtype for empty Series will be 'object' instead of 'float64' in a future version. Specify a dtype explicitly to silence this warning.\n  _empty_series = pd.Series()\n\n\n\n과제1\n\n\nclass Stock:\n  def __init__(self):\n    self.y = None\n    self.sy = None\n  def crawling(self,start_date,end_date,code):\n    self.y = yf.download(code, start=start_date, end=end_date)['Adj Close'].to_numpy()\n  def smoothing(self,n):\n    T = len(self.y)\n    self.n = n\n    M = (np.eye(T) + np.array([abs(i-j)&lt;2 for i in range(T) for j in range(T)]).reshape(T,T))/4\n    M[0,0] = 3/4\n    M[-1,-1] = 3/4\n    self.sy = np.linalg.matrix_power(M,self.n)@self.y\n  def plot(self):\n    plt.plot(y,label='y')\n    plt.plot(self.sy,label='y_hat')\n    plt.legend()\n\n\nins = Stock()\n\n\n# kakao 인스턴스\ncode = '035720.KS'\nstart_date = '2023-01-01'\nend_date = '2023-05-26'\n\n\nins.crawling(start_date,end_date,code)\n\n[*********************100%%**********************]  1 of 1 completed\n\n\n\nins.smoothing(100)\n\n\nins.plot()\n\n\n\n\n\n\n\n\n\n과제2\n\n\nclass LinearRegression:\n  def __init__(self,x,y):\n    self.x = x\n    self.y = y\n  def fit(self):\n    self.X = np.stack([np.ones(len(self.x)),x],axis=1)\n    self.y_hat = self.X@(np.linalg.inv((self.X).T@self.X))@((self.X).T@self.y)\n  def plot(self):\n    plt.plot(self.x,self.y,'o',label='(x,y)')\n    plt.plot(self.x,self.y_hat,'--r',label='(x,y_hat)')\n    plt.legend()\n\n\nx = np.array(\n    [0.007, 0.008, 0.008, 0.011, 0.037, 0.047, 0.059, 0.07 , 0.072,\n     0.075, 0.078, 0.08 , 0.082, 0.11 , 0.114, 0.117, 0.133, 0.15 ,\n     0.161, 0.163, 0.172, 0.208, 0.209, 0.221, 0.229, 0.231, 0.234,\n     0.235, 0.249, 0.251, 0.256, 0.269, 0.269, 0.273, 0.275, 0.298,\n     0.305, 0.309, 0.34 , 0.362, 0.371, 0.374, 0.382, 0.387, 0.388,\n     0.394, 0.395, 0.397, 0.401, 0.404, 0.419, 0.433, 0.436, 0.466,\n     0.481, 0.492, 0.495, 0.508, 0.511, 0.512, 0.554, 0.57 , 0.574,\n     0.575, 0.584, 0.6  , 0.601, 0.615, 0.618, 0.623, 0.629, 0.633,\n     0.646, 0.65 , 0.654, 0.662, 0.673, 0.686, 0.702, 0.744, 0.754,\n     0.766, 0.772, 0.781, 0.798, 0.8  , 0.807, 0.836, 0.837, 0.871,\n     0.873, 0.877, 0.879, 0.889, 0.891, 0.902, 0.904, 0.923, 0.952,\n     0.981]\n)\ny = np.array(\n    [4.004, 4.189, 5.483, 4.902, 5.174, 4.468, 4.95 , 4.463, 5.476,\n     4.446, 4.764, 5.244, 4.357, 4.796, 5.464, 4.196, 5.244, 4.868,\n     5.358, 4.493, 4.831, 4.716, 4.929, 4.588, 4.718, 4.389, 4.985,\n     4.266, 4.291, 3.697, 4.248, 4.88 , 5.126, 4.563, 4.131, 4.728,\n     4.168, 4.584, 3.953, 4.747, 3.592, 5.023, 4.601, 3.904, 4.092,\n     4.37 , 3.922, 4.145, 4.576, 4.25 , 4.051, 3.616, 4.634, 3.496,\n     4.631, 4.025, 4.197, 4.226, 4.808, 3.676, 3.834, 3.197, 4.36 ,\n     3.547, 3.956, 3.522, 4.26 , 3.443, 3.97 , 4.068, 4.186, 3.262,\n     3.452, 3.946, 3.875, 3.444, 3.501, 3.959, 3.843, 2.679, 3.266,\n     3.506, 2.916, 3.714, 4.007, 2.795, 3.329, 2.756, 3.72 , 2.381,\n     2.798, 3.035, 3.492, 3.22 , 3.073, 3.85 , 3.233, 3.396, 3.264,\n     2.986]\n)\n\n\nLR = LinearRegression(x,y)\n\n\nLR.fit()\n\n\nLR.plot()"
   },
   {
-    "objectID": "posts/matplotlib 공부(1).html",
-    "href": "posts/matplotlib 공부(1).html",
-    "title": "matplotlib 공부 (1)",
+    "objectID": "posts/클래스 공부 (2).html",
+    "href": "posts/클래스 공부 (2).html",
+    "title": "클래스 공부 (2)",
     "section": "",
-    "text": "import matplotlib.pyplot as plt\n\n\ny1= [1.0, 2.0, 3.0, 4.0]\ny2= [1.1, 2.2, 2.8, 0.0]\nplt.plot(y1,'--o',label='y1')\nplt.plot(y2,'--o',label='y2')\nplt.legend()"
+    "text": "# import\nfrom IPython.core.display import HTML\n\n\n클래스공부 1단계: 메소드 (복습)\n\nclass JungKKuckMa:\n    def show(self):\n        _str = self.html_str.format(\n            ttl = self.title,\n            url = self.imgurl,\n            Q = self.ques,\n            A = self.ans,\n            hl = self.highlight\n        )\n        display(HTML(_str)) \n\n\npp2023 = JungKKuckMa()\n\n\nclass JungKKuckMa:\n    def __init__(self):\n        self.title = '버거킹 신메뉴 등장'\n        self.imgurl = 'https://image-cdn.hypb.st/https%3A%2F%2Fkr.hypebeast.com%2Ffiles%2F2023%2F10%2Fhamburgerking-2023.jpg?cbr=1&q=90'\n        self.ques = \"Q: 햄버거 남겨도 괜찮을까??\"\n        self.ans = \"A: 너는 다 먹을수 있어\"\n        self.highlight = '마음'\n        self.html_str =\\\n        '''\n        &lt;style&gt;\n            .title {{\n                font-family: \"Times New Roman\", serif;\n                font-size: 30px;\n                font-weight: 900;\n            }}\n            .text {{\n                font-family: \"Arial\", sans-serif;\n                font-size: 20px;\n                font-style: italic;\n            }}\n            .highlight {{\n                font-family: \"Montserrat\", monospace;\n                font-size: 35px;\n                font-weight: 900;\n                text-decoration: underline;\n                font-style: normal;\n                color: darkblue;\n                background-color: #FFFF00;\n            }}\n        &lt;/style&gt;\n        &lt;p class=\"title\"&gt;{ttl}&lt;/p&gt;\n        &lt;img src={url} width=\"600\"&gt;\n        &lt;p&gt; \\n &lt;/p&gt;\n        &lt;p class=\"text\"&gt;{Q}&lt;/p&gt;\n        &lt;p class=\"text\"&gt;{A}&lt;/p&gt;\n        &lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt;{hl}&lt;/span&gt;&lt;/p&gt;\n        '''\n    def show(self):\n        _str = self.html_str.format(\n            ttl = self.title,\n            url = self.imgurl,\n            Q = self.ques,\n            A = self.ans,\n            hl = self.highlight\n        )\n        display(HTML(_str))\n\n\npp2023 = JungKKuckMa()\n\n\npp2023.show()\n\n\n        \n        버거킹 신메뉴 등장\n        \n         \n \n        Q: 햄버거 남겨도 괜찮을까??\n        A: 너는 다 먹을수 있어\n        중요한 것은 꺾이지 않는 마음"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "posts/클래스_Student_RPS_설계.html",
+    "href": "posts/클래스_Student_RPS_설계.html",
+    "title": "클래스_Student/RPS_설계",
+    "section": "",
+    "text": "from IPython.core.display import HTML\nimport numpy as np\nimport pandas as pd\n* 중요 *\n사실 파이썬의 list도 클래스 종류임\n리스트 입력 값은 __init__ 메소드의 입력값\na = '123'\nlist(a)\n\n['1', '2', '3']\na = list()\na.__init__('123')\na\n\n['1', '2', '3']\na = list()\na\na= np.arange(4).reshape(2,2)\na\n\narray([[0, 1],\n       [2, 3]])\na.__str__()\n\n'[[0 1]\\n [2 3]]'\na.__repr__()\n\n'array([[0, 1],\\n       [2, 3]])'\nprint(a.__str__())\n\n[[0 1]\n [2 3]]"
+  },
+  {
+    "objectID": "posts/클래스_Student_RPS_설계.html#str__-과-__repr__의-차이",
+    "href": "posts/클래스_Student_RPS_설계.html#str__-과-__repr__의-차이",
+    "title": "클래스_Student/RPS_설계",
+    "section": "__str__ 과 __repr__의 차이",
+    "text": "__str__ 과 __repr__의 차이\nprint(ins) == print(ins.__str__)\n\na= np.arange(4).reshape(2,2)\n(print(a),print(a.__str__()))\n\n[[0 1]\n [2 3]]\n[[0 1]\n [2 3]]\n\n\n(None, None)\n\n\nins = print(ins.__repr__)\n\na= np.arange(4).reshape(2,2)\na,print(a.__repr__())\n\narray([[0, 1],\n       [2, 3]])\n\n\n(array([[0, 1],\n        [2, 3]]),\n None)"
+  },
+  {
+    "objectID": "posts/클래스_Student_RPS_설계.html#wk-2-과제",
+    "href": "posts/클래스_Student_RPS_설계.html#wk-2-과제",
+    "title": "클래스_Student/RPS_설계",
+    "section": "13wk-2 과제",
+    "text": "13wk-2 과제\n1. Student 클래스 설계\n\nclass Student:\n  def __init__(self,name,age,semester):\n    self.name = name\n    self.age = age\n    self.semester = semester\n  def __str__(self):\n    print_str = '''이름: {}\\n나이: {}\\n학기: {}'''.format(self.name,self.age,self.semester)\n    return print_str\n\n\n# 사용 예시\nboram = Student(name='김보람', age=20, semester=1)\nprint(boram)\n\n이름: 김보람\n나이: 20\n학기: 1\n\n\n\n# 사용 예시\nPaul = Student(name='김 폴', age=22, semester=2)\nprint(Paul)\n\n이름: 김 폴\n나이: 22\n학기: 2\n\n\n2. RPS 클래스 설계 (1)\n\nclass RPS:\n  def __init__(self,candidate):\n    self.candidate = candidate\n    self.actions = []\n  def pick(self):\n    self.actions.append(np.random.choice(self.candidate))\n  def _repr_html_(self):\n    html_str = '''\n      낼 수 있는 패: {}&lt;br&gt;\n      기록: {}\n      '''\n    return html_str.format(self.candidate,self.actions)\n\n\na = RPS(['가위','바위','보'])\na.pick()\na\n\n\n      낼 수 있는 패: ['가위', '바위', '보']\n      기록: ['바위']\n      \n\n\n\na = RPS(['가위','바위','보'])\n\n\na.candidate, a.actions\n\n(['가위', '바위', '보'], [])\n\n\n\na\n\n\n      낼 수 있는 패: ['가위', '바위', '보']\n      기록: []\n      \n\n\n\nfor i in range(5):\n    a.pick()\n\n\n      낼 수 있는 패: ['가위', '바위', '보']\n      기록: ['바위', '보', '보', '가위', '가위', '바위', '보', '보', '바위', '보', '바위', '보', '바위', '바위', '바위', '가위']\n      \n\n\n3. RPS 설계 (2)\n\na = RPS(['가위','보'])\nb = RPS(['가위'])\nrslt = []\nfor i in range(100):\n  a.pick()\n  b.pick()\n  if a.actions[-1] =='가위' and b.actions[-1] =='가위':\n    rslt.append('-')\n  elif a.actions[-1] =='보' and b.actions[-1] =='가위':\n    rslt.append('b')\n  else:\n    rslt.append('a')\n\n\n{'a의승리':rslt.count('a'),'무승부':rslt.count('-'),'b의승리':rslt.count('b')}\n\n{'a의승리': 0, '무승부': 53, 'b의승리': 47}\n\n\n4.RPS설계 (3)\n\na = RPS(['가위','보'])\nb = RPS(['가위','바위'])\nrslt = []\nfor i in range(100):\n  a.pick()\n  b.pick()\n  if a.actions[-1] =='가위' and b.actions[-1] =='가위':\n    rslt.append('-')\n  elif a.actions[-1] =='보' and b.actions[-1] =='가위':\n    rslt.append('b')\n  elif a.actions[-1] =='가위' and b.actions[-1] =='바위':\n    rslt.append('b')\n  else:\n    rslt.append('a')\n\n\n{'a의승리':rslt.count('a'),'무승부':rslt.count('-'),'b의승리':rslt.count('b')}\n\n{'a의승리': 21, '무승부': 29, 'b의승리': 50}"
+  },
+  {
+    "objectID": "posts/2wk_2.html",
+    "href": "posts/2wk_2.html",
+    "title": "2wk 적분 자세히",
+    "section": "",
+    "text": "import numpy as np\nimport matplotlib.pyplot as plt\n\n\n16번(그래프의 교점)\n\nx = np.linspace(1,3,100)\nf = 3**(x-8)\ng = (1/27)**x\nplt.plot(x,f)\nplt.plot(x,g)\n\n\n\n\n\n\n\n\n\n\n11번(등차수열)\n\nn = np.linspace(1,15,15)\nd =4\nan = (n-7)*d\nnp.abs(an[5]),np.abs(an[7]),\n\n(4.0, 4.0, [60.0])\n\n\n\nnp.sum(an) #답 구하기!\n\n60.0\n\n\n#8번 삼차함수 간단한 적분 (y값 mean * 밑변) + np.random.rand\n\n#풀이 1\nf = lambda x: (3*x**4 -3*x)/(x-1)\nx = np.linspace(-2,2,1000)\nplt.plot(x,f(x),'--') #그래프 그리기\nnp.mean(f(x))*4 # 정답\n##############\n# 풀이 2 (rand)\n# x_rand = np.random.rand(1000000)*4 - 2  ## -2~2 까지 임의의수가 골고루 퍼져있음.\n# np.mean(f(x_rand)) *4\n# random.rand --&gt; 기본 0~1 / 범위만큼 곱하고 + 연산자로 범위 조절\n##############\n# 풀이3 (사다리꼴법 사용)\n# f = lambda x: (3*x**4 -3*x)/(x-1)\n# x = np.linspace(-2,2,10000)\n# delta = x[1] - x[0] #x의 단위 생성\n# f_arr = f(x) # y값들의 array생성\n# F_arr = np.cumsum(f_arr) * delta\n# F_arr[-1]\n# # x[np.argmin(F_arr)] ## 넓이가 0이 되는 x값\n\n16.053206593500782\n\n\n\n\n\n\n\n\n\n\n\n26번 입체도형(삼각함수) 적분\n\nx =np.linspace(3/4*np.pi,5/4*np.pi,1000)\nf = lambda x : np.sqrt((1-2*x)*np.cos(x))\nnp.mean(f(x)**2)*(2/4*np.pi) #y값에 정사각형이므로 제곱을 해줌\n\n7.469947367280549\n\n\n\n\n19번 삼각함수와 bool연산\n\nx = np.linspace(1,15,15)\nf = lambda x:np.sin(np.pi/4*x)\nsum(x[f(2+x)*f(2-x) &lt;1/4])\n# x[f(2+x)*f(2-x) &lt;1/4] ## 조건을 만족시키는 x값\n\n32.0\n\n\n\n\n12번 t값에 따른 (3차) 함수 넓이 변화 / 함수정의 사용(make_gfunction)\n\nx = np.linspace(0,10,1001)\nt = 3.2 # t=3.2로 임의로 정의\nf = lambda x : 1/9*x*(x-6)*(x-9)\n# g(x) 정의\ndef make_gfunction(t):\n  def g(x):\n    if x&lt;t:\n      return f(x)\n    else:\n      return -(x-t)+f(t)\n  return g\n#### t값에 따른 그래프 그리기\ng=make_gfunction(t)\nfx = list(map(f,x))\ngx = list(map(g,x))\nplt.plot(x,fx,label=\"f(x)\")\nplt.plot(x,gx,label=\"g(x)\")\n### g(x)와 x축 넓이 구하는 함수생성\ndef cal_area(t):\n  # t=3.2\n  g = make_gfunction(t)\n  fx = list(map(f,x))\n  gx = list(map(g,x))\n  Gx = np.cumsum(gx)*0.01\n  S = np.max(Gx)\n  return S\n\n\n\n\n\n\n\n\n\nt = np.linspace(0,6,101)[1:-1]\nSt = list(map(cal_area,t))\nnp.max(St)\n\n32.24994166666667\n\n\n\n\nrange 활용(with 등차수열)\n\nlist(range(10))\n\n[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\nlist(range(3,10,2))\n\n[3, 5, 7, 9]\n\n\n\nf = lambda x: x**2\nlist(map(f,[1,2,3,4]))\n\n[1, 4, 9, 16]\n\n\n\nnp.linspace(1,31,11) ## 1부터 31까지 3단위로 쪼개기\n# = np.array(range(1,31,3))\n# = np.arange(1,32,3)\n# = n = np.arange(1,12) / 3*n-2\n# = a = lambda n: 3*n-2 / a(1) ~ a(11)\n# = n = np.arange(1,12) / a= lambda n: 3*n-2 / a(n)\n# = n = np.arange(1,12) / a = lambda n: 3*n-2 / list(map(a,n))\n# = n = np.arange(32) / n[1::3]\n\narray([ 1.,  4.,  7., 10., 13., 16., 19., 22., 25., 28., 31.])\n\n\n\nlist 와 np.array의 관계(map)\n\nmap 함수는 list에 적용되지만 np.array(넘파이 어레이)에는 적용 되지않음.\n\n\n\n\n접선 리턴\n\ndef make_func(x0):\n    f = lambda x: x**2\n    def func(x):\n        h = 0.0001\n        a = (f(x0+h)-f(x0))/h\n        return a*(x-x0) + f(x0)\n    return func\n\n\nx = np.linspace(-5,5,101)\ntan_line = make_func(1.2)\nplt.plot(x,x**2,'--')\nplt.plot(x,tan_line(x),'--')"
+  },
+  {
+    "objectID": "posts/numpy_+_행렬.html",
+    "href": "posts/numpy_+_행렬.html",
+    "title": "numpy + 행렬",
+    "section": "",
+    "text": "import numpy as np"
+  },
+  {
+    "objectID": "posts/numpy_+_행렬.html#행렬-만들기",
+    "href": "posts/numpy_+_행렬.html#행렬-만들기",
+    "title": "numpy + 행렬",
+    "section": "1) 행렬 만들기",
+    "text": "1) 행렬 만들기\n\n행렬 만들 때 기본적으로 np.array 를 사용 해서 만들고, 리스트 or 튜플 형태를 받아서 사용함.\n\n\n_list = [1,2,3]\nnp.array(_list)\n\narray([1, 2, 3])\n\n\n\n_list1 = [1,2,3]\n_list2 = [4,5,6]\nnp.array([_list1,_list2]) # 리스트를 따로 받을 때는 대괄호 한번씩 더해줘야함\n\narray([[1, 2, 3],\n       [4, 5, 6]])\n\n\n\n넘파이 행렬 함수 (1)\n\nreshape\n\n\na=np.array([11,22,33,44,55,66])\na.reshape(2,3)\n\narray([[11, 22, 33],\n       [44, 55, 66]])\n\n\n\narange\n\n\na = np.arange(5)\nb = np.arange(1,5)\na,b\n\n(array([0, 1, 2, 3, 4]), array([1, 2, 3, 4]))\n\n\n\nlinspace\n\n\nnp.linspace(0,1,12) #0부터1까지 12개로 나눠서 배열선언\n\narray([0.        , 0.09090909, 0.18181818, 0.27272727, 0.36363636,\n       0.45454545, 0.54545455, 0.63636364, 0.72727273, 0.81818182,\n       0.90909091, 1.        ])\n\n\n\n역행렬 + 전치행렬 + 행렬곱\n\n\nA=np.arange(4).reshape(2,2)\nA.T #T는 전치행렬을 구해줌\n\narray([[0, 1],\n       [2, 3]])\n\n\n\nA=np.arange(4).reshape(2,2)\nnp.linalg.inv(A) #np.linalg.inv는 역행렬을 구해줌\n\narray([[-1.5,  0.5],\n       [ 1. ,  0. ]])\n\n\n\nA=np.arange(4).reshape(2,2)\nnp.linalg.inv(A)\nA@np.linalg.inv(A) #@는 행렬곱을 구해줌\n\narray([[1., 0.],\n       [0., 1.]])\n\n\n\n\n넘파이 행렬함수 (2)\n\nzeros\n\n\nnp.zeros(3)\n\narray([0., 0., 0.])\n\n\n\nones\n\n\na = np.ones(3)\nb = np.ones((3,3))\na,b\n\n(array([1., 1., 1.]),\n array([[1., 1., 1.],\n        [1., 1., 1.],\n        [1., 1., 1.]]))\n\n\n\neye\n\n\nnp.eye(3)\n\narray([[1., 0., 0.],\n       [0., 1., 0.],\n       [0., 0., 1.]])\n\n\n\ndiag\n\n\nnp.diag([2,3,4,-2])\n\narray([[ 2,  0,  0,  0],\n       [ 0,  3,  0,  0],\n       [ 0,  0,  4,  0],\n       [ 0,  0,  0, -2]])"
+  },
+  {
+    "objectID": "posts/numpy_+_행렬.html#행렬-인덱싱",
+    "href": "posts/numpy_+_행렬.html#행렬-인덱싱",
+    "title": "numpy + 행렬",
+    "section": "행렬 인덱싱",
+    "text": "행렬 인덱싱\n\nA = [[1,2,3,4],[-1,-2,-3,-4],[5,6,7,8],[-5,-6,-7,-8]]\nA2 = np.array(A)\nA2\n\narray([[ 1,  2,  3,  4],\n       [-1, -2, -3, -4],\n       [ 5,  6,  7,  8],\n       [-5, -6, -7, -8]])\n\n\n\nA2[[0,2],:] #1행,3행 추출\n\narray([[1, 2, 3, 4],\n       [5, 6, 7, 8]])\n\n\n\nA2[:,[0]]\n\narray([[ 1],\n       [-1],\n       [ 5],\n       [-5]])\n\n\n\nA2[:,0]\n\narray([ 1, -1,  5, -5])"
+  },
+  {
+    "objectID": "posts/징검다리 문제.html",
+    "href": "posts/징검다리 문제.html",
+    "title": "징검다리 문제",
+    "section": "",
+    "text": "import numpy as np\nimport pandas as pd\n\n징검다리 (10점)\n10명의 참가자가 (유리,강화유리)의 쌍으로 이루어진 징검다리를 건너는 게임을 시작한다. (유리,강화유리)의 쌍은 총 20개 있다. 따라서 유리는 총 40장이 있다. 참가자는 강화유리로 된 징검다리를 밟으면 살아남지만 유리로 된 징검다리를 밟으면 죽는다. 10명의 참가자의 특징은 아래와 같다.\n1번~8번 참가자, 10번 참가자: 50퍼센트의 확률로 강화유리를 고를 수 있다.\n9번 참가자: 95퍼센트의 확률로 강화유리를 고를 수 있다.\n다리를 건너는 순서는 아래와 같이 번호의 오름차순으로 건너는 방법과 번호의 내림차순으로 건너는 2가지 방법이 있다고 하자.\nType A: 10번 참가자부터 다리를 건너고 그 뒤로 9번, 8번, … 1번 순으로 다리를 건넌다.\nType B: 1번 참가자부터 다리를 건너고 그 뒤로 2번, 3번, … 10번 순으로 다리를 건넌다.\n8번 참가자는 Type A 와 Type B 중 어떠한 경우에 살아남을 확률이 높은가?\n\nclass Dari50:\n  def __init__(self):\n    self.actions = list()\n    self.prob = [0.5,0.5]\n  def play(self):\n    self.actions.append(np.random.choice(['live','die'],p=self.prob))\n\n\nclass Dari95:\n  def __init__(self):\n    self.actions = list()\n    self.prob = [0.95,0.05]\n  def play(self):\n    self.actions.append(np.random.choice(['live','die'],p=self.prob))\n\n\n\n\n#타입A\nresult_list_b = []\nfor _ in range(1000): #다리 건너기 1000번 반복\n  a = Dari50()\n  b = Dari95()\n# 데이터 프레임 생성\n  for i in range(20):\n    if a.actions.count('die') &lt; 1:\n        a.play()\n  for i in range(20 - len(a.actions)):\n    if b.actions.count('die') &lt; 1:\n        b.play()\n  result_list_b.append(a.actions + b.actions)\n\nsum(pd.DataFrame(result_list_b).loc[:,19] == 'live') /len(pd.DataFrame(result_list_b).loc[:,19])\n\n0.384\n\n\n\npd.DataFrame(result_list_a)\n\n\n  \n    \n\n\n\n\n\n\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n\n\n\n\n0\nlive\nlive\ndie\ndie\ndie\ndie\nlive\nlive\ndie\ndie\nlive\nlive\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n1\nlive\ndie\ndie\nlive\nlive\ndie\nlive\nlive\nlive\nlive\ndie\ndie\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\n\n\n2\ndie\ndie\nlive\nlive\nlive\ndie\ndie\ndie\nlive\nlive\ndie\ndie\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\n\n\n3\ndie\ndie\nlive\ndie\ndie\ndie\nlive\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n4\ndie\nlive\ndie\ndie\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\ndie\nlive\nlive\ndie\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n995\nlive\nlive\nlive\ndie\nlive\ndie\ndie\nlive\ndie\nlive\nlive\ndie\ndie\nlive\nlive\ndie\nlive\ndie\nlive\nlive\n\n\n996\nlive\ndie\nlive\nlive\ndie\ndie\nlive\nlive\ndie\ndie\nlive\ndie\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\n\n\n997\ndie\nlive\ndie\nlive\ndie\nlive\nlive\ndie\nlive\ndie\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n998\nlive\nlive\nlive\ndie\ndie\ndie\ndie\nlive\ndie\ndie\nlive\ndie\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\n\n\n999\ndie\nlive\ndie\nlive\ndie\nlive\ndie\ndie\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n\n\n1000 rows × 20 columns\n\n    \n\n  \n    \n\n  \n    \n  \n    \n\n  \n\n    \n  \n\n\n\n  \n\n\n    \n        \n    \n\n  \n\n\n\n  \n\n\n    \n  \n\n\n\n\n\n\n#타입 B 완성 ~~\nresult_list_a = []\nfor _ in range(1000):\n  a = Dari50()\n  b = Dari95()\n\n  for i in range(20):\n    if a.actions.count('die') &lt; 8:\n        a.play()\n  for u in range(20 - len(a.actions)):\n    if b.actions.count('die') &lt; 1:\n        b.play()\n  result_list_a.append(a.actions + b.actions)\n\nsum(pd.DataFrame(result_list_a).loc[:,19] == 'live') /len(pd.DataFrame(result_list_a).loc[:,19])\n\n0.705\n\n\n\npd.DataFrame(result_list_b)\n\n\n  \n    \n\n\n\n\n\n\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n\n\n\n\n0\ndie\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n1\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n2\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n3\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n4\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n995\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n996\nlive\nlive\ndie\nlive\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n997\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\n\n\n998\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\nNone\nNone\n\n\n999\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n\n\n1000 rows × 20 columns"
+  },
+  {
+    "objectID": "posts/징검다리 문제.html#type-a",
+    "href": "posts/징검다리 문제.html#type-a",
+    "title": "징검다리 문제",
+    "section": "",
+    "text": "#타입A\nresult_list_b = []\nfor _ in range(1000): #다리 건너기 1000번 반복\n  a = Dari50()\n  b = Dari95()\n# 데이터 프레임 생성\n  for i in range(20):\n    if a.actions.count('die') &lt; 1:\n        a.play()\n  for i in range(20 - len(a.actions)):\n    if b.actions.count('die') &lt; 1:\n        b.play()\n  result_list_b.append(a.actions + b.actions)\n\nsum(pd.DataFrame(result_list_b).loc[:,19] == 'live') /len(pd.DataFrame(result_list_b).loc[:,19])\n\n0.384\n\n\n\npd.DataFrame(result_list_a)\n\n\n  \n    \n\n\n\n\n\n\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n\n\n\n\n0\nlive\nlive\ndie\ndie\ndie\ndie\nlive\nlive\ndie\ndie\nlive\nlive\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n1\nlive\ndie\ndie\nlive\nlive\ndie\nlive\nlive\nlive\nlive\ndie\ndie\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\n\n\n2\ndie\ndie\nlive\nlive\nlive\ndie\ndie\ndie\nlive\nlive\ndie\ndie\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\n\n\n3\ndie\ndie\nlive\ndie\ndie\ndie\nlive\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n4\ndie\nlive\ndie\ndie\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\ndie\nlive\nlive\ndie\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n995\nlive\nlive\nlive\ndie\nlive\ndie\ndie\nlive\ndie\nlive\nlive\ndie\ndie\nlive\nlive\ndie\nlive\ndie\nlive\nlive\n\n\n996\nlive\ndie\nlive\nlive\ndie\ndie\nlive\nlive\ndie\ndie\nlive\ndie\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\n\n\n997\ndie\nlive\ndie\nlive\ndie\nlive\nlive\ndie\nlive\ndie\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n998\nlive\nlive\nlive\ndie\ndie\ndie\ndie\nlive\ndie\ndie\nlive\ndie\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\n\n\n999\ndie\nlive\ndie\nlive\ndie\nlive\ndie\ndie\ndie\ndie\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n\n\n1000 rows × 20 columns"
+  },
+  {
+    "objectID": "posts/징검다리 문제.html#type-b",
+    "href": "posts/징검다리 문제.html#type-b",
+    "title": "징검다리 문제",
+    "section": "",
+    "text": "#타입 B 완성 ~~\nresult_list_a = []\nfor _ in range(1000):\n  a = Dari50()\n  b = Dari95()\n\n  for i in range(20):\n    if a.actions.count('die') &lt; 8:\n        a.play()\n  for u in range(20 - len(a.actions)):\n    if b.actions.count('die') &lt; 1:\n        b.play()\n  result_list_a.append(a.actions + b.actions)\n\nsum(pd.DataFrame(result_list_a).loc[:,19] == 'live') /len(pd.DataFrame(result_list_a).loc[:,19])\n\n0.705\n\n\n\npd.DataFrame(result_list_b)\n\n\n  \n    \n\n\n\n\n\n\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n\n\n\n\n0\ndie\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n1\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n2\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n3\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n4\nlive\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n995\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n996\nlive\nlive\ndie\nlive\nlive\nlive\ndie\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\nNone\n\n\n997\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\n\n\n998\nlive\nlive\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\ndie\nNone\nNone\nNone\n\n\n999\ndie\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\nlive\n\n\n\n\n1000 rows × 20 columns"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html",
+    "href": "posts/4주차~5주차.html",
+    "title": "4주차~5주차",
+    "section": "",
+    "text": "import numpy as np"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#사용자-형태변환",
+    "href": "posts/4주차~5주차.html#사용자-형태변환",
+    "title": "4주차~5주차",
+    "section": "사용자 형태변환",
+    "text": "사용자 형태변환\n\na=3.0\ntype(a)\n\nfloat\n\n\n\nint(a)\n\n3\n\n\n\nbool(a)\n\nTrue\n\n\n\nfloat(3+0j) # 사실상 3+0j=3 이므로 float으로 형변환하면 3.0이 되어야 할 것 같은데 변환불가능\n# complex(복소수형) 는 float으로 형태변환 불가능"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#암묵적-형태변환",
+    "href": "posts/4주차~5주차.html#암묵적-형태변환",
+    "title": "4주차~5주차",
+    "section": "암묵적 형태변환",
+    "text": "암묵적 형태변환\n\nTrue * 1\n\n1\n\n\n\nTrue+True #\n\n2\n\n\n\n1 * 1.0\n\n1.0"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#a.-선언",
+    "href": "posts/4주차~5주차.html#a.-선언",
+    "title": "4주차~5주차",
+    "section": "A. 선언",
+    "text": "A. 선언\n\n# 선언(작은 따옴표)\na='guebin'\na\n\n'guebin'\n\n\n\n# 선언(큰 따옴표) -&gt; 작은따옴표를 안에 넣을 수 있음\na=\"asdf'a'sdf\"\na\n\n\"asdf'a'sdf\""
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#b.-연산",
+    "href": "posts/4주차~5주차.html#b.-연산",
+    "title": "4주차~5주차",
+    "section": "B. 연산",
+    "text": "B. 연산\n- 더하기 연산 가능\n\na='X'\nb='2'\n\n- 뺄셈 연산 불가능\n\na='X2'\nb='2'\na-b\n\nTypeError: unsupported operand type(s) for -: 'str' and 'str'\n\n\n- 곱셈 -&gt; string의 반복을 의미\n\na='X'\nb=3\na*b\n\n'XXX'\n\n\n- 나눗셈 불가능\n\na='XX'\na/2\n\nTypeError: unsupported operand type(s) for /: 'str' and 'int'"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#c.-인덱싱",
+    "href": "posts/4주차~5주차.html#c.-인덱싱",
+    "title": "4주차~5주차",
+    "section": "C. 인덱싱",
+    "text": "C. 인덱싱\n\na='amond'\na[0]\n\n'a'\n\n\n\na[-1] # 마지막 원소 추출\n\n'd'\n\n\n\na[0:3] # 첫번째부터 2번째 원소까지 추출\n\n'amo'\n\n\n\na[1:] # 두번째 원소부터 끝까지 슬라이싱\n\n'mond'\n\n\n\na[:2] # 처음 두개 뽑기\n\n'am'"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#d.-str-특수기능",
+    "href": "posts/4주차~5주차.html#d.-str-특수기능",
+    "title": "4주차~5주차",
+    "section": "D. str 특수기능",
+    "text": "D. str 특수기능\n\na='ABCD'\na.lower() # 소문자로 형태변환\n\n'abcd'\n\n\n\na = 'abcd'\na.upper()\n\n'ABCD'\n\n\n\na.capitalize()\n\n'Abcd'\n\n\n- 특수한 기능 ( join / split / replace )\n\n'-'.join(['1','2','3'])\n\n'1-2-3'\n\n\n\n'1-2-3'.split('-')\n\n['1', '2', '3']\n\n\n\n'1-2-3'.replace('-','*')\n\n'1*2*3'"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#e.-len",
+    "href": "posts/4주차~5주차.html#e.-len",
+    "title": "4주차~5주차",
+    "section": "E. len",
+    "text": "E. len\n\na='ABCD'\nlen(a)\n\n4\n\n\n- len은 0차원 변수형에서는 동작하지 않고 1차원 변수형에서만 동작한다.\n\nb=True\nlen(b)\n\nTypeError: object of type 'bool' has no len()"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#f.-fstring",
+    "href": "posts/4주차~5주차.html#f.-fstring",
+    "title": "4주차~5주차",
+    "section": "F. fstring",
+    "text": "F. fstring\n\na,b = 1,4\nprint(f'a+b={a+b}')\n\na+b=5\n\n\n\na,b= 2,3.141592\nprint(f'a+b={a+b:.2f}') #소수점 제어\n\na+b=5.14\n\n\n\na=3.141592\nprint(f'2a= {2*a:.2f}, 3a={3*a:.2f}')\n\n2a= 6.28, 3a=9.42\n\n\n\nlst = ['이상민','이정민','강정혁']\n[f'{l}입니다 반갑습니다' for l in lst]\n\n['이상민입니다 반갑습니다', '이정민입니다 반갑습니다', '강정혁입니다 반갑습니다']"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#g.-stirng과-for문",
+    "href": "posts/4주차~5주차.html#g.-stirng과-for문",
+    "title": "4주차~5주차",
+    "section": "G. stirng과 for문",
+    "text": "G. stirng과 for문\n\nfor i in 'jbnu':\n  print(2*i)\n\njj\nbb\nnn\nuu\n\n\n\n[s*4 for s in 'JAM']\n\n['JJJJ', 'AAAA', 'MMMM']"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#h.-in-연산자",
+    "href": "posts/4주차~5주차.html#h.-in-연산자",
+    "title": "4주차~5주차",
+    "section": "H. in 연산자",
+    "text": "H. in 연산자\n\ns = 'jbnu'\n'b' in s\n\nTrue"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#i.-연습문제",
+    "href": "posts/4주차~5주차.html#i.-연습문제",
+    "title": "4주차~5주차",
+    "section": "I. 연습문제",
+    "text": "I. 연습문제\n\ntext\n\ntext = \"국내뿐 아니라 해외 인기도 심상치 않다. 2023년 1월 18일 'Ditto'가 빌보드 핫 100에 96위로 진입했다. 이는 K-pop 역사상 데뷔후 최단 빌보드 Hot 100 차트 입성 기록이다. 다른 뮤지션들이 보통 데뷔 후 수년간 쌓아온 팬덤을 기반으로 빌보드에 입성한데 비해, 뉴진스의 기록은 이례적인 것으로 평가받고 있다. 또한 'OMG'가 빌보드 핫 100에 91위로 진입한 동시에 'Ditto'는 85위로 순위가 상승, 핫 100 주간차트에 두 곡을 올려놓았다. K-Pop 역사상 이 차트에 두 곡 이상을 진입시킨 아티스트는 방탄소년단과 블랙핑크가 유일하다. 'Ditto'는 1월 셋째주 기준, 빌보드뿐만 아니라 영국 오피셜 싱글 차트 '톱 100'에 2주 연속 진입하기도 했다.\"\n\n\n# text 문장 갯수\nsum(['.' in i for i in text])\n\n7\n\n\n\nlen(text.split('. '))\n\n7\n\n\n\n# text 단어 개수 (hint: 각 단어는 공백으로 구분된다.)\n[len(l.split(' ')) for l in text.split('. ')]\n\n[6, 9, 11, 18, 18, 12, 16]\n\n\n\n# 포함된 단어 찾\n['100' in l.split(' ') for l in text.split('. ')]\n\n[False, False, True, False, True, False, False]"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#a.-선언-1",
+    "href": "posts/4주차~5주차.html#a.-선언-1",
+    "title": "4주차~5주차",
+    "section": "A. 선언",
+    "text": "A. 선언\n\na = [1,2,3]\nb = [] # 비어있는 리스트\nc = list() # 비어있는 리스트"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#b.-연산-1",
+    "href": "posts/4주차~5주차.html#b.-연산-1",
+    "title": "4주차~5주차",
+    "section": "B. 연산",
+    "text": "B. 연산\n- 더하기 연산\n\n[1,2,3] + [-3,4,5] # 리스트 추가하는 느낌\n\n[1, 2, 3, -3, 4, 5]\n\n\n- 뺄셈\n\na= [1,2,1,2] # 뺄셈 정의 x\na-[1,2]\n\nTypeError: unsupported operand type(s) for -: 'list' and 'list'\n\n\n- 곱셈\n\n[1,2]*3 # 리스트 반복\n\n[1, 2, 1, 2, 1, 2]\n\n\n- 나눗셈\n\n[1,2,1,2,1,2] /3 # 나눗셈 정의 x\n\nTypeError: unsupported operand type(s) for /: 'list' and 'int'\n\n\n\na=[1,2]\nb=[3,4]\n# a+b = 4,6 되게 하려면?\n[a[0]+b[0],a[1]+b[1]]\n\n[4, 6]"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#c.-인덱싱-1",
+    "href": "posts/4주차~5주차.html#c.-인덱싱-1",
+    "title": "4주차~5주차",
+    "section": "C. 인덱싱",
+    "text": "C. 인덱싱\n- str형과 동일\n\na=[11,22,33,44,55]\na[1:]\n\n[22, 33, 44, 55]"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#d.-콘테이너형-객체",
+    "href": "posts/4주차~5주차.html#d.-콘테이너형-객체",
+    "title": "4주차~5주차",
+    "section": "D. 콘테이너형 객체",
+    "text": "D. 콘테이너형 객체\n- 리스트의 원소는 자료형 대부분 가능하다.\n\nlst = [1,3.14,True,'a',[1,2],\n       (1,2),{'name':'iu','age':27},{1,2,3}]\nlst\n\n[1, 3.14, True, 'a', [1, 2], (1, 2), {'name': 'iu', 'age': 27}, {1, 2, 3}]\n\n\n\n[type(l) for l in lst]\n\n[int, float, bool, str, list, tuple, dict, set]"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#e.-가변객체",
+    "href": "posts/4주차~5주차.html#e.-가변객체",
+    "title": "4주차~5주차",
+    "section": "E. 가변객체",
+    "text": "E. 가변객체\n- 리스트는 원소 수정가능하다.\n\na=[11,22,33]\na\n\n[11, 22, 33]\n\n\n\na[0] = -77\na\n\n[-77, 22, 33]"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#f.-리스트의-원소-삭제",
+    "href": "posts/4주차~5주차.html#f.-리스트의-원소-삭제",
+    "title": "4주차~5주차",
+    "section": "F. 리스트의 원소 삭제",
+    "text": "F. 리스트의 원소 삭제\n\n# del을 이용한 삭제\na = list('amond')\ndel a[0]\na\n\n['m', 'o', 'n', 'd']\n\n\n\n# pop을 이용한 삭제\na = list('amond')\na.pop(0)\na\n\n['m', 'o', 'n', 'd']\n\n\n\n# remove를 이용한 삭제\na=list('amond')\na.remove('m')"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#g.-리스트-원소-추가",
+    "href": "posts/4주차~5주차.html#g.-리스트-원소-추가",
+    "title": "4주차~5주차",
+    "section": "G. 리스트 원소 추가",
+    "text": "G. 리스트 원소 추가\n- + 연산 이용\n\na=[]\na+[0]\n\n[0]\n\n\n- += 연산 이용\n\na=[]\na+=[0]\na+=[1]\na+=[2]\na\n\n[0, 1, 2]\n\n\n- .append() 연산 이용\n\na = []\na.append(0)\na.append(1)\na\n\n[0, 1]\n\n\n- a+[4] 와 a.append(4)의 차이?\n\n덧셈은 얕은 복사 append는 깊은 복사"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#i.-리스트-특수기능",
+    "href": "posts/4주차~5주차.html#i.-리스트-특수기능",
+    "title": "4주차~5주차",
+    "section": "I. 리스트 특수기능",
+    "text": "I. 리스트 특수기능\n- clear\n\na=[1,2,3,4]\na.clear()\na\n\n[]\n\n\n- copy\n\na=[1,2,3,4]\nb = a.copy()\nb[0] =4\nb,a\n\n([4, 2, 3, 4], [1, 2, 3, 4])\n\n\n- count\n\na=['a','a','b','b','b','c']\na.count('a')\n\n2\n\n\n- extend\n\na=[1,2,3,4]\nb=[-1,-2,-3,-4]\na.extend(b)\na\n\n[1, 2, 3, 4, -1, -2, -3, -4]\n\n\n- index\n\na=[11,22,'a',True, 22,'a']\na.index('a')\n\n2\n\n\n- sort\n\na=[4,3,2,1]\na.sort()\na\n\n[1, 2, 3, 4]\n\n\n- insert\n\na=[1,2,3]\na.insert(1,88)\na\n\n[1, 88, 2, 3]"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#j.-중첩리스트",
+    "href": "posts/4주차~5주차.html#j.-중첩리스트",
+    "title": "4주차~5주차",
+    "section": "J. 중첩리스트",
+    "text": "J. 중첩리스트\n\\[\\begin{bmatrix}\n1 & 2 & 3 \\\\\n4 & 5 & 6 \\\\\n7 & 8 & 9\n\\end{bmatrix}\\]\n\nA = [[1,2,3],\n     [4,5,6],\n     [7,8,9]]\nA\n\n[[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n\n\n\n인덱싱\n\n# (1,1)의 원소 뽑기\nA[0][0]\n\n1"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#k.-리스트-컴프리헨션-연습",
+    "href": "posts/4주차~5주차.html#k.-리스트-컴프리헨션-연습",
+    "title": "4주차~5주차",
+    "section": "K. 리스트 컴프리헨션 연습",
+    "text": "K. 리스트 컴프리헨션 연습\n\nimport itertools\n\n\n[i+j for i,j in itertools.product('XY','123')]\n\n['X1', 'X2', 'X3', 'Y1', 'Y2', 'Y3']\n\n\n\n[i+j for i,j in itertools.product(['stat','math'],'123')]\n\n['stat1', 'stat2', 'stat3', 'math1', 'math2', 'math3']\n\n\n\nlst = []\nfor x in ['stst','math']:\n  for y in '123':\n    lst.append(x+y)\nlst\n\n['stst1', 'stst2', 'stst3', 'math1', 'math2', 'math3']\n\n\n\n['X'+str(y) for y in range(1,13)]\n\n['X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'X8', 'X9', 'X10', 'X11', 'X12']"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#l.-리스트-컴프리헨션과-for문의-미묘한-차이",
+    "href": "posts/4주차~5주차.html#l.-리스트-컴프리헨션과-for문의-미묘한-차이",
+    "title": "4주차~5주차",
+    "section": "L. 리스트 컴프리헨션과 for문의 미묘한 차이",
+    "text": "L. 리스트 컴프리헨션과 for문의 미묘한 차이\n\nx=777\nlst = []\nfor x in 'jbnu':\n  lst.append(x)\nlst\n\n['j', 'b', 'n', 'u']\n\n\n\nlst = [x for x in 'jbnu']\nlst\n\n['j', 'b', 'n', 'u']"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#연습문제",
+    "href": "posts/4주차~5주차.html#연습문제",
+    "title": "4주차~5주차",
+    "section": "연습문제",
+    "text": "연습문제\n- x&gt;80 만족시키는 원소의 개수는?? (리스트에서 조건문 개수 세기)\n\nx = [80,60,80,90,55,85,95,100,35,70,75,65,95]\nsum(np.array(x)&gt;80)\n\n[80, 60, 80, 90, 55, 85, 95, 100, 35, 70, 75, 65, 95]\n\n\n- 이 문자열에서 대문자의 수를 count하라.\n\ntest_arr = 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSUGPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XAt3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/EnmZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbxNrRFi9wrf+M7Q== schacon@mylaptop.local'\n\n\nsum([l.isupper() for l in test_arr])\n\n155\n\n\n- 리스트 생성\n\nlst = []\n['a'*i for i in range(1,11)]\n\n['a',\n 'aa',\n 'aaa',\n 'aaaa',\n 'aaaaa',\n 'aaaaaa',\n 'aaaaaaa',\n 'aaaaaaaa',\n 'aaaaaaaaa',\n 'aaaaaaaaaa']\n\n\n- 날짜 리스트 수정\n\nlst = ['2022/09/21','2022/10/30','2022/12/25','2023/01/01','2023/01/31','2023/03/20']\n\n\n[lst.replace('/','-') for lst in lst]\n\n['2022-09-21',\n '2022-10-30',\n '2022-12-25',\n '2023-01-01',\n '2023-01-31',\n '2023-03-20']\n\n\n- 띄어쓰기 제거\n\n'2021.01.05'\n\n'2021.01.05'\n\n\n\n'2021.01.05'.replace(' ','')\n\n'2021.01.05'\n\n\n\nblock = ['■']\n'-'.join(block*10)\n\n'■-■-■-■-■-■-■-■-■-■'"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#a.-리스트-vs-튜플",
+    "href": "posts/4주차~5주차.html#a.-리스트-vs-튜플",
+    "title": "4주차~5주차",
+    "section": "A. 리스트 vs 튜플",
+    "text": "A. 리스트 vs 튜플\n- 공통점 * 컨테이너형 타입 * 연산 및 인덱싱하는 방법\n- 차이점 * 리스트 : [] 사용 / 튜플 : () 사용 * 튜플은 불변형 -&gt; 원소 바꿀 수 없음 * 튜플은 하나의 원소 선언할 때 (1.)과 같이 해야함 * 의미가 명확할 때는 튜플의 () 생략 가능"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#b.-선언",
+    "href": "posts/4주차~5주차.html#b.-선언",
+    "title": "4주차~5주차",
+    "section": "B. 선언",
+    "text": "B. 선언\n\na = (1,2,3)\nb = (4,) # 원소 하나는 ',' 찍어줘야함.\nc = 5 # 괄호 생략 가능(의미 명확)"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#c.-연산",
+    "href": "posts/4주차~5주차.html#c.-연산",
+    "title": "4주차~5주차",
+    "section": "C. 연산",
+    "text": "C. 연산\n- 리스트와 동일\n\n(1,2)+(3,4,5)\n\n(1, 2, 3, 4, 5)\n\n\n\n(1,2)*2\n\n(1, 2, 1, 2)"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#d.-인덱싱",
+    "href": "posts/4주차~5주차.html#d.-인덱싱",
+    "title": "4주차~5주차",
+    "section": "D. 인덱싱",
+    "text": "D. 인덱싱\n- 리스트와 동일\n\na=(1,2,3,-4,-5)\na\n\n(1, 2, 3, -4, -5)\n\n\n\na[-1]\n\n-5"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#e.-튜플-활용",
+    "href": "posts/4주차~5주차.html#e.-튜플-활용",
+    "title": "4주차~5주차",
+    "section": "E. 튜플 활용",
+    "text": "E. 튜플 활용\n\n# 다중출력\na=1\nb=2\nc=3\n\n\na,b,c # 괄호 생략\n\n(1, 2, 3)\n\n\n\n# 다중할당\nname, age, sex, height, weight = 'Tom', 20, 'M', 180, 70  # 다중할당\n\n\n# 리스트에서도 다중할당 및 출력이 가능함\n[x,y,z] = [1,2,3]\nx,y,z # 다중출력 -&gt; 튜플로 출력됨\n\n(1, 2, 3)"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#f.-for문과-튜플-사용",
+    "href": "posts/4주차~5주차.html#f.-for문과-튜플-사용",
+    "title": "4주차~5주차",
+    "section": "F. for문과 튜플 사용",
+    "text": "F. for문과 튜플 사용\n\nlst = [['Amond', 202112345, 'M'],\n       ['Dodo',202455431, 'M'],\n       ['Jong', 202301123, 'F']]\nlst\n\n[['Amond', 202112345, 'M'], ['Dodo', 202455431, 'M'], ['Jong', 202301123, 'F']]\n\n\n\nfor name,id,sex in lst:\n  print(name,sex)\n\nAmond M\nDodo M\nJong F\n\n\n\nfor name,id,sex in lst:\n    print(id)\n\n202112345\n202455431\n202301123\n\n\n- 튜플과 언패킹연산자 *\n\nfor name,*other  in lst:\n    print(name,other) # '*' 아래로는 다 리스트로 묶여짐\n\nAmond [202112345, 'M']\nDodo [202455431, 'M']\nJong [202301123, 'F']\n\n\n- *의 동작 자세히..\n\nhead, body, *tail = range(1,11)\nhead, body, tail # 리스트로 묶임\n\n(1, 2, [3, 4, 5, 6, 7, 8, 9, 10])\n\n\n\nhead, body, *tail #출력 할 때 `*` 붙이면 리스트가 풀림(포인터 같은 느낌??)\n\n(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#a.-인덱싱-고급스트라이딩",
+    "href": "posts/4주차~5주차.html#a.-인덱싱-고급스트라이딩",
+    "title": "4주차~5주차",
+    "section": "A. 인덱싱 고급(스트라이딩)",
+    "text": "A. 인덱싱 고급(스트라이딩)\n\nlst = list('abcdefghijk')\nlst\n\n['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']\n\n\n\nlen(lst)\n\n11\n\n\n\nlst[0:9:2] # 첫번째부터 9개 원소 추출 후 2개 단위로 추출\n\n['a', 'c', 'e', 'g', 'i']\n\n\n\nlst[1::3] # 두번째부터 다추출(생략)후 3개 단위로 추출\n\n['b', 'e', 'h', 'k']\n\n\n\nlst = list('abcdefghijk')\nlst[::2] # 첫번째부터 짝수에 단위로 추출\n\n['a', 'c', 'e', 'g', 'i', 'k']\n\n\n\ntxt = '너같이사랑스럽고\\n또예쁘고도멋지고\\n속훤히보이는너알\\n았어그동안고마웠\\n지정말정말사랑해'\ntxt[::9]\n\n'너또속았지'\n\n\n- 스트라이딩으로 step = -1 옵션 주기 vs 리스트의 .reverse() 메소드 이용하기\n\nlst = list('abcdefgh')\nlst[::-1]\n\n['h', 'g', 'f', 'e', 'd', 'c', 'b', 'a']\n\n\n\nlst.reverse()\nlst #reverse는 lst자체를 변화시킴\n\n['h', 'g', 'f', 'e', 'd', 'c', 'b', 'a']"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#b.-len함수",
+    "href": "posts/4주차~5주차.html#b.-len함수",
+    "title": "4주차~5주차",
+    "section": "B. len함수",
+    "text": "B. len함수\n\n# 0차원 자료형 동작 X\na=1\nlen(a)\n\nTypeError: object of type 'int' has no len()\n\n\n\na=[1,2,3,4,5,6]\nlen(a)\n\n6\n\n\n\na=1,2,3,4,5,6\nlen(a)\n\n6\n\n\n- 길이가 1인 1차원 자료형과 0차원 자료형은 다른것임\n\na='g'\nlen(a)\n\n1\n\n\n- 길이가 0인 1차원 자료형도 존재함\n\na=''\nlen(a)\n\n0\n\n\n\na=[]\nlen(a)\n\n0\n\n\n\na=()\nlen(a)\n\n0\n\n\n\na=range(0)\nlen(a)\n\n0"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#a.-시퀀스형과-dict",
+    "href": "posts/4주차~5주차.html#a.-시퀀스형과-dict",
+    "title": "4주차~5주차",
+    "section": "A. 시퀀스형과 dict",
+    "text": "A. 시퀀스형과 dict\n- str, list, tuple은 모두 시퀀스형이라는 공통점이 있다.\n-&gt; 원소의 위치번호로 인덱싱이 가능\n시퀀스형의 카테고리 * 컨테니어형: list, tuple\n\n균일형: str\n가변형: list\n불변형: tuple, str"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#b.-선언-1",
+    "href": "posts/4주차~5주차.html#b.-선언-1",
+    "title": "4주차~5주차",
+    "section": "B. 선언",
+    "text": "B. 선언\n\n# 일반적\ndct = {'amond':49, 'MIN':80}\ndct\n\n{'amond': 49, 'MIN': 80}\n\n\n\n# dict() 이용\ndct = dict(amond=49, MIN=80)\ndct\n\n{'amond': 49, 'MIN': 80}\n\n\n\n# 중첩된 리스트를 만든 뒤에 형태변환\n_lst = [['amond',12],['Lee',23]]\ndict(_lst)\n\n{'amond': 12, 'Lee': 23}"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#c.-원소추출",
+    "href": "posts/4주차~5주차.html#c.-원소추출",
+    "title": "4주차~5주차",
+    "section": "C. 원소추출",
+    "text": "C. 원소추출\n- 원소의 위치로 추출할 수 없고, key로 추출해야 한다.\n\ndct = {'amond':49, 'momo':80}\ndct\n\n{'amond': 49, 'momo': 80}\n\n\n\ndct['amond']\n\n49"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#d.-원소추가-변경-삭제",
+    "href": "posts/4주차~5주차.html#d.-원소추가-변경-삭제",
+    "title": "4주차~5주차",
+    "section": "D. 원소추가, 변경, 삭제",
+    "text": "D. 원소추가, 변경, 삭제\n\n# 변경\ndct = {'amond':49, 'momo':80}\ndct['amond'] = 50\ndct\n\n{'amond': 50, 'momo': 80}\n\n\n\n# 추가\ndct = {'amond':49, 'momo':80}\ndct['dodo'] = 99\ndct\n\n{'amond': 49, 'momo': 80, 'dodo': 99}\n\n\n\n# 삭제\ndct= {'amond':49, 'momo':80}\ndel dct['amond']\ndct #pop도 가능\n\n{'momo': 80}"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#f.-딕셔너리-특수기능",
+    "href": "posts/4주차~5주차.html#f.-딕셔너리-특수기능",
+    "title": "4주차~5주차",
+    "section": "F. 딕셔너리 특수기능(★)",
+    "text": "F. 딕셔너리 특수기능(★)\n- get() 함수\n\ndct = {'amond':49, 'momo':80}\ndct.get('amond')\n# dct['amond'] 와 동일한 기능이지만 차이가 있음\n\n49\n\n\n\ndct.get('lee') # 원소가 없으면 출력안함\n\n- dict.keys() 는 딕셔너리의 키를 리턴\n\ndct = {'amond':49, 'momo':80}\ndct.keys()\n\ndict_keys(['amond', 'momo'])\n\n\n- dict.values() 는 딕셔너리의 값을 리턴\n\ndct = {'amond':49, 'momo':80}\ndct.values()\n\ndict_values([49, 80])\n\n\n- dict.items() 는 딕셔너리의 (키,값)을 리턴\n\ndct = {'amond':49, 'momo':80}\ndct.items()\n\ndict_items([('amond', 49), ('momo', 80)])"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#f.-for문과-dict",
+    "href": "posts/4주차~5주차.html#f.-for문과-dict",
+    "title": "4주차~5주차",
+    "section": "F. for문과 dict (★★)",
+    "text": "F. for문과 dict (★★)\n\ndct = {'amond':49, 'momo':80}\nfor k in dct.keys():\n  print(k)\n\namond\nmomo\n\n\n\nfor k in dct:\n    print(k)\n\namond\nmomo\n\n\n\nlist(dct)\n\n['amond', 'momo']\n\n\n- 딕셔너리 그자체도 for문에 넣을 수 있다. 그때는 딕셔너리의 key가 반복된다.\n- 결과를 보면 dct 대신에 dct.keys()와 list(dct)를 넣었을때와 결과가 같다. &gt; Note: list(dct) 하면 key만 리턴된다.\n\nfor name,score in dct.items():\n  print(f'{name}의 점수는 {score}점입니다.')\n\namond의 점수는 49점입니다.\nmomo의 점수는 80점입니다.\n\n\n\n# 컴프리헨션 이용한 값 뽑기\n[k for k,v in dct.items()]\n\n['amond', 'momo']"
+  },
+  {
+    "objectID": "posts/4주차~5주차.html#text-포함된-글자수-세기",
+    "href": "posts/4주차~5주차.html#text-포함된-글자수-세기",
+    "title": "4주차~5주차",
+    "section": "text 포함된 글자수 세기",
+    "text": "text 포함된 글자수 세기\n\n[{s:ani_lst.count(s)} for s in set(ani_lst)]\n\n[{'Abyssinian': 203},\n {'Egyptian_Mau': 200},\n {'american_bulldog': 200},\n {'samoyed': 200},\n {'english_cocker_spaniel': 200},\n {'Bengal': 200},\n {'scottish_terrier': 199},\n {'Siamese': 200},\n {'american_pit_bull_terrier': 200},\n {'newfoundland': 200},\n {'keeshond': 200},\n {'staffordshire_bull_terrier': 191},\n {'Bombay': 200},\n {'saint_bernard': 200},\n {'basset_hound': 200},\n {'Persian': 200},\n {'english_setter': 200},\n {'Sphynx': 200},\n {'japanese_chin': 200},\n {'pomeranian': 200},\n {'miniature_pinscher': 200},\n {'shiba_inu': 200},\n {'chihuahua': 200},\n {'Russian_Blue': 200},\n {'leonberger': 200},\n {'havanese': 200},\n {'Ragdoll': 200},\n {'British_Shorthair': 200},\n {'Birman': 200},\n {'german_shorthaired': 200},\n {'yorkshire_terrier': 200},\n {'great_pyrenees': 200},\n {'pug': 200},\n {'wheaten_terrier': 200},\n {'boxer': 200},\n {'Maine_Coon': 200},\n {'beagle': 200}]"
   },
   {
     "objectID": "posts/1주차~2주차.html",
@@ -270,6 +543,6 @@
     "href": "index.html",
     "title": "PP2024",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\n \n\n\nImport\n\n\n \n\n\n\n\nFeb 3, 2026\n\n\n리스트와 반복문\n\n\n이정민 \n\n\n\n\nJan 2, 2026\n\n\n클래스_Student/RPS_설계\n\n\n이정민 \n\n\n\n\nDec 2, 2025\n\n\n클래스 공부 (4) / 메소드 init\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (2)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nnumpy + 행렬\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nmatplotlib 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (3)\n\n\n이정민 \n\n\n\n\nMar 27, 2024\n\n\n2wk 적분 자세히\n\n\n이정민 \n\n\n\n\nMar 27, 2024\n\n\n1주차~2주차\n\n\n이정민 \n\n\n\n\nFeb 21, 2024\n\n\nPost With Code\n\n\nHarlow Malloc\n\n\n\n\nFeb 18, 2024\n\n\nWelcome To My Blog\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\n \n\n\nImport\n\n\n \n\n\n\n\nFeb 3, 2026\n\n\n리스트와 반복문\n\n\n이정민 \n\n\n\n\nJan 2, 2026\n\n\n클래스_Student/RPS_설계\n\n\n이정민 \n\n\n\n\nDec 2, 2025\n\n\n클래스 공부 (4) / 메소드 init\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (2)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nnumpy + 행렬\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nmatplotlib 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (3)\n\n\n이정민 \n\n\n\n\nApr 7, 2024\n\n\n4주차~5주차\n\n\n이정민 \n\n\n\n\nMar 27, 2024\n\n\n2wk 적분 자세히\n\n\n이정민 \n\n\n\n\nMar 27, 2024\n\n\n1주차~2주차\n\n\n이정민 \n\n\n\n\nFeb 21, 2024\n\n\nPost With Code\n\n\nHarlow Malloc\n\n\n\n\nFeb 18, 2024\n\n\nWelcome To My Blog\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
   }
 ]
