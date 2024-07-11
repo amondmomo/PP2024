@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="이정민">
+<meta name="dcterms.date" content="2024-07-11">
 
-<title>PP2024</title>
+<title>PP2024 - 터미널,디렉터리,패키지 및 코딩환경 관리</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,67 +68,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -138,7 +80,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">PP2024</span>
     </a>
   </div>
@@ -161,25 +103,51 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(15)</span></div><div class="category" data-category="PP2024">PP2024 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="class">class <span class="quarto-category-count">(5)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="crawling">crawling <span class="quarto-category-count">(1)</span></div><div class="category" data-category="for문">for문 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="linear Regression">linear Regression <span class="quarto-category-count">(1)</span></div><div class="category" data-category="matplotlib">matplotlib <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(2)</span></div><div class="category" data-category="numpy">numpy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="server">server <span class="quarto-category-count">(1)</span></div><div class="category" data-category="자료형">자료형 <span class="quarto-category-count">(2)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#서버접속" id="toc-서버접속" class="nav-link active" data-scroll-target="#서버접속">서버접속</a></li>
+  <li><a href="#디렉토리-관리-리눅스-명령어" id="toc-디렉토리-관리-리눅스-명령어" class="nav-link" data-scroll-target="#디렉토리-관리-리눅스-명령어">디렉토리 관리 리눅스 명령어</a></li>
+  <li><a href="#tmux-터미널-관리-프로그램" id="toc-tmux-터미널-관리-프로그램" class="nav-link" data-scroll-target="#tmux-터미널-관리-프로그램">tmux (터미널 관리 프로그램)</a></li>
+  <li><a href="#아나콘다를-이용-한-실습환경-만들기" id="toc-아나콘다를-이용-한-실습환경-만들기" class="nav-link" data-scroll-target="#아나콘다를-이용-한-실습환경-만들기">아나콘다를 이용 한 실습환경 만들기</a></li>
+  <li><a href="#패키지어플리케이션-관리" id="toc-패키지어플리케이션-관리" class="nav-link" data-scroll-target="#패키지어플리케이션-관리">패키지(어플리케이션) 관리</a></li>
+  <li><a href="#기타" id="toc-기타" class="nav-link" data-scroll-target="#기타">기타</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="server사용법.out.ipynb" download="server사용법.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PP2024</h1>
-</div>
+<h1 class="title">터미널,디렉터리,패키지 및 코딩환경 관리</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">server</div>
+  </div>
+  </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>이정민 </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 11, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -189,197 +157,54 @@ window.Quarto = {
 </header>
 
 
+<section id="서버접속" class="level1">
+<h1>서버접속</h1>
+<p><code>ssh root@210.117.173.186 -p &lt;port번호;학번뒷자리&gt;</code> 서버 접속</p>
+</section>
+<section id="디렉토리-관리-리눅스-명령어" class="level1">
+<h1>디렉토리 관리 리눅스 명령어</h1>
+<p><code>dir</code> -&gt; 디렉토리 확인</p>
+<p><code>mkdir</code> -&gt; 디렉토리 만들기</p>
+<p><code>cd &lt;dir&gt;</code> change dir 디렉토리(폴더) 안으로 들어가기</p>
+<p><code>!&lt;명령어&gt;</code> 주피터 내에서 터미널 명령어 치는 방법</p>
+<p><code>cd ..</code> 상위 디렉토리로 이동</p>
+<p><code>rm -rf &lt;dir&gt;</code> 디렉토리 강제삭제</p>
+<p><code>du -sh</code> 용량 확인</p>
+</section>
+<section id="tmux-터미널-관리-프로그램" class="level1">
+<h1>tmux (터미널 관리 프로그램)</h1>
+<p><code>apt-get install tmux</code> tmux 다운로드</p>
+<p><code>tmux ls</code> 터미널 리스트 확인</p>
+<p><code>tmux kill-session -t &lt;session&gt;</code> 터미널 session 삭제</p>
+<p><code>tmux new -s &lt;session_name&gt;</code> session 만들기</p>
+<p><code>tmux attach -t &lt;session_name&gt;</code> session에 접속</p>
+<p><code>ctrl+b</code> + <code>손떼고</code> + <code>d</code> base에 접속</p>
+</section>
+<section id="아나콘다를-이용-한-실습환경-만들기" class="level1">
+<h1>아나콘다를 이용 한 실습환경 만들기</h1>
+<p><code>conda create &lt;env&gt;</code> conda 환경 생성</p>
+<p><code>conda activate &lt;env&gt;</code> conda 환경 실행</p>
+<p><code>conda env remove -n &lt;env&gt;</code> conda 환경 제거</p>
+<p><code>conda install -c conda-forge r-essentials</code> r 다운로드</p>
+<p><code>conda install -c conda-forge notebook</code> 주피터노트북 다운로드</p>
+</section>
+<section id="패키지어플리케이션-관리" class="level1">
+<h1>패키지(어플리케이션) 관리</h1>
+<p><code>pip install &lt;module&gt;=&lt;version&gt;</code> 모듈 다운로드하기</p>
+<p><code>pip list</code> 패키지 리스트와 버전 확인</p>
+<p><code>!&lt;module&gt; --version</code> 모듈 버전 확인</p>
+</section>
+<section id="기타" class="level1">
+<h1>기타</h1>
+<p><code>ctr shift p</code> &gt;create ### 코드스페이스에서 새로운 환경 노트북 생성</p>
+<p><code>./code tunnel</code> base에서 code 스페이스 실행 -&gt; <code>https://vscode.dev/tunnel/&lt;name&gt;/</code></p>
+<p><code>&gt; installspec()</code> 주피터 노트북에서 R사용하도록 함</p>
+<p><code>torch.cuda.is_available</code> gpu 연결 확인</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Author
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1712479112275" data-listing-reading-time-sort="1" data-listing-word-count-sort="116" data-listing-title-sort="Import" data-listing-filename-sort="징검다리 문제.ipynb">
-<td>
-<span class="listing-date">&nbsp;</span>
-</td>
-<td>
-<a href="./posts/징검다리 문제.html" class="title listing-title">Import</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="1" data-categories="자료형,for문" data-listing-date-sort="1770076800000" data-listing-file-modified-sort="1712479028907" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="10" data-listing-title-sort="리스트와 반복문" data-listing-filename-sort="리스트와_반복문.ipynb">
-<td>
-<span class="listing-date">Feb 3, 2026</span>
-</td>
-<td>
-<a href="./posts/리스트와_반복문.html" class="title listing-title">리스트와 반복문</a>
-</td>
-<td>
-<span class="listing-author">이정민 </span>
-</td>
-</tr>
-<tr data-index="2" data-categories="class" data-listing-date-sort="1767312000000" data-listing-file-modified-sort="1712479070187" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="29" data-listing-title-sort="클래스_Student/RPS_설계" data-listing-filename-sort="클래스_Student_RPS_설계.ipynb">
-<td>
-<span class="listing-date">Jan 2, 2026</span>
-</td>
-<td>
-<a href="./posts/클래스_Student_RPS_설계.html" class="title listing-title">클래스_Student/RPS_설계</a>
-</td>
-<td>
-<span class="listing-author">이정민 </span>
-</td>
-</tr>
-<tr data-index="3" data-categories="class,crawling,linear Regression" data-listing-date-sort="1764633600000" data-listing-file-modified-sort="1712479083495" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11" data-listing-title-sort="클래스 공부 (4) / 메소드 __init__" data-listing-filename-sort="2023_12wk_2_클래스.ipynb">
-<td>
-<span class="listing-date">Dec 2, 2025</span>
-</td>
-<td>
-<a href="./posts/2023_12wk_2_클래스.html" class="title listing-title">클래스 공부 (4) / 메소드 <strong>init</strong></a>
-</td>
-<td>
-<span class="listing-author">이정민 </span>
-</td>
-</tr>
-<tr data-index="4" data-categories="class" data-listing-date-sort="1756771200000" data-listing-file-modified-sort="1712479108443" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="클래스 공부 (2)" data-listing-filename-sort="클래스 공부 (2).ipynb">
-<td>
-<span class="listing-date">Sep 2, 2025</span>
-</td>
-<td>
-<a href="./posts/클래스 공부 (2).html" class="title listing-title">클래스 공부 (2)</a>
-</td>
-<td>
-<span class="listing-author">이정민 </span>
-</td>
-</tr>
-<tr data-index="5" data-categories="numpy" data-listing-date-sort="1756771200000" data-listing-file-modified-sort="1708794422610" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="40" data-listing-title-sort="numpy + 행렬" data-listing-filename-sort="numpy_+_행렬.ipynb">
-<td>
-<span class="listing-date">Sep 2, 2025</span>
-</td>
-<td>
-<a href="./posts/numpy_+_행렬.html" class="title listing-title">numpy + 행렬</a>
-</td>
-<td>
-<span class="listing-author">이정민 </span>
-</td>
-</tr>
-<tr data-index="6" data-categories="matplotlib" data-listing-date-sort="1756771200000" data-listing-file-modified-sort="1708526581896" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="matplotlib 공부 (1)" data-listing-filename-sort="matplotlib 공부(1).ipynb">
-<td>
-<span class="listing-date">Sep 2, 2025</span>
-</td>
-<td>
-<a href="./posts/matplotlib 공부(1).html" class="title listing-title">matplotlib 공부 (1)</a>
-</td>
-<td>
-<span class="listing-author">이정민 </span>
-</td>
-</tr>
-<tr data-index="7" data-categories="class" data-listing-date-sort="1756771200000" data-listing-file-modified-sort="1712479102603" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="클래스 공부 (1)" data-listing-filename-sort="클래스 공부 (1).ipynb">
-<td>
-<span class="listing-date">Sep 2, 2025</span>
-</td>
-<td>
-<a href="./posts/클래스 공부 (1).html" class="title listing-title">클래스 공부 (1)</a>
-</td>
-<td>
-<span class="listing-author">이정민 </span>
-</td>
-</tr>
-<tr data-index="8" data-categories="class" data-listing-date-sort="1756771200000" data-listing-file-modified-sort="1712479110671" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="클래스 공부 (3)" data-listing-filename-sort="클래스 공부 (3) .ipynb">
-<td>
-<span class="listing-date">Sep 2, 2025</span>
-</td>
-<td>
-<a href="./posts/클래스 공부 (3) .html" class="title listing-title">클래스 공부 (3)</a>
-</td>
-<td>
-<span class="listing-author">이정민 </span>
-</td>
-</tr>
-<tr data-index="9" data-categories="server" data-listing-date-sort="1720656000000" data-listing-file-modified-sort="1720693790625" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="156" data-listing-title-sort="터미널,디렉터리,패키지 및 코딩환경 관리" data-listing-filename-sort="server사용법.ipynb">
-<td>
-<span class="listing-date">Jul 11, 2024</span>
-</td>
-<td>
-<a href="./posts/server사용법.html" class="title listing-title">터미널,디렉터리,패키지 및 코딩환경 관리</a>
-</td>
-<td>
-<span class="listing-author">이정민 </span>
-</td>
-</tr>
-<tr data-index="10" data-categories="numpy" data-listing-date-sort="1712448000000" data-listing-file-modified-sort="1712479103347" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="485" data-listing-title-sort="4주차~5주차" data-listing-filename-sort="4주차~5주차.ipynb">
-<td>
-<span class="listing-date">Apr 7, 2024</span>
-</td>
-<td>
-<a href="./posts/4주차~5주차.html" class="title listing-title">4주차~5주차</a>
-</td>
-<td>
-<span class="listing-author">이정민 </span>
-</td>
-</tr>
-<tr data-index="11" data-categories="PP2024" data-listing-date-sort="1711497600000" data-listing-file-modified-sort="1711470687067" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="44" data-listing-title-sort="2wk 적분 자세히" data-listing-filename-sort="2wk_2.ipynb">
-<td>
-<span class="listing-date">Mar 27, 2024</span>
-</td>
-<td>
-<a href="./posts/2wk_2.html" class="title listing-title">2wk 적분 자세히</a>
-</td>
-<td>
-<span class="listing-author">이정민 </span>
-</td>
-</tr>
-<tr data-index="12" data-categories="자료형" data-listing-date-sort="1711497600000" data-listing-file-modified-sort="1711470418006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="51" data-listing-title-sort="1주차~2주차" data-listing-filename-sort="1주차~2주차.ipynb">
-<td>
-<span class="listing-date">Mar 27, 2024</span>
-</td>
-<td>
-<a href="./posts/1주차~2주차.html" class="title listing-title">1주차~2주차</a>
-</td>
-<td>
-<span class="listing-author">이정민 </span>
-</td>
-</tr>
-<tr data-index="13" data-categories="news,code,analysis" data-listing-date-sort="1708473600000" data-listing-file-modified-sort="1708526358116" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="Post With Code" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 21, 2024</span>
-</td>
-<td>
-<a href="./posts/post-with-code/index.html" class="title listing-title">Post With Code</a>
-</td>
-<td>
-<span class="listing-author">Harlow Malloc</span>
-</td>
-</tr>
-<tr data-index="14" data-categories="news" data-listing-date-sort="1708214400000" data-listing-file-modified-sort="1708526358116" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="Welcome To My Blog" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 18, 2024</span>
-</td>
-<td>
-<a href="./posts/welcome/index.html" class="title listing-title">Welcome To My Blog</a>
-</td>
-<td>
-<span class="listing-author">Tristan O’Malley</span>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -761,6 +586,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
+</script>
+<script src="https://utteranc.es/client.js" repo="amondmomo/PP2024" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 
