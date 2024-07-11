@@ -148,12 +148,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">Import</a>
-  <ul class="collapse">
-  <li><a href="#type-a" id="toc-type-a" class="nav-link" data-scroll-target="#type-a">Type A</a></li>
+  <li><a href="#type-a" id="toc-type-a" class="nav-link active" data-scroll-target="#type-a">Type A</a></li>
   <li><a href="#type-b" id="toc-type-b" class="nav-link" data-scroll-target="#type-b">Type B</a></li>
   <li><a href="#번-생존자의-생존확률은-type-b가-더-높다" id="toc-번-생존자의-생존확률은-type-b가-더-높다" class="nav-link" data-scroll-target="#번-생존자의-생존확률은-type-b가-더-높다"><strong>8번 생존자의 생존확률은 Type B가 더 높다</strong></a></li>
-  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="징검다리 문제.out.ipynb" download="징검다리 문제.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -194,9 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="import" class="level1">
-<h1>Import</h1>
-<div id="cell-2" class="cell">
+<div id="cell-1" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -208,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Type A: 10번 참가자부터 다리를 건너고 그 뒤로 9번, 8번, … 1번 순으로 다리를 건넌다.</p>
 <p>Type B: 1번 참가자부터 다리를 건너고 그 뒤로 2번, 3번, … 10번 순으로 다리를 건넌다.</p>
 <p>8번 참가자는 Type A 와 Type B 중 어떠한 경우에 살아남을 확률이 높은가?</p>
-<div id="cell-4" class="cell">
+<div id="cell-3" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dari50:</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.actions <span class="op">=</span> <span class="bu">list</span>()</span>
@@ -216,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> play(<span class="va">self</span>):</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.actions.append(np.random.choice([<span class="st">'live'</span>,<span class="st">'die'</span>],p<span class="op">=</span><span class="va">self</span>.prob))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell">
+<div id="cell-4" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dari95:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.actions <span class="op">=</span> <span class="bu">list</span>()</span>
@@ -226,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="type-a" class="level2">
 <h2 class="anchored" data-anchor-id="type-a">Type A</h2>
-<div id="cell-7" class="cell" data-outputid="8d81b46b-425b-4a0c-b6ad-1e95dc73e08a">
+<div id="cell-6" class="cell" data-outputid="8d81b46b-425b-4a0c-b6ad-1e95dc73e08a">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#타입A</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>result_list_b <span class="op">=</span> []</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>): <span class="co">#다리 건너기 1000번 반복</span></span>
@@ -246,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>0.384</code></pre>
 </div>
 </div>
-<div id="cell-8" class="cell" data-outputid="e407b6ef-95f9-4ffb-90f3-1347551af8b8">
+<div id="cell-7" class="cell" data-outputid="e407b6ef-95f9-4ffb-90f3-1347551af8b8">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(result_list_a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="206">
 
@@ -748,7 +743,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="type-b" class="level2">
 <h2 class="anchored" data-anchor-id="type-b">Type B</h2>
-<div id="cell-10" class="cell" data-outputid="ebfd62a0-9a74-48eb-d990-4516663b5935">
+<div id="cell-9" class="cell" data-outputid="ebfd62a0-9a74-48eb-d990-4516663b5935">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#타입 B 완성 ~~</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>result_list_a <span class="op">=</span> []</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
@@ -768,7 +763,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>0.705</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell" data-outputid="76856ab4-eda4-48e8-ce33-467707622faf">
+<div id="cell-10" class="cell" data-outputid="76856ab4-eda4-48e8-ce33-467707622faf">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(result_list_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 
@@ -1272,7 +1267,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="번-생존자의-생존확률은-type-b가-더-높다"><strong>8번 생존자의 생존확률은 Type B가 더 높다</strong></h2>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
