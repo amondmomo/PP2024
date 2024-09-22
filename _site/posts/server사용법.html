@@ -116,6 +116,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#tmux-터미널-관리-프로그램" id="toc-tmux-터미널-관리-프로그램" class="nav-link" data-scroll-target="#tmux-터미널-관리-프로그램">tmux (터미널 관리 프로그램)</a></li>
   <li><a href="#아나콘다를-이용-한-실습환경-만들기" id="toc-아나콘다를-이용-한-실습환경-만들기" class="nav-link" data-scroll-target="#아나콘다를-이용-한-실습환경-만들기">아나콘다를 이용 한 실습환경 만들기</a></li>
   <li><a href="#패키지어플리케이션-관리" id="toc-패키지어플리케이션-관리" class="nav-link" data-scroll-target="#패키지어플리케이션-관리">패키지(어플리케이션) 관리</a></li>
+  <li><a href="#깃헙-블로그-관리" id="toc-깃헙-블로그-관리" class="nav-link" data-scroll-target="#깃헙-블로그-관리">깃헙 블로그 관리</a></li>
   <li><a href="#기타" id="toc-기타" class="nav-link" data-scroll-target="#기타">기타</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="server사용법.out.ipynb" download="server사용법.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
@@ -170,6 +171,7 @@ ul.task-list li input[type="checkbox"] {
 <p><code>cd ..</code> 상위 디렉토리로 이동</p>
 <p><code>rm -rf &lt;dir&gt;</code> 디렉토리 강제삭제</p>
 <p><code>du -sh</code> 용량 확인</p>
+<p><code>find / -size +100M</code> 대용량 파일 확인 ( 100MB 이상의 파일을 찾기 )</p>
 </section>
 <section id="tmux-터미널-관리-프로그램" class="level1">
 <h1>tmux (터미널 관리 프로그램)</h1>
@@ -193,6 +195,14 @@ ul.task-list li input[type="checkbox"] {
 <p><code>pip install &lt;module&gt;=&lt;version&gt;</code> 모듈 다운로드하기</p>
 <p><code>pip list</code> 패키지 리스트와 버전 확인</p>
 <p><code>!&lt;module&gt; --version</code> 모듈 버전 확인</p>
+</section>
+<section id="깃헙-블로그-관리" class="level1">
+<h1>깃헙 블로그 관리</h1>
+<p><code>git clone {레포 주소}</code> : 깃헙 레포 복사</p>
+<p><code>quarto create-project --type website --template blog</code> : 블로그 생성</p>
+<p><code>quarto publish gh-pages</code> : 블로</p>
+<p><code>git add .</code> -&gt; <code>git commit -m .</code> -&gt; <code>git push</code> : 깃헙 연동</p>
+<p><code>quarto publish --no-browser --no-prompt</code> : 블로그 게시물 포스팅</p>
 </section>
 <section id="기타" class="level1">
 <h1>기타</h1>
