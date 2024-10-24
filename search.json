@@ -56,6 +56,104 @@
     "text": "import matplotlib.pyplot as plt\n\n\ny1= [1.0, 2.0, 3.0, 4.0]\ny2= [1.1, 2.2, 2.8, 0.0]\nplt.plot(y1,'--o',label='y1')\nplt.plot(y2,'--o',label='y2')\nplt.legend()"
   },
   {
+    "objectID": "posts/Untitled2.html",
+    "href": "posts/Untitled2.html",
+    "title": "PP2024",
+    "section": "",
+    "text": "c(1,2,3)\n\n\n123\n\n\n\nR.version\n\n               _                           \nplatform       x86_64-conda-linux-gnu      \narch           x86_64                      \nos             linux-gnu                   \nsystem         x86_64, linux-gnu           \nstatus                                     \nmajor          4                           \nminor          4.1                         \nyear           2024                        \nmonth          06                          \nday            14                          \nsvn rev        86737                       \nlanguage       R                           \nversion.string R version 4.4.1 (2024-06-14)\nnickname       Race for Your Life"
+  },
+  {
+    "objectID": "posts/numpy_+_행렬.html",
+    "href": "posts/numpy_+_행렬.html",
+    "title": "numpy + 행렬",
+    "section": "",
+    "text": "import numpy as np"
+  },
+  {
+    "objectID": "posts/numpy_+_행렬.html#행렬-만들기",
+    "href": "posts/numpy_+_행렬.html#행렬-만들기",
+    "title": "numpy + 행렬",
+    "section": "1) 행렬 만들기",
+    "text": "1) 행렬 만들기\n\n행렬 만들 때 기본적으로 np.array 를 사용 해서 만들고, 리스트 or 튜플 형태를 받아서 사용함.\n\n\n_list = [1,2,3]\nnp.array(_list)\n\narray([1, 2, 3])\n\n\n\n_list1 = [1,2,3]\n_list2 = [4,5,6]\nnp.array([_list1,_list2]) # 리스트를 따로 받을 때는 대괄호 한번씩 더해줘야함\n\narray([[1, 2, 3],\n       [4, 5, 6]])\n\n\n\n넘파이 행렬 함수 (1)\n\nreshape\n\n\na=np.array([11,22,33,44,55,66])\na.reshape(2,3)\n\narray([[11, 22, 33],\n       [44, 55, 66]])\n\n\n\narange\n\n\na = np.arange(5)\nb = np.arange(1,5)\na,b\n\n(array([0, 1, 2, 3, 4]), array([1, 2, 3, 4]))\n\n\n\nlinspace\n\n\nnp.linspace(0,1,12) #0부터1까지 12개로 나눠서 배열선언\n\narray([0.        , 0.09090909, 0.18181818, 0.27272727, 0.36363636,\n       0.45454545, 0.54545455, 0.63636364, 0.72727273, 0.81818182,\n       0.90909091, 1.        ])\n\n\n\n역행렬 + 전치행렬 + 행렬곱\n\n\nA=np.arange(4).reshape(2,2)\nA.T #T는 전치행렬을 구해줌\n\narray([[0, 1],\n       [2, 3]])\n\n\n\nA=np.arange(4).reshape(2,2)\nnp.linalg.inv(A) #np.linalg.inv는 역행렬을 구해줌\n\narray([[-1.5,  0.5],\n       [ 1. ,  0. ]])\n\n\n\nA=np.arange(4).reshape(2,2)\nnp.linalg.inv(A)\nA@np.linalg.inv(A) #@는 행렬곱을 구해줌\n\narray([[1., 0.],\n       [0., 1.]])\n\n\n\n\n넘파이 행렬함수 (2)\n\nzeros\n\n\nnp.zeros(3)\n\narray([0., 0., 0.])\n\n\n\nones\n\n\na = np.ones(3)\nb = np.ones((3,3))\na,b\n\n(array([1., 1., 1.]),\n array([[1., 1., 1.],\n        [1., 1., 1.],\n        [1., 1., 1.]]))\n\n\n\neye\n\n\nnp.eye(3)\n\narray([[1., 0., 0.],\n       [0., 1., 0.],\n       [0., 0., 1.]])\n\n\n\ndiag\n\n\nnp.diag([2,3,4,-2])\n\narray([[ 2,  0,  0,  0],\n       [ 0,  3,  0,  0],\n       [ 0,  0,  4,  0],\n       [ 0,  0,  0, -2]])"
+  },
+  {
+    "objectID": "posts/numpy_+_행렬.html#행렬-인덱싱",
+    "href": "posts/numpy_+_행렬.html#행렬-인덱싱",
+    "title": "numpy + 행렬",
+    "section": "행렬 인덱싱",
+    "text": "행렬 인덱싱\n\nA = [[1,2,3,4],[-1,-2,-3,-4],[5,6,7,8],[-5,-6,-7,-8]]\nA2 = np.array(A)\nA2\n\narray([[ 1,  2,  3,  4],\n       [-1, -2, -3, -4],\n       [ 5,  6,  7,  8],\n       [-5, -6, -7, -8]])\n\n\n\nA2[[0,2],:] #1행,3행 추출\n\narray([[1, 2, 3, 4],\n       [5, 6, 7, 8]])\n\n\n\nA2[:,[0]]\n\narray([[ 1],\n       [-1],\n       [ 5],\n       [-5]])\n\n\n\nA2[:,0]\n\narray([ 1, -1,  5, -5])"
+  },
+  {
+    "objectID": "posts/2wk_2.html",
+    "href": "posts/2wk_2.html",
+    "title": "2wk 적분 자세히",
+    "section": "",
+    "text": "import numpy as np\nimport matplotlib.pyplot as plt\n\n\n16번(그래프의 교점)\n\nx = np.linspace(1,3,100)\nf = 3**(x-8)\ng = (1/27)**x\nplt.plot(x,f)\nplt.plot(x,g)\n\n\n\n\n\n\n\n\n\n\n11번(등차수열)\n\nn = np.linspace(1,15,15)\nd =4\nan = (n-7)*d\nnp.abs(an[5]),np.abs(an[7]),\n\n(4.0, 4.0, [60.0])\n\n\n\nnp.sum(an) #답 구하기!\n\n60.0\n\n\n#8번 삼차함수 간단한 적분 (y값 mean * 밑변) + np.random.rand\n\n#풀이 1\nf = lambda x: (3*x**4 -3*x)/(x-1)\nx = np.linspace(-2,2,1000)\nplt.plot(x,f(x),'--') #그래프 그리기\nnp.mean(f(x))*4 # 정답\n##############\n# 풀이 2 (rand)\n# x_rand = np.random.rand(1000000)*4 - 2  ## -2~2 까지 임의의수가 골고루 퍼져있음.\n# np.mean(f(x_rand)) *4\n# random.rand --&gt; 기본 0~1 / 범위만큼 곱하고 + 연산자로 범위 조절\n##############\n# 풀이3 (사다리꼴법 사용)\n# f = lambda x: (3*x**4 -3*x)/(x-1)\n# x = np.linspace(-2,2,10000)\n# delta = x[1] - x[0] #x의 단위 생성\n# f_arr = f(x) # y값들의 array생성\n# F_arr = np.cumsum(f_arr) * delta\n# F_arr[-1]\n# # x[np.argmin(F_arr)] ## 넓이가 0이 되는 x값\n\n16.053206593500782\n\n\n\n\n\n\n\n\n\n\n\n26번 입체도형(삼각함수) 적분\n\nx =np.linspace(3/4*np.pi,5/4*np.pi,1000)\nf = lambda x : np.sqrt((1-2*x)*np.cos(x))\nnp.mean(f(x)**2)*(2/4*np.pi) #y값에 정사각형이므로 제곱을 해줌\n\n7.469947367280549\n\n\n\n\n19번 삼각함수와 bool연산\n\nx = np.linspace(1,15,15)\nf = lambda x:np.sin(np.pi/4*x)\nsum(x[f(2+x)*f(2-x) &lt;1/4])\n# x[f(2+x)*f(2-x) &lt;1/4] ## 조건을 만족시키는 x값\n\n32.0\n\n\n\n\n12번 t값에 따른 (3차) 함수 넓이 변화 / 함수정의 사용(make_gfunction)\n\nx = np.linspace(0,10,1001)\nt = 3.2 # t=3.2로 임의로 정의\nf = lambda x : 1/9*x*(x-6)*(x-9)\n# g(x) 정의\ndef make_gfunction(t):\n  def g(x):\n    if x&lt;t:\n      return f(x)\n    else:\n      return -(x-t)+f(t)\n  return g\n#### t값에 따른 그래프 그리기\ng=make_gfunction(t)\nfx = list(map(f,x))\ngx = list(map(g,x))\nplt.plot(x,fx,label=\"f(x)\")\nplt.plot(x,gx,label=\"g(x)\")\n### g(x)와 x축 넓이 구하는 함수생성\ndef cal_area(t):\n  # t=3.2\n  g = make_gfunction(t)\n  fx = list(map(f,x))\n  gx = list(map(g,x))\n  Gx = np.cumsum(gx)*0.01\n  S = np.max(Gx)\n  return S\n\n\n\n\n\n\n\n\n\nt = np.linspace(0,6,101)[1:-1]\nSt = list(map(cal_area,t))\nnp.max(St)\n\n32.24994166666667\n\n\n\n\nrange 활용(with 등차수열)\n\nlist(range(10))\n\n[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\nlist(range(3,10,2))\n\n[3, 5, 7, 9]\n\n\n\nf = lambda x: x**2\nlist(map(f,[1,2,3,4]))\n\n[1, 4, 9, 16]\n\n\n\nnp.linspace(1,31,11) ## 1부터 31까지 3단위로 쪼개기\n# = np.array(range(1,31,3))\n# = np.arange(1,32,3)\n# = n = np.arange(1,12) / 3*n-2\n# = a = lambda n: 3*n-2 / a(1) ~ a(11)\n# = n = np.arange(1,12) / a= lambda n: 3*n-2 / a(n)\n# = n = np.arange(1,12) / a = lambda n: 3*n-2 / list(map(a,n))\n# = n = np.arange(32) / n[1::3]\n\narray([ 1.,  4.,  7., 10., 13., 16., 19., 22., 25., 28., 31.])\n\n\n\nlist 와 np.array의 관계(map)\n\nmap 함수는 list에 적용되지만 np.array(넘파이 어레이)에는 적용 되지않음.\n\n\n\n\n접선 리턴\n\ndef make_func(x0):\n    f = lambda x: x**2\n    def func(x):\n        h = 0.0001\n        a = (f(x0+h)-f(x0))/h\n        return a*(x-x0) + f(x0)\n    return func\n\n\nx = np.linspace(-5,5,101)\ntan_line = make_func(1.2)\nplt.plot(x,x**2,'--')\nplt.plot(x,tan_line(x),'--')"
+  },
+  {
+    "objectID": "posts/server사용법.html",
+    "href": "posts/server사용법.html",
+    "title": "터미널,디렉터리,패키지 및 코딩환경 관리",
+    "section": "",
+    "text": "ssh root@210.117.173.186 -p &lt;port번호;학번뒷자리&gt; 서버 접속\njupyter lab --ip=\"0.0.0.0\" --port={MY-PORT} --no-browser --allow-root 기본 주피터랩 접속"
+  },
+  {
+    "objectID": "posts/server사용법.html#bash에서-가상환경-생성-및-활성화",
+    "href": "posts/server사용법.html#bash에서-가상환경-생성-및-활성화",
+    "title": "터미널,디렉터리,패키지 및 코딩환경 관리",
+    "section": "1. bash에서 가상환경 생성 및 활성화",
+    "text": "1. bash에서 가상환경 생성 및 활성화\nconda create -n py310 python=3.10.12 Python 3.10.12 가상환경 생성\nconda activate py310 가상환경 활성화"
+  },
+  {
+    "objectID": "posts/server사용법.html#jupyter에-커널-추가",
+    "href": "posts/server사용법.html#jupyter에-커널-추가",
+    "title": "터미널,디렉터리,패키지 및 코딩환경 관리",
+    "section": "2. Jupyter에 커널 추가",
+    "text": "2. Jupyter에 커널 추가\npip install ipykernel ipykernel 설치\npython -m ipykernel install --user --name py310 --display-name \"Python 3.10.12\"Jupyter에 Python 3.10.12 커널 추가"
+  },
+  {
+    "objectID": "posts/Untitled1.html",
+    "href": "posts/Untitled1.html",
+    "title": "PP2024",
+    "section": "",
+    "text": "R.version\n\n               _                           \nplatform       x86_64-conda-linux-gnu      \narch           x86_64                      \nos             linux-gnu                   \nsystem         x86_64, linux-gnu           \nstatus                                     \nmajor          4                           \nminor          4.1                         \nyear           2024                        \nmonth          06                          \nday            14                          \nsvn rev        86737                       \nlanguage       R                           \nversion.string R version 4.4.1 (2024-06-14)\nnickname       Race for Your Life          \n\n\n\ninstall.packages(\"UsingR\")\n\nalso installing the dependencies ‘lattice’, ‘fs’, ‘rappdirs’, ‘nlme’, ‘Matrix’, ‘farver’, ‘labeling’, ‘munsell’, ‘R6’, ‘RColorBrewer’, ‘pkgconfig’, ‘stringi’, ‘backports’, ‘cachem’, ‘memoise’, ‘mime’, ‘sass’, ‘isoband’, ‘mgcv’, ‘scales’, ‘tibble’, ‘withr’, ‘stringr’, ‘magrittr’, ‘checkmate’, ‘htmlwidgets’, ‘rstudioapi’, ‘viridisLite’, ‘bslib’, ‘fontawesome’, ‘jquerylib’, ‘tinytex’, ‘xfun’, ‘yaml’, ‘highr’, ‘ggplot2’, ‘cluster’, ‘rpart’, ‘nnet’, ‘foreign’, ‘gtable’, ‘gridExtra’, ‘data.table’, ‘htmlTable’, ‘viridis’, ‘colorspace’, ‘rmarkdown’, ‘knitr’, ‘Formula’, ‘MASS’, ‘HistData’, ‘Hmisc’\n\n\nUpdating HTML index of packages in '.Library'\n\nMaking 'packages.html' ...\n done\n\n\n\n\nlibrary(UsingR)\n\nLoading required package: MASS\n\nLoading required package: HistData\n\nLoading required package: Hmisc\n\n\nAttaching package: ‘Hmisc’\n\n\nThe following objects are masked from ‘package:base’:\n\n    format.pval, units\n\n\n\n\n\noptions(repr.plot.width = 12, repr.plot.height = 6)\ndata(father.son)\nhead(father.son)\n\n\n\n\n\n\nfheight\nsheight\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\n1\n65.04851\n59.77827\n\n\n2\n63.25094\n63.21404\n\n\n3\n64.95532\n63.34242\n\n\n4\n65.75250\n62.79238\n\n\n5\n61.13723\n64.28113\n\n\n6\n63.02254\n64.24221\n\n\n\nA data.frame: 6 × 2"
+  },
+  {
+    "objectID": "posts/클래스_Student_RPS_설계.html",
+    "href": "posts/클래스_Student_RPS_설계.html",
+    "title": "클래스_Student/RPS_설계",
+    "section": "",
+    "text": "from IPython.core.display import HTML\nimport numpy as np\nimport pandas as pd\n* 중요 *\n사실 파이썬의 list도 클래스 종류임\n리스트 입력 값은 __init__ 메소드의 입력값\na = '123'\nlist(a)\n\n['1', '2', '3']\na = list()\na.__init__('123')\na\n\n['1', '2', '3']\na = list()\na\na= np.arange(4).reshape(2,2)\na\n\narray([[0, 1],\n       [2, 3]])\na.__str__()\n\n'[[0 1]\\n [2 3]]'\na.__repr__()\n\n'array([[0, 1],\\n       [2, 3]])'\nprint(a.__str__())\n\n[[0 1]\n [2 3]]"
+  },
+  {
+    "objectID": "posts/클래스_Student_RPS_설계.html#str__-과-__repr__의-차이",
+    "href": "posts/클래스_Student_RPS_설계.html#str__-과-__repr__의-차이",
+    "title": "클래스_Student/RPS_설계",
+    "section": "__str__ 과 __repr__의 차이",
+    "text": "__str__ 과 __repr__의 차이\nprint(ins) == print(ins.__str__)\n\na= np.arange(4).reshape(2,2)\n(print(a),print(a.__str__()))\n\n[[0 1]\n [2 3]]\n[[0 1]\n [2 3]]\n\n\n(None, None)\n\n\nins = print(ins.__repr__)\n\na= np.arange(4).reshape(2,2)\na,print(a.__repr__())\n\narray([[0, 1],\n       [2, 3]])\n\n\n(array([[0, 1],\n        [2, 3]]),\n None)"
+  },
+  {
+    "objectID": "posts/클래스_Student_RPS_설계.html#wk-2-과제",
+    "href": "posts/클래스_Student_RPS_설계.html#wk-2-과제",
+    "title": "클래스_Student/RPS_설계",
+    "section": "13wk-2 과제",
+    "text": "13wk-2 과제\n1. Student 클래스 설계\n\nclass Student:\n  def __init__(self,name,age,semester):\n    self.name = name\n    self.age = age\n    self.semester = semester\n  def __str__(self):\n    print_str = '''이름: {}\\n나이: {}\\n학기: {}'''.format(self.name,self.age,self.semester)\n    return print_str\n\n\n# 사용 예시\nboram = Student(name='김보람', age=20, semester=1)\nprint(boram)\n\n이름: 김보람\n나이: 20\n학기: 1\n\n\n\n# 사용 예시\nPaul = Student(name='김 폴', age=22, semester=2)\nprint(Paul)\n\n이름: 김 폴\n나이: 22\n학기: 2\n\n\n2. RPS 클래스 설계 (1)\n\nclass RPS:\n  def __init__(self,candidate):\n    self.candidate = candidate\n    self.actions = []\n  def pick(self):\n    self.actions.append(np.random.choice(self.candidate))\n  def _repr_html_(self):\n    html_str = '''\n      낼 수 있는 패: {}&lt;br&gt;\n      기록: {}\n      '''\n    return html_str.format(self.candidate,self.actions)\n\n\na = RPS(['가위','바위','보'])\na.pick()\na\n\n\n      낼 수 있는 패: ['가위', '바위', '보']\n      기록: ['바위']\n      \n\n\n\na = RPS(['가위','바위','보'])\n\n\na.candidate, a.actions\n\n(['가위', '바위', '보'], [])\n\n\n\na\n\n\n      낼 수 있는 패: ['가위', '바위', '보']\n      기록: []\n      \n\n\n\nfor i in range(5):\n    a.pick()\n\n\n      낼 수 있는 패: ['가위', '바위', '보']\n      기록: ['바위', '보', '보', '가위', '가위', '바위', '보', '보', '바위', '보', '바위', '보', '바위', '바위', '바위', '가위']\n      \n\n\n3. RPS 설계 (2)\n\na = RPS(['가위','보'])\nb = RPS(['가위'])\nrslt = []\nfor i in range(100):\n  a.pick()\n  b.pick()\n  if a.actions[-1] =='가위' and b.actions[-1] =='가위':\n    rslt.append('-')\n  elif a.actions[-1] =='보' and b.actions[-1] =='가위':\n    rslt.append('b')\n  else:\n    rslt.append('a')\n\n\n{'a의승리':rslt.count('a'),'무승부':rslt.count('-'),'b의승리':rslt.count('b')}\n\n{'a의승리': 0, '무승부': 53, 'b의승리': 47}\n\n\n4.RPS설계 (3)\n\na = RPS(['가위','보'])\nb = RPS(['가위','바위'])\nrslt = []\nfor i in range(100):\n  a.pick()\n  b.pick()\n  if a.actions[-1] =='가위' and b.actions[-1] =='가위':\n    rslt.append('-')\n  elif a.actions[-1] =='보' and b.actions[-1] =='가위':\n    rslt.append('b')\n  elif a.actions[-1] =='가위' and b.actions[-1] =='바위':\n    rslt.append('b')\n  else:\n    rslt.append('a')\n\n\n{'a의승리':rslt.count('a'),'무승부':rslt.count('-'),'b의승리':rslt.count('b')}\n\n{'a의승리': 21, '무승부': 29, 'b의승리': 50}"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "posts/클래스 공부 (2).html",
+    "href": "posts/클래스 공부 (2).html",
+    "title": "클래스 공부 (2)",
+    "section": "",
+    "text": "# import\nfrom IPython.core.display import HTML\n\n\n클래스공부 1단계: 메소드 (복습)\n\nclass JungKKuckMa:\n    def show(self):\n        _str = self.html_str.format(\n            ttl = self.title,\n            url = self.imgurl,\n            Q = self.ques,\n            A = self.ans,\n            hl = self.highlight\n        )\n        display(HTML(_str)) \n\n\npp2023 = JungKKuckMa()\n\n\nclass JungKKuckMa:\n    def __init__(self):\n        self.title = '버거킹 신메뉴 등장'\n        self.imgurl = 'https://image-cdn.hypb.st/https%3A%2F%2Fkr.hypebeast.com%2Ffiles%2F2023%2F10%2Fhamburgerking-2023.jpg?cbr=1&q=90'\n        self.ques = \"Q: 햄버거 남겨도 괜찮을까??\"\n        self.ans = \"A: 너는 다 먹을수 있어\"\n        self.highlight = '마음'\n        self.html_str =\\\n        '''\n        &lt;style&gt;\n            .title {{\n                font-family: \"Times New Roman\", serif;\n                font-size: 30px;\n                font-weight: 900;\n            }}\n            .text {{\n                font-family: \"Arial\", sans-serif;\n                font-size: 20px;\n                font-style: italic;\n            }}\n            .highlight {{\n                font-family: \"Montserrat\", monospace;\n                font-size: 35px;\n                font-weight: 900;\n                text-decoration: underline;\n                font-style: normal;\n                color: darkblue;\n                background-color: #FFFF00;\n            }}\n        &lt;/style&gt;\n        &lt;p class=\"title\"&gt;{ttl}&lt;/p&gt;\n        &lt;img src={url} width=\"600\"&gt;\n        &lt;p&gt; \\n &lt;/p&gt;\n        &lt;p class=\"text\"&gt;{Q}&lt;/p&gt;\n        &lt;p class=\"text\"&gt;{A}&lt;/p&gt;\n        &lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt;{hl}&lt;/span&gt;&lt;/p&gt;\n        '''\n    def show(self):\n        _str = self.html_str.format(\n            ttl = self.title,\n            url = self.imgurl,\n            Q = self.ques,\n            A = self.ans,\n            hl = self.highlight\n        )\n        display(HTML(_str))\n\n\npp2023 = JungKKuckMa()\n\n\npp2023.show()\n\n\n        \n        버거킹 신메뉴 등장\n        \n         \n \n        Q: 햄버거 남겨도 괜찮을까??\n        A: 너는 다 먹을수 있어\n        중요한 것은 꺾이지 않는 마음"
+  },
+  {
     "objectID": "posts/2023_12wk_2_클래스.html",
     "href": "posts/2023_12wk_2_클래스.html",
     "title": "클래스 공부 (4) / 메소드 init",
@@ -82,90 +180,6 @@
     "title": "클래스 공부 (4) / 메소드 init",
     "section": "12wk-2 과제",
     "text": "12wk-2 과제\n\nimport\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport yfinance as yf\n\n/usr/local/lib/python3.10/dist-packages/yfinance/base.py:48: FutureWarning: The default dtype for empty Series will be 'object' instead of 'float64' in a future version. Specify a dtype explicitly to silence this warning.\n  _empty_series = pd.Series()\n\n\n\n과제1\n\n\nclass Stock:\n  def __init__(self):\n    self.y = None\n    self.sy = None\n  def crawling(self,start_date,end_date,code):\n    self.y = yf.download(code, start=start_date, end=end_date)['Adj Close'].to_numpy()\n  def smoothing(self,n):\n    T = len(self.y)\n    self.n = n\n    M = (np.eye(T) + np.array([abs(i-j)&lt;2 for i in range(T) for j in range(T)]).reshape(T,T))/4\n    M[0,0] = 3/4\n    M[-1,-1] = 3/4\n    self.sy = np.linalg.matrix_power(M,self.n)@self.y\n  def plot(self):\n    plt.plot(y,label='y')\n    plt.plot(self.sy,label='y_hat')\n    plt.legend()\n\n\nins = Stock()\n\n\n# kakao 인스턴스\ncode = '035720.KS'\nstart_date = '2023-01-01'\nend_date = '2023-05-26'\n\n\nins.crawling(start_date,end_date,code)\n\n[*********************100%%**********************]  1 of 1 completed\n\n\n\nins.smoothing(100)\n\n\nins.plot()\n\n\n\n\n\n\n\n\n\n과제2\n\n\nclass LinearRegression:\n  def __init__(self,x,y):\n    self.x = x\n    self.y = y\n  def fit(self):\n    self.X = np.stack([np.ones(len(self.x)),x],axis=1)\n    self.y_hat = self.X@(np.linalg.inv((self.X).T@self.X))@((self.X).T@self.y)\n  def plot(self):\n    plt.plot(self.x,self.y,'o',label='(x,y)')\n    plt.plot(self.x,self.y_hat,'--r',label='(x,y_hat)')\n    plt.legend()\n\n\nx = np.array(\n    [0.007, 0.008, 0.008, 0.011, 0.037, 0.047, 0.059, 0.07 , 0.072,\n     0.075, 0.078, 0.08 , 0.082, 0.11 , 0.114, 0.117, 0.133, 0.15 ,\n     0.161, 0.163, 0.172, 0.208, 0.209, 0.221, 0.229, 0.231, 0.234,\n     0.235, 0.249, 0.251, 0.256, 0.269, 0.269, 0.273, 0.275, 0.298,\n     0.305, 0.309, 0.34 , 0.362, 0.371, 0.374, 0.382, 0.387, 0.388,\n     0.394, 0.395, 0.397, 0.401, 0.404, 0.419, 0.433, 0.436, 0.466,\n     0.481, 0.492, 0.495, 0.508, 0.511, 0.512, 0.554, 0.57 , 0.574,\n     0.575, 0.584, 0.6  , 0.601, 0.615, 0.618, 0.623, 0.629, 0.633,\n     0.646, 0.65 , 0.654, 0.662, 0.673, 0.686, 0.702, 0.744, 0.754,\n     0.766, 0.772, 0.781, 0.798, 0.8  , 0.807, 0.836, 0.837, 0.871,\n     0.873, 0.877, 0.879, 0.889, 0.891, 0.902, 0.904, 0.923, 0.952,\n     0.981]\n)\ny = np.array(\n    [4.004, 4.189, 5.483, 4.902, 5.174, 4.468, 4.95 , 4.463, 5.476,\n     4.446, 4.764, 5.244, 4.357, 4.796, 5.464, 4.196, 5.244, 4.868,\n     5.358, 4.493, 4.831, 4.716, 4.929, 4.588, 4.718, 4.389, 4.985,\n     4.266, 4.291, 3.697, 4.248, 4.88 , 5.126, 4.563, 4.131, 4.728,\n     4.168, 4.584, 3.953, 4.747, 3.592, 5.023, 4.601, 3.904, 4.092,\n     4.37 , 3.922, 4.145, 4.576, 4.25 , 4.051, 3.616, 4.634, 3.496,\n     4.631, 4.025, 4.197, 4.226, 4.808, 3.676, 3.834, 3.197, 4.36 ,\n     3.547, 3.956, 3.522, 4.26 , 3.443, 3.97 , 4.068, 4.186, 3.262,\n     3.452, 3.946, 3.875, 3.444, 3.501, 3.959, 3.843, 2.679, 3.266,\n     3.506, 2.916, 3.714, 4.007, 2.795, 3.329, 2.756, 3.72 , 2.381,\n     2.798, 3.035, 3.492, 3.22 , 3.073, 3.85 , 3.233, 3.396, 3.264,\n     2.986]\n)\n\n\nLR = LinearRegression(x,y)\n\n\nLR.fit()\n\n\nLR.plot()"
-  },
-  {
-    "objectID": "posts/클래스 공부 (2).html",
-    "href": "posts/클래스 공부 (2).html",
-    "title": "클래스 공부 (2)",
-    "section": "",
-    "text": "# import\nfrom IPython.core.display import HTML\n\n\n클래스공부 1단계: 메소드 (복습)\n\nclass JungKKuckMa:\n    def show(self):\n        _str = self.html_str.format(\n            ttl = self.title,\n            url = self.imgurl,\n            Q = self.ques,\n            A = self.ans,\n            hl = self.highlight\n        )\n        display(HTML(_str)) \n\n\npp2023 = JungKKuckMa()\n\n\nclass JungKKuckMa:\n    def __init__(self):\n        self.title = '버거킹 신메뉴 등장'\n        self.imgurl = 'https://image-cdn.hypb.st/https%3A%2F%2Fkr.hypebeast.com%2Ffiles%2F2023%2F10%2Fhamburgerking-2023.jpg?cbr=1&q=90'\n        self.ques = \"Q: 햄버거 남겨도 괜찮을까??\"\n        self.ans = \"A: 너는 다 먹을수 있어\"\n        self.highlight = '마음'\n        self.html_str =\\\n        '''\n        &lt;style&gt;\n            .title {{\n                font-family: \"Times New Roman\", serif;\n                font-size: 30px;\n                font-weight: 900;\n            }}\n            .text {{\n                font-family: \"Arial\", sans-serif;\n                font-size: 20px;\n                font-style: italic;\n            }}\n            .highlight {{\n                font-family: \"Montserrat\", monospace;\n                font-size: 35px;\n                font-weight: 900;\n                text-decoration: underline;\n                font-style: normal;\n                color: darkblue;\n                background-color: #FFFF00;\n            }}\n        &lt;/style&gt;\n        &lt;p class=\"title\"&gt;{ttl}&lt;/p&gt;\n        &lt;img src={url} width=\"600\"&gt;\n        &lt;p&gt; \\n &lt;/p&gt;\n        &lt;p class=\"text\"&gt;{Q}&lt;/p&gt;\n        &lt;p class=\"text\"&gt;{A}&lt;/p&gt;\n        &lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt;{hl}&lt;/span&gt;&lt;/p&gt;\n        '''\n    def show(self):\n        _str = self.html_str.format(\n            ttl = self.title,\n            url = self.imgurl,\n            Q = self.ques,\n            A = self.ans,\n            hl = self.highlight\n        )\n        display(HTML(_str))\n\n\npp2023 = JungKKuckMa()\n\n\npp2023.show()\n\n\n        \n        버거킹 신메뉴 등장\n        \n         \n \n        Q: 햄버거 남겨도 괜찮을까??\n        A: 너는 다 먹을수 있어\n        중요한 것은 꺾이지 않는 마음"
-  },
-  {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code."
-  },
-  {
-    "objectID": "posts/클래스_Student_RPS_설계.html",
-    "href": "posts/클래스_Student_RPS_설계.html",
-    "title": "클래스_Student/RPS_설계",
-    "section": "",
-    "text": "from IPython.core.display import HTML\nimport numpy as np\nimport pandas as pd\n* 중요 *\n사실 파이썬의 list도 클래스 종류임\n리스트 입력 값은 __init__ 메소드의 입력값\na = '123'\nlist(a)\n\n['1', '2', '3']\na = list()\na.__init__('123')\na\n\n['1', '2', '3']\na = list()\na\na= np.arange(4).reshape(2,2)\na\n\narray([[0, 1],\n       [2, 3]])\na.__str__()\n\n'[[0 1]\\n [2 3]]'\na.__repr__()\n\n'array([[0, 1],\\n       [2, 3]])'\nprint(a.__str__())\n\n[[0 1]\n [2 3]]"
-  },
-  {
-    "objectID": "posts/클래스_Student_RPS_설계.html#str__-과-__repr__의-차이",
-    "href": "posts/클래스_Student_RPS_설계.html#str__-과-__repr__의-차이",
-    "title": "클래스_Student/RPS_설계",
-    "section": "__str__ 과 __repr__의 차이",
-    "text": "__str__ 과 __repr__의 차이\nprint(ins) == print(ins.__str__)\n\na= np.arange(4).reshape(2,2)\n(print(a),print(a.__str__()))\n\n[[0 1]\n [2 3]]\n[[0 1]\n [2 3]]\n\n\n(None, None)\n\n\nins = print(ins.__repr__)\n\na= np.arange(4).reshape(2,2)\na,print(a.__repr__())\n\narray([[0, 1],\n       [2, 3]])\n\n\n(array([[0, 1],\n        [2, 3]]),\n None)"
-  },
-  {
-    "objectID": "posts/클래스_Student_RPS_설계.html#wk-2-과제",
-    "href": "posts/클래스_Student_RPS_설계.html#wk-2-과제",
-    "title": "클래스_Student/RPS_설계",
-    "section": "13wk-2 과제",
-    "text": "13wk-2 과제\n1. Student 클래스 설계\n\nclass Student:\n  def __init__(self,name,age,semester):\n    self.name = name\n    self.age = age\n    self.semester = semester\n  def __str__(self):\n    print_str = '''이름: {}\\n나이: {}\\n학기: {}'''.format(self.name,self.age,self.semester)\n    return print_str\n\n\n# 사용 예시\nboram = Student(name='김보람', age=20, semester=1)\nprint(boram)\n\n이름: 김보람\n나이: 20\n학기: 1\n\n\n\n# 사용 예시\nPaul = Student(name='김 폴', age=22, semester=2)\nprint(Paul)\n\n이름: 김 폴\n나이: 22\n학기: 2\n\n\n2. RPS 클래스 설계 (1)\n\nclass RPS:\n  def __init__(self,candidate):\n    self.candidate = candidate\n    self.actions = []\n  def pick(self):\n    self.actions.append(np.random.choice(self.candidate))\n  def _repr_html_(self):\n    html_str = '''\n      낼 수 있는 패: {}&lt;br&gt;\n      기록: {}\n      '''\n    return html_str.format(self.candidate,self.actions)\n\n\na = RPS(['가위','바위','보'])\na.pick()\na\n\n\n      낼 수 있는 패: ['가위', '바위', '보']\n      기록: ['바위']\n      \n\n\n\na = RPS(['가위','바위','보'])\n\n\na.candidate, a.actions\n\n(['가위', '바위', '보'], [])\n\n\n\na\n\n\n      낼 수 있는 패: ['가위', '바위', '보']\n      기록: []\n      \n\n\n\nfor i in range(5):\n    a.pick()\n\n\n      낼 수 있는 패: ['가위', '바위', '보']\n      기록: ['바위', '보', '보', '가위', '가위', '바위', '보', '보', '바위', '보', '바위', '보', '바위', '바위', '바위', '가위']\n      \n\n\n3. RPS 설계 (2)\n\na = RPS(['가위','보'])\nb = RPS(['가위'])\nrslt = []\nfor i in range(100):\n  a.pick()\n  b.pick()\n  if a.actions[-1] =='가위' and b.actions[-1] =='가위':\n    rslt.append('-')\n  elif a.actions[-1] =='보' and b.actions[-1] =='가위':\n    rslt.append('b')\n  else:\n    rslt.append('a')\n\n\n{'a의승리':rslt.count('a'),'무승부':rslt.count('-'),'b의승리':rslt.count('b')}\n\n{'a의승리': 0, '무승부': 53, 'b의승리': 47}\n\n\n4.RPS설계 (3)\n\na = RPS(['가위','보'])\nb = RPS(['가위','바위'])\nrslt = []\nfor i in range(100):\n  a.pick()\n  b.pick()\n  if a.actions[-1] =='가위' and b.actions[-1] =='가위':\n    rslt.append('-')\n  elif a.actions[-1] =='보' and b.actions[-1] =='가위':\n    rslt.append('b')\n  elif a.actions[-1] =='가위' and b.actions[-1] =='바위':\n    rslt.append('b')\n  else:\n    rslt.append('a')\n\n\n{'a의승리':rslt.count('a'),'무승부':rslt.count('-'),'b의승리':rslt.count('b')}\n\n{'a의승리': 21, '무승부': 29, 'b의승리': 50}"
-  },
-  {
-    "objectID": "posts/server사용법.html",
-    "href": "posts/server사용법.html",
-    "title": "터미널,디렉터리,패키지 및 코딩환경 관리",
-    "section": "",
-    "text": "ssh root@210.117.173.186 -p &lt;port번호;학번뒷자리&gt; 서버 접속"
-  },
-  {
-    "objectID": "posts/server사용법.html#bash에서-가상환경-생성-및-활성화",
-    "href": "posts/server사용법.html#bash에서-가상환경-생성-및-활성화",
-    "title": "터미널,디렉터리,패키지 및 코딩환경 관리",
-    "section": "1. bash에서 가상환경 생성 및 활성화",
-    "text": "1. bash에서 가상환경 생성 및 활성화\nconda create -n py310 python=3.10.12 Python 3.10.12 가상환경 생성\nconda activate py310 가상환경 활성화"
-  },
-  {
-    "objectID": "posts/server사용법.html#jupyter에-커널-추가",
-    "href": "posts/server사용법.html#jupyter에-커널-추가",
-    "title": "터미널,디렉터리,패키지 및 코딩환경 관리",
-    "section": "2. Jupyter에 커널 추가",
-    "text": "2. Jupyter에 커널 추가\npip install ipykernel ipykernel 설치\npython -m ipykernel install --user --name py310 --display-name \"Python 3.10.12\"Jupyter에 Python 3.10.12 커널 추가"
-  },
-  {
-    "objectID": "posts/2wk_2.html",
-    "href": "posts/2wk_2.html",
-    "title": "2wk 적분 자세히",
-    "section": "",
-    "text": "import numpy as np\nimport matplotlib.pyplot as plt\n\n\n16번(그래프의 교점)\n\nx = np.linspace(1,3,100)\nf = 3**(x-8)\ng = (1/27)**x\nplt.plot(x,f)\nplt.plot(x,g)\n\n\n\n\n\n\n\n\n\n\n11번(등차수열)\n\nn = np.linspace(1,15,15)\nd =4\nan = (n-7)*d\nnp.abs(an[5]),np.abs(an[7]),\n\n(4.0, 4.0, [60.0])\n\n\n\nnp.sum(an) #답 구하기!\n\n60.0\n\n\n#8번 삼차함수 간단한 적분 (y값 mean * 밑변) + np.random.rand\n\n#풀이 1\nf = lambda x: (3*x**4 -3*x)/(x-1)\nx = np.linspace(-2,2,1000)\nplt.plot(x,f(x),'--') #그래프 그리기\nnp.mean(f(x))*4 # 정답\n##############\n# 풀이 2 (rand)\n# x_rand = np.random.rand(1000000)*4 - 2  ## -2~2 까지 임의의수가 골고루 퍼져있음.\n# np.mean(f(x_rand)) *4\n# random.rand --&gt; 기본 0~1 / 범위만큼 곱하고 + 연산자로 범위 조절\n##############\n# 풀이3 (사다리꼴법 사용)\n# f = lambda x: (3*x**4 -3*x)/(x-1)\n# x = np.linspace(-2,2,10000)\n# delta = x[1] - x[0] #x의 단위 생성\n# f_arr = f(x) # y값들의 array생성\n# F_arr = np.cumsum(f_arr) * delta\n# F_arr[-1]\n# # x[np.argmin(F_arr)] ## 넓이가 0이 되는 x값\n\n16.053206593500782\n\n\n\n\n\n\n\n\n\n\n\n26번 입체도형(삼각함수) 적분\n\nx =np.linspace(3/4*np.pi,5/4*np.pi,1000)\nf = lambda x : np.sqrt((1-2*x)*np.cos(x))\nnp.mean(f(x)**2)*(2/4*np.pi) #y값에 정사각형이므로 제곱을 해줌\n\n7.469947367280549\n\n\n\n\n19번 삼각함수와 bool연산\n\nx = np.linspace(1,15,15)\nf = lambda x:np.sin(np.pi/4*x)\nsum(x[f(2+x)*f(2-x) &lt;1/4])\n# x[f(2+x)*f(2-x) &lt;1/4] ## 조건을 만족시키는 x값\n\n32.0\n\n\n\n\n12번 t값에 따른 (3차) 함수 넓이 변화 / 함수정의 사용(make_gfunction)\n\nx = np.linspace(0,10,1001)\nt = 3.2 # t=3.2로 임의로 정의\nf = lambda x : 1/9*x*(x-6)*(x-9)\n# g(x) 정의\ndef make_gfunction(t):\n  def g(x):\n    if x&lt;t:\n      return f(x)\n    else:\n      return -(x-t)+f(t)\n  return g\n#### t값에 따른 그래프 그리기\ng=make_gfunction(t)\nfx = list(map(f,x))\ngx = list(map(g,x))\nplt.plot(x,fx,label=\"f(x)\")\nplt.plot(x,gx,label=\"g(x)\")\n### g(x)와 x축 넓이 구하는 함수생성\ndef cal_area(t):\n  # t=3.2\n  g = make_gfunction(t)\n  fx = list(map(f,x))\n  gx = list(map(g,x))\n  Gx = np.cumsum(gx)*0.01\n  S = np.max(Gx)\n  return S\n\n\n\n\n\n\n\n\n\nt = np.linspace(0,6,101)[1:-1]\nSt = list(map(cal_area,t))\nnp.max(St)\n\n32.24994166666667\n\n\n\n\nrange 활용(with 등차수열)\n\nlist(range(10))\n\n[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\nlist(range(3,10,2))\n\n[3, 5, 7, 9]\n\n\n\nf = lambda x: x**2\nlist(map(f,[1,2,3,4]))\n\n[1, 4, 9, 16]\n\n\n\nnp.linspace(1,31,11) ## 1부터 31까지 3단위로 쪼개기\n# = np.array(range(1,31,3))\n# = np.arange(1,32,3)\n# = n = np.arange(1,12) / 3*n-2\n# = a = lambda n: 3*n-2 / a(1) ~ a(11)\n# = n = np.arange(1,12) / a= lambda n: 3*n-2 / a(n)\n# = n = np.arange(1,12) / a = lambda n: 3*n-2 / list(map(a,n))\n# = n = np.arange(32) / n[1::3]\n\narray([ 1.,  4.,  7., 10., 13., 16., 19., 22., 25., 28., 31.])\n\n\n\nlist 와 np.array의 관계(map)\n\nmap 함수는 list에 적용되지만 np.array(넘파이 어레이)에는 적용 되지않음.\n\n\n\n\n접선 리턴\n\ndef make_func(x0):\n    f = lambda x: x**2\n    def func(x):\n        h = 0.0001\n        a = (f(x0+h)-f(x0))/h\n        return a*(x-x0) + f(x0)\n    return func\n\n\nx = np.linspace(-5,5,101)\ntan_line = make_func(1.2)\nplt.plot(x,x**2,'--')\nplt.plot(x,tan_line(x),'--')"
-  },
-  {
-    "objectID": "posts/numpy_+_행렬.html",
-    "href": "posts/numpy_+_행렬.html",
-    "title": "numpy + 행렬",
-    "section": "",
-    "text": "import numpy as np"
-  },
-  {
-    "objectID": "posts/numpy_+_행렬.html#행렬-만들기",
-    "href": "posts/numpy_+_행렬.html#행렬-만들기",
-    "title": "numpy + 행렬",
-    "section": "1) 행렬 만들기",
-    "text": "1) 행렬 만들기\n\n행렬 만들 때 기본적으로 np.array 를 사용 해서 만들고, 리스트 or 튜플 형태를 받아서 사용함.\n\n\n_list = [1,2,3]\nnp.array(_list)\n\narray([1, 2, 3])\n\n\n\n_list1 = [1,2,3]\n_list2 = [4,5,6]\nnp.array([_list1,_list2]) # 리스트를 따로 받을 때는 대괄호 한번씩 더해줘야함\n\narray([[1, 2, 3],\n       [4, 5, 6]])\n\n\n\n넘파이 행렬 함수 (1)\n\nreshape\n\n\na=np.array([11,22,33,44,55,66])\na.reshape(2,3)\n\narray([[11, 22, 33],\n       [44, 55, 66]])\n\n\n\narange\n\n\na = np.arange(5)\nb = np.arange(1,5)\na,b\n\n(array([0, 1, 2, 3, 4]), array([1, 2, 3, 4]))\n\n\n\nlinspace\n\n\nnp.linspace(0,1,12) #0부터1까지 12개로 나눠서 배열선언\n\narray([0.        , 0.09090909, 0.18181818, 0.27272727, 0.36363636,\n       0.45454545, 0.54545455, 0.63636364, 0.72727273, 0.81818182,\n       0.90909091, 1.        ])\n\n\n\n역행렬 + 전치행렬 + 행렬곱\n\n\nA=np.arange(4).reshape(2,2)\nA.T #T는 전치행렬을 구해줌\n\narray([[0, 1],\n       [2, 3]])\n\n\n\nA=np.arange(4).reshape(2,2)\nnp.linalg.inv(A) #np.linalg.inv는 역행렬을 구해줌\n\narray([[-1.5,  0.5],\n       [ 1. ,  0. ]])\n\n\n\nA=np.arange(4).reshape(2,2)\nnp.linalg.inv(A)\nA@np.linalg.inv(A) #@는 행렬곱을 구해줌\n\narray([[1., 0.],\n       [0., 1.]])\n\n\n\n\n넘파이 행렬함수 (2)\n\nzeros\n\n\nnp.zeros(3)\n\narray([0., 0., 0.])\n\n\n\nones\n\n\na = np.ones(3)\nb = np.ones((3,3))\na,b\n\n(array([1., 1., 1.]),\n array([[1., 1., 1.],\n        [1., 1., 1.],\n        [1., 1., 1.]]))\n\n\n\neye\n\n\nnp.eye(3)\n\narray([[1., 0., 0.],\n       [0., 1., 0.],\n       [0., 0., 1.]])\n\n\n\ndiag\n\n\nnp.diag([2,3,4,-2])\n\narray([[ 2,  0,  0,  0],\n       [ 0,  3,  0,  0],\n       [ 0,  0,  4,  0],\n       [ 0,  0,  0, -2]])"
-  },
-  {
-    "objectID": "posts/numpy_+_행렬.html#행렬-인덱싱",
-    "href": "posts/numpy_+_행렬.html#행렬-인덱싱",
-    "title": "numpy + 행렬",
-    "section": "행렬 인덱싱",
-    "text": "행렬 인덱싱\n\nA = [[1,2,3,4],[-1,-2,-3,-4],[5,6,7,8],[-5,-6,-7,-8]]\nA2 = np.array(A)\nA2\n\narray([[ 1,  2,  3,  4],\n       [-1, -2, -3, -4],\n       [ 5,  6,  7,  8],\n       [-5, -6, -7, -8]])\n\n\n\nA2[[0,2],:] #1행,3행 추출\n\narray([[1, 2, 3, 4],\n       [5, 6, 7, 8]])\n\n\n\nA2[:,[0]]\n\narray([[ 1],\n       [-1],\n       [ 5],\n       [-5]])\n\n\n\nA2[:,0]\n\narray([ 1, -1,  5, -5])"
   },
   {
     "objectID": "posts/징검다리 문제.html",
@@ -571,6 +585,6 @@
     "href": "index.html",
     "title": "PP2024",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\n \n\n\nImport\n\n\n \n\n\n\n\nFeb 3, 2026\n\n\n리스트와 반복문\n\n\n이정민 \n\n\n\n\nJan 2, 2026\n\n\n클래스_Student/RPS_설계\n\n\n이정민 \n\n\n\n\nDec 2, 2025\n\n\n클래스 공부 (4) / 메소드 init\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (2)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nnumpy + 행렬\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nmatplotlib 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (3)\n\n\n이정민 \n\n\n\n\nJul 11, 2024\n\n\n터미널,디렉터리,패키지 및 코딩환경 관리\n\n\n이정민 \n\n\n\n\nApr 7, 2024\n\n\n4주차~5주차\n\n\n이정민 \n\n\n\n\nMar 27, 2024\n\n\n2wk 적분 자세히\n\n\n이정민 \n\n\n\n\nMar 27, 2024\n\n\n1주차~2주차\n\n\n이정민 \n\n\n\n\nFeb 21, 2024\n\n\nPost With Code\n\n\nHarlow Malloc\n\n\n\n\nFeb 18, 2024\n\n\nWelcome To My Blog\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\n \n\n\n \n\n\n \n\n\n\n\n \n\n\n \n\n\n \n\n\n\n\n \n\n\n \n\n\n \n\n\n\n\n \n\n\nImport\n\n\n \n\n\n\n\nFeb 3, 2026\n\n\n리스트와 반복문\n\n\n이정민 \n\n\n\n\nJan 2, 2026\n\n\n클래스_Student/RPS_설계\n\n\n이정민 \n\n\n\n\nDec 2, 2025\n\n\n클래스 공부 (4) / 메소드 init\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (2)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nnumpy + 행렬\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\nmatplotlib 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (1)\n\n\n이정민 \n\n\n\n\nSep 2, 2025\n\n\n클래스 공부 (3)\n\n\n이정민 \n\n\n\n\nJul 11, 2024\n\n\n터미널,디렉터리,패키지 및 코딩환경 관리\n\n\n이정민 \n\n\n\n\nApr 7, 2024\n\n\n4주차~5주차\n\n\n이정민 \n\n\n\n\nMar 27, 2024\n\n\n2wk 적분 자세히\n\n\n이정민 \n\n\n\n\nMar 27, 2024\n\n\n1주차~2주차\n\n\n이정민 \n\n\n\n\nFeb 21, 2024\n\n\nPost With Code\n\n\nHarlow Malloc\n\n\n\n\nFeb 18, 2024\n\n\nWelcome To My Blog\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
   }
 ]

@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="이정민">
-<meta name="dcterms.date" content="2024-07-11">
 
-<title>PP2024 - 터미널,디렉터리,패키지 및 코딩환경 관리</title>
+<title>PP2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,10 +20,44 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -68,6 +100,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -107,146 +142,123 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#서버접속" id="toc-서버접속" class="nav-link active" data-scroll-target="#서버접속">서버접속</a></li>
-  <li><a href="#디렉토리-관리-리눅스-명령어" id="toc-디렉토리-관리-리눅스-명령어" class="nav-link" data-scroll-target="#디렉토리-관리-리눅스-명령어">디렉토리 관리 리눅스 명령어</a></li>
-  <li><a href="#tmux-터미널-관리-프로그램" id="toc-tmux-터미널-관리-프로그램" class="nav-link" data-scroll-target="#tmux-터미널-관리-프로그램">tmux (터미널 관리 프로그램)</a></li>
-  <li><a href="#아나콘다를-이용-한-실습환경-만들기" id="toc-아나콘다를-이용-한-실습환경-만들기" class="nav-link" data-scroll-target="#아나콘다를-이용-한-실습환경-만들기">아나콘다를 이용 한 실습환경 만들기</a></li>
-  <li><a href="#패키지어플리케이션-관리" id="toc-패키지어플리케이션-관리" class="nav-link" data-scroll-target="#패키지어플리케이션-관리">패키지(어플리케이션) 관리</a></li>
-  <li><a href="#깃헙-블로그-관리" id="toc-깃헙-블로그-관리" class="nav-link" data-scroll-target="#깃헙-블로그-관리">깃헙 블로그 관리</a></li>
-  <li><a href="#기타" id="toc-기타" class="nav-link" data-scroll-target="#기타">기타</a></li>
-  <li><a href="#주피터-커널-변경방법파이썬-버전관리" id="toc-주피터-커널-변경방법파이썬-버전관리" class="nav-link" data-scroll-target="#주피터-커널-변경방법파이썬-버전관리">주피터 커널 변경방법(파이썬 버전관리)</a>
-  <ul class="collapse">
-  <li><a href="#bash에서-가상환경-생성-및-활성화" id="toc-bash에서-가상환경-생성-및-활성화" class="nav-link" data-scroll-target="#bash에서-가상환경-생성-및-활성화">1. bash에서 가상환경 생성 및 활성화</a></li>
-  <li><a href="#jupyter에-커널-추가" id="toc-jupyter에-커널-추가" class="nav-link" data-scroll-target="#jupyter에-커널-추가">2. Jupyter에 커널 추가</a></li>
-  </ul></li>
-  <li><a href="#r언어-커널-만들기" id="toc-r언어-커널-만들기" class="nav-link" data-scroll-target="#r언어-커널-만들기">R언어 커널 만들기</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="server사용법.out.ipynb" download="server사용법.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
-    </div>
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Untitled1.out.ipynb" download="Untitled1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">터미널,디렉터리,패키지 및 코딩환경 관리</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">server</div>
-  </div>
-  </div>
+<main class="content page-columns page-full" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>이정민 </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">July 11, 2024</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="서버접속" class="level1">
-<h1>서버접속</h1>
-<p><code>ssh root@210.117.173.186 -p &lt;port번호;학번뒷자리&gt;</code> 서버 접속</p>
-<p><code>jupyter lab --ip="0.0.0.0" --port={MY-PORT} --no-browser --allow-root</code> 기본 주피터랩 접속</p>
-</section>
-<section id="디렉토리-관리-리눅스-명령어" class="level1">
-<h1>디렉토리 관리 리눅스 명령어</h1>
-<p><code>dir</code> -&gt; 디렉토리 확인</p>
-<p><code>mkdir</code> -&gt; 디렉토리 만들기</p>
-<p><code>cd &lt;dir&gt;</code> change dir 디렉토리(폴더) 안으로 들어가기</p>
-<p><code>!&lt;명령어&gt;</code> 주피터 내에서 터미널 명령어 치는 방법</p>
-<p><code>cd ..</code> 상위 디렉토리로 이동</p>
-<p><code>rm -rf &lt;dir&gt;</code> 디렉토리 강제삭제</p>
-<p><code>du -sh</code> 용량 확인</p>
-<p><code>find / -size +100M</code> 대용량 파일 확인 ( 100MB 이상의 파일을 찾기 )</p>
-<p><code>/(슬래시)찾는단어</code> 원하는 단어 찾기</p>
-<p><code>esc</code> 누르고 <code>:wq</code> 저장 후 종료</p>
-<p><code>i</code> 편집모드</p>
-</section>
-<section id="tmux-터미널-관리-프로그램" class="level1">
-<h1>tmux (터미널 관리 프로그램)</h1>
-<p><code>apt-get install tmux</code> tmux 다운로드</p>
-<p><code>tmux ls</code> 터미널 리스트 확인</p>
-<p><code>tmux kill-session -t &lt;session&gt;</code> 터미널 session 삭제</p>
-<p><code>tmux new -s &lt;session_name&gt;</code> session 만들기</p>
-<p><code>tmux attach -t &lt;session_name&gt;</code> session에 접속</p>
-<p><code>ctrl+b</code> + <code>손떼고</code> + <code>d</code> base에 접속</p>
-</section>
-<section id="아나콘다를-이용-한-실습환경-만들기" class="level1">
-<h1>아나콘다를 이용 한 실습환경 만들기</h1>
-<p><code>conda create &lt;env&gt;</code> conda 환경 생성</p>
-<p><code>conda activate &lt;env&gt;</code> conda 환경 실행</p>
-<p><code>conda env remove -n &lt;env&gt;</code> conda 환경 제거</p>
-<p><code>conda install -c conda-forge r-essentials</code> r 다운로드</p>
-<p><code>conda install -c conda-forge notebook</code> 주피터노트북 다운로드</p>
-</section>
-<section id="패키지어플리케이션-관리" class="level1">
-<h1>패키지(어플리케이션) 관리</h1>
-<p><code>pip install &lt;module&gt;=&lt;version&gt;</code> 모듈 다운로드하기</p>
-<p><code>pip list</code> 패키지 리스트와 버전 확인</p>
-<p><code>!&lt;module&gt; --version</code> 모듈 버전 확인</p>
-</section>
-<section id="깃헙-블로그-관리" class="level1">
-<h1>깃헙 블로그 관리</h1>
-<p><code>git clone {레포 주소}</code> : 깃헙 레포 복사</p>
-<p><code>quarto create-project --type website --template blog</code> : 블로그 생성</p>
-<p><code>quarto publish gh-pages</code> : Quarto 문서를 GitHub Pages에 배포</p>
-<p><code>git add .</code> -&gt; <code>git commit -m .</code> -&gt; <code>git push</code> : 깃헙 연동</p>
-<p><code>quarto publish --no-browser --no-prompt</code> : 블로그 게시물 포스팅</p>
-</section>
-<section id="기타" class="level1">
-<h1>기타</h1>
-<p><code>ctr shift p</code> &gt;create ### 코드스페이스에서 새로운 환경 노트북 생성</p>
-<p><code>./code tunnel</code> base에서 code 스페이스 실행 -&gt; <code>https://vscode.dev/tunnel/&lt;name&gt;/</code></p>
-<p><code>&gt; installspec()</code> 주피터 노트북에서 R사용하도록 함</p>
-<p><code>torch.cuda.is_available</code> gpu 연결 확인</p>
-</section>
-<section id="주피터-커널-변경방법파이썬-버전관리" class="level1">
-<h1>주피터 커널 변경방법(파이썬 버전관리)</h1>
-<section id="bash에서-가상환경-생성-및-활성화" class="level2">
-<h2 class="anchored" data-anchor-id="bash에서-가상환경-생성-및-활성화">1. bash에서 가상환경 생성 및 활성화</h2>
-<p><code>conda create -n py310 python=3.10.12</code> Python 3.10.12 가상환경 생성</p>
-<p><code>conda activate py310</code> 가상환경 활성화</p>
-</section>
-<section id="jupyter에-커널-추가" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter에-커널-추가">2. Jupyter에 커널 추가</h2>
-<p><code>pip install ipykernel</code> ipykernel 설치</p>
-<p><code>python -m ipykernel install --user --name py310 --display-name "Python 3.10.12"</code>Jupyter에 Python 3.10.12 커널 추가</p>
-</section>
-</section>
-<section id="r언어-커널-만들기" class="level1">
-<h1>R언어 커널 만들기</h1>
-<ol type="1">
-<li><p>conda create –name my_r_env</p></li>
-<li><p>conda activate my_r_env</p></li>
-<li><p>conda install -c conda-forge r-base=4.4.1</p></li>
-<li><p>conda install -c {my_r_env} r-irkernel</p></li>
-<li><p>주피터 설치 (conda install -c conda-forge notebook)</p></li>
-<li><p>명령프럼프트에서 -&gt; IRkernel::installspec(name = ‘my_r_env’, displayname = ‘Custom R Kernel’)</p></li>
-</ol>
+<div id="03d93cf9-214b-4470-beff-3ce413ef836a" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>R.version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>               _                           
+platform       x86_64-conda-linux-gnu      
+arch           x86_64                      
+os             linux-gnu                   
+system         x86_64, linux-gnu           
+status                                     
+major          4                           
+minor          4.1                         
+year           2024                        
+month          06                          
+day            14                          
+svn rev        86737                       
+language       R                           
+version.string R version 4.4.1 (2024-06-14)
+nickname       Race for Your Life          </code></pre>
+</div>
+</div>
+<div id="790092df-6fae-4419-b952-ac1912c3d313" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"UsingR"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>also installing the dependencies ‘lattice’, ‘fs’, ‘rappdirs’, ‘nlme’, ‘Matrix’, ‘farver’, ‘labeling’, ‘munsell’, ‘R6’, ‘RColorBrewer’, ‘pkgconfig’, ‘stringi’, ‘backports’, ‘cachem’, ‘memoise’, ‘mime’, ‘sass’, ‘isoband’, ‘mgcv’, ‘scales’, ‘tibble’, ‘withr’, ‘stringr’, ‘magrittr’, ‘checkmate’, ‘htmlwidgets’, ‘rstudioapi’, ‘viridisLite’, ‘bslib’, ‘fontawesome’, ‘jquerylib’, ‘tinytex’, ‘xfun’, ‘yaml’, ‘highr’, ‘ggplot2’, ‘cluster’, ‘rpart’, ‘nnet’, ‘foreign’, ‘gtable’, ‘gridExtra’, ‘data.table’, ‘htmlTable’, ‘viridis’, ‘colorspace’, ‘rmarkdown’, ‘knitr’, ‘Formula’, ‘MASS’, ‘HistData’, ‘Hmisc’
 
 
-</section>
+Updating HTML index of packages in '.Library'
+
+Making 'packages.html' ...
+ done
+</code></pre>
+</div>
+</div>
+<div id="e8a24990-3944-4a4e-9f2b-9dc3e61a8ede" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(UsingR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: MASS
+
+Loading required package: HistData
+
+Loading required package: Hmisc
+
+
+Attaching package: ‘Hmisc’
+
+
+The following objects are masked from ‘package:base’:
+
+    format.pval, units
+
+</code></pre>
+</div>
+</div>
+<div id="6610b2fd-8ba1-4df0-bc4a-5f8276782cb8" class="cell page-columns page-full" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width =</span> <span class="dv">12</span>, <span class="at">repr.plot.height =</span> <span class="dv">6</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(father.son)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(father.son)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display page-columns page-full">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">fheight</th>
+<th data-quarto-table-cell-role="th" scope="col">sheight</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">1</td>
+<td>65.04851</td>
+<td>59.77827</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row">2</td>
+<td>63.25094</td>
+<td>63.21404</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">3</td>
+<td>64.95532</td>
+<td>63.34242</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row">4</td>
+<td>65.75250</td>
+<td>62.79238</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">5</td>
+<td>61.13723</td>
+<td>64.28113</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row">6</td>
+<td>63.02254</td>
+<td>64.24221</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-table-caption margin-caption">A data.frame: 6 × 2</div></div>
+</div>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

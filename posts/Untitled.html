@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="이정민">
-<meta name="dcterms.date" content="2024-07-11">
 
-<title>PP2024 - 터미널,디렉터리,패키지 및 코딩환경 관리</title>
+<title>PP2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,146 +105,16 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#서버접속" id="toc-서버접속" class="nav-link active" data-scroll-target="#서버접속">서버접속</a></li>
-  <li><a href="#디렉토리-관리-리눅스-명령어" id="toc-디렉토리-관리-리눅스-명령어" class="nav-link" data-scroll-target="#디렉토리-관리-리눅스-명령어">디렉토리 관리 리눅스 명령어</a></li>
-  <li><a href="#tmux-터미널-관리-프로그램" id="toc-tmux-터미널-관리-프로그램" class="nav-link" data-scroll-target="#tmux-터미널-관리-프로그램">tmux (터미널 관리 프로그램)</a></li>
-  <li><a href="#아나콘다를-이용-한-실습환경-만들기" id="toc-아나콘다를-이용-한-실습환경-만들기" class="nav-link" data-scroll-target="#아나콘다를-이용-한-실습환경-만들기">아나콘다를 이용 한 실습환경 만들기</a></li>
-  <li><a href="#패키지어플리케이션-관리" id="toc-패키지어플리케이션-관리" class="nav-link" data-scroll-target="#패키지어플리케이션-관리">패키지(어플리케이션) 관리</a></li>
-  <li><a href="#깃헙-블로그-관리" id="toc-깃헙-블로그-관리" class="nav-link" data-scroll-target="#깃헙-블로그-관리">깃헙 블로그 관리</a></li>
-  <li><a href="#기타" id="toc-기타" class="nav-link" data-scroll-target="#기타">기타</a></li>
-  <li><a href="#주피터-커널-변경방법파이썬-버전관리" id="toc-주피터-커널-변경방법파이썬-버전관리" class="nav-link" data-scroll-target="#주피터-커널-변경방법파이썬-버전관리">주피터 커널 변경방법(파이썬 버전관리)</a>
-  <ul class="collapse">
-  <li><a href="#bash에서-가상환경-생성-및-활성화" id="toc-bash에서-가상환경-생성-및-활성화" class="nav-link" data-scroll-target="#bash에서-가상환경-생성-및-활성화">1. bash에서 가상환경 생성 및 활성화</a></li>
-  <li><a href="#jupyter에-커널-추가" id="toc-jupyter에-커널-추가" class="nav-link" data-scroll-target="#jupyter에-커널-추가">2. Jupyter에 커널 추가</a></li>
-  </ul></li>
-  <li><a href="#r언어-커널-만들기" id="toc-r언어-커널-만들기" class="nav-link" data-scroll-target="#r언어-커널-만들기">R언어 커널 만들기</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="server사용법.out.ipynb" download="server사용법.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
-    </div>
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Untitled.out.ipynb" download="Untitled.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">터미널,디렉터리,패키지 및 코딩환경 관리</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">server</div>
-  </div>
-  </div>
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>이정민 </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">July 11, 2024</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="서버접속" class="level1">
-<h1>서버접속</h1>
-<p><code>ssh root@210.117.173.186 -p &lt;port번호;학번뒷자리&gt;</code> 서버 접속</p>
-<p><code>jupyter lab --ip="0.0.0.0" --port={MY-PORT} --no-browser --allow-root</code> 기본 주피터랩 접속</p>
-</section>
-<section id="디렉토리-관리-리눅스-명령어" class="level1">
-<h1>디렉토리 관리 리눅스 명령어</h1>
-<p><code>dir</code> -&gt; 디렉토리 확인</p>
-<p><code>mkdir</code> -&gt; 디렉토리 만들기</p>
-<p><code>cd &lt;dir&gt;</code> change dir 디렉토리(폴더) 안으로 들어가기</p>
-<p><code>!&lt;명령어&gt;</code> 주피터 내에서 터미널 명령어 치는 방법</p>
-<p><code>cd ..</code> 상위 디렉토리로 이동</p>
-<p><code>rm -rf &lt;dir&gt;</code> 디렉토리 강제삭제</p>
-<p><code>du -sh</code> 용량 확인</p>
-<p><code>find / -size +100M</code> 대용량 파일 확인 ( 100MB 이상의 파일을 찾기 )</p>
-<p><code>/(슬래시)찾는단어</code> 원하는 단어 찾기</p>
-<p><code>esc</code> 누르고 <code>:wq</code> 저장 후 종료</p>
-<p><code>i</code> 편집모드</p>
-</section>
-<section id="tmux-터미널-관리-프로그램" class="level1">
-<h1>tmux (터미널 관리 프로그램)</h1>
-<p><code>apt-get install tmux</code> tmux 다운로드</p>
-<p><code>tmux ls</code> 터미널 리스트 확인</p>
-<p><code>tmux kill-session -t &lt;session&gt;</code> 터미널 session 삭제</p>
-<p><code>tmux new -s &lt;session_name&gt;</code> session 만들기</p>
-<p><code>tmux attach -t &lt;session_name&gt;</code> session에 접속</p>
-<p><code>ctrl+b</code> + <code>손떼고</code> + <code>d</code> base에 접속</p>
-</section>
-<section id="아나콘다를-이용-한-실습환경-만들기" class="level1">
-<h1>아나콘다를 이용 한 실습환경 만들기</h1>
-<p><code>conda create &lt;env&gt;</code> conda 환경 생성</p>
-<p><code>conda activate &lt;env&gt;</code> conda 환경 실행</p>
-<p><code>conda env remove -n &lt;env&gt;</code> conda 환경 제거</p>
-<p><code>conda install -c conda-forge r-essentials</code> r 다운로드</p>
-<p><code>conda install -c conda-forge notebook</code> 주피터노트북 다운로드</p>
-</section>
-<section id="패키지어플리케이션-관리" class="level1">
-<h1>패키지(어플리케이션) 관리</h1>
-<p><code>pip install &lt;module&gt;=&lt;version&gt;</code> 모듈 다운로드하기</p>
-<p><code>pip list</code> 패키지 리스트와 버전 확인</p>
-<p><code>!&lt;module&gt; --version</code> 모듈 버전 확인</p>
-</section>
-<section id="깃헙-블로그-관리" class="level1">
-<h1>깃헙 블로그 관리</h1>
-<p><code>git clone {레포 주소}</code> : 깃헙 레포 복사</p>
-<p><code>quarto create-project --type website --template blog</code> : 블로그 생성</p>
-<p><code>quarto publish gh-pages</code> : Quarto 문서를 GitHub Pages에 배포</p>
-<p><code>git add .</code> -&gt; <code>git commit -m .</code> -&gt; <code>git push</code> : 깃헙 연동</p>
-<p><code>quarto publish --no-browser --no-prompt</code> : 블로그 게시물 포스팅</p>
-</section>
-<section id="기타" class="level1">
-<h1>기타</h1>
-<p><code>ctr shift p</code> &gt;create ### 코드스페이스에서 새로운 환경 노트북 생성</p>
-<p><code>./code tunnel</code> base에서 code 스페이스 실행 -&gt; <code>https://vscode.dev/tunnel/&lt;name&gt;/</code></p>
-<p><code>&gt; installspec()</code> 주피터 노트북에서 R사용하도록 함</p>
-<p><code>torch.cuda.is_available</code> gpu 연결 확인</p>
-</section>
-<section id="주피터-커널-변경방법파이썬-버전관리" class="level1">
-<h1>주피터 커널 변경방법(파이썬 버전관리)</h1>
-<section id="bash에서-가상환경-생성-및-활성화" class="level2">
-<h2 class="anchored" data-anchor-id="bash에서-가상환경-생성-및-활성화">1. bash에서 가상환경 생성 및 활성화</h2>
-<p><code>conda create -n py310 python=3.10.12</code> Python 3.10.12 가상환경 생성</p>
-<p><code>conda activate py310</code> 가상환경 활성화</p>
-</section>
-<section id="jupyter에-커널-추가" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter에-커널-추가">2. Jupyter에 커널 추가</h2>
-<p><code>pip install ipykernel</code> ipykernel 설치</p>
-<p><code>python -m ipykernel install --user --name py310 --display-name "Python 3.10.12"</code>Jupyter에 Python 3.10.12 커널 추가</p>
-</section>
-</section>
-<section id="r언어-커널-만들기" class="level1">
-<h1>R언어 커널 만들기</h1>
-<ol type="1">
-<li><p>conda create –name my_r_env</p></li>
-<li><p>conda activate my_r_env</p></li>
-<li><p>conda install -c conda-forge r-base=4.4.1</p></li>
-<li><p>conda install -c {my_r_env} r-irkernel</p></li>
-<li><p>주피터 설치 (conda install -c conda-forge notebook)</p></li>
-<li><p>명령프럼프트에서 -&gt; IRkernel::installspec(name = ‘my_r_env’, displayname = ‘Custom R Kernel’)</p></li>
-</ol>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
