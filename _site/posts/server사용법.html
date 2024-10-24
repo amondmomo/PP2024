@@ -118,6 +118,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#패키지어플리케이션-관리" id="toc-패키지어플리케이션-관리" class="nav-link" data-scroll-target="#패키지어플리케이션-관리">패키지(어플리케이션) 관리</a></li>
   <li><a href="#깃헙-블로그-관리" id="toc-깃헙-블로그-관리" class="nav-link" data-scroll-target="#깃헙-블로그-관리">깃헙 블로그 관리</a></li>
   <li><a href="#기타" id="toc-기타" class="nav-link" data-scroll-target="#기타">기타</a></li>
+  <li><a href="#주피터-커널-변경방법파이썬-버전관리" id="toc-주피터-커널-변경방법파이썬-버전관리" class="nav-link" data-scroll-target="#주피터-커널-변경방법파이썬-버전관리">주피터 커널 변경방법(파이썬 버전관리)</a>
+  <ul class="collapse">
+  <li><a href="#bash에서-가상환경-생성-및-활성화" id="toc-bash에서-가상환경-생성-및-활성화" class="nav-link" data-scroll-target="#bash에서-가상환경-생성-및-활성화">1. bash에서 가상환경 생성 및 활성화</a></li>
+  <li><a href="#jupyter에-커널-추가" id="toc-jupyter에-커널-추가" class="nav-link" data-scroll-target="#jupyter에-커널-추가">2. Jupyter에 커널 추가</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="server사용법.out.ipynb" download="server사용법.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -200,7 +205,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>깃헙 블로그 관리</h1>
 <p><code>git clone {레포 주소}</code> : 깃헙 레포 복사</p>
 <p><code>quarto create-project --type website --template blog</code> : 블로그 생성</p>
-<p><code>quarto publish gh-pages</code> : 블로</p>
+<p><code>quarto publish gh-pages</code> : Quarto 문서를 GitHub Pages에 배포</p>
 <p><code>git add .</code> -&gt; <code>git commit -m .</code> -&gt; <code>git push</code> : 깃헙 연동</p>
 <p><code>quarto publish --no-browser --no-prompt</code> : 블로그 게시물 포스팅</p>
 </section>
@@ -210,8 +215,21 @@ ul.task-list li input[type="checkbox"] {
 <p><code>./code tunnel</code> base에서 code 스페이스 실행 -&gt; <code>https://vscode.dev/tunnel/&lt;name&gt;/</code></p>
 <p><code>&gt; installspec()</code> 주피터 노트북에서 R사용하도록 함</p>
 <p><code>torch.cuda.is_available</code> gpu 연결 확인</p>
+</section>
+<section id="주피터-커널-변경방법파이썬-버전관리" class="level1">
+<h1>주피터 커널 변경방법(파이썬 버전관리)</h1>
+<section id="bash에서-가상환경-생성-및-활성화" class="level2">
+<h2 class="anchored" data-anchor-id="bash에서-가상환경-생성-및-활성화">1. bash에서 가상환경 생성 및 활성화</h2>
+<p><code>conda create -n py310 python=3.10.12</code> Python 3.10.12 가상환경 생성</p>
+<p><code>conda activate py310</code> 가상환경 활성화</p>
+</section>
+<section id="jupyter에-커널-추가" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter에-커널-추가">2. Jupyter에 커널 추가</h2>
+<p><code>pip install ipykernel</code> ipykernel 설치</p>
+<p><code>python -m ipykernel install --user --name py310 --display-name "Python 3.10.12"</code>Jupyter에 Python 3.10.12 커널 추가</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
